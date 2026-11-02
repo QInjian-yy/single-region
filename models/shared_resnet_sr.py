@@ -309,6 +309,9 @@ class SharedResNetSRMIL(nn.Module):
         sr_feature = self.sr.fuse_stages(stages, target_size=lr.shape[-2:])
         return sr_feature, embeddings
 
+    def encode_classification_regions(self, lr: torch.Tensor):
+        return self.classifier_head(self.encoder(lr)[-1])
+
     def forward_embeddings(self, embeddings: torch.Tensor):
         logits, _ = self.classifier_head.forward_embeddings(embeddings)
         return logits

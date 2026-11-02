@@ -70,7 +70,10 @@ def wsi_loss(model, sample, device, config):
     for start in range(0, n, batch_size):
         lr = load_images(sample["lr_paths"][start:start+batch_size], spec.lr_size).to(device)
         with autocast(device, config["precision"]):
-            feature, embedding = model.encode_regions(lr)
+            if not coefficient and hasattr(model, "encode_classification_regions"):
+                embedding = model.encode_classification_regions(lr)
+            else:
+                feature, embedding = model.encode_regions(lr)
             embeddings.append(embedding.float())
             if coefficient:
                 for index in range(lr.shape[0]):
@@ -158,7 +161,11 @@ def evaluate(model, loader, device, config):
         for start in range(0, sample["n_regions"], batch_size):
             paths = sample["lr_paths"][start:start+batch_size]
             with autocast(device, config["precision"]):
-                _, embedding = model.encode_regions(load_images(paths, spec.lr_size).to(device))
+                lr = load_images(paths, spec.lr_size).to(device)
+                if hasattr(model, "encode_classification_regions"):
+                    embedding = model.encode_classification_regions(lr)
+                else:
+                    _, embedding = model.encode_regions(lr)
             chunks.append(embedding.float())
         with autocast(device, config["precision"]):
             logits = model.forward_embeddings(torch.cat(chunks))

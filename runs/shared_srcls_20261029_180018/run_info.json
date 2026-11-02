@@ -1,0 +1,9 @@
+{
+  "experiment_id": "EXP-20261029-180058-d7c8b796ad6b",
+  "started_at": "2026-10-29T18:00:58.152335+08:00",
+  "fold": 0,
+  "git_commit": "",
+  "gpu": "NVIDIA A100-PCIE-40GB",
+  "status": "incomplete",
+  "model": "metasr-shared-srcls-v1"
+}

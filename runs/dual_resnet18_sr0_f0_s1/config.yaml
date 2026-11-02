@@ -1,0 +1,36 @@
+data_mode: native512
+data_manifest: Manifests/patch_manifest.csv
+mil_pooling: abmil
+classification_head: linear
+pretrained_cls: true
+freeze_cls_stem: true
+dropout: 0.5
+metasr:
+  scale: 16
+  lr_chunk_size: 256
+  checkpoint_rdb: true
+  rgb_range: 1
+  rdn_blocks: 1
+  freeze_meanshift: true
+lambda_sr: 0.0
+sr_train_crop: 256
+training:
+  use_region_microbatch: true
+  region_microbatch_size: 8
+  label_smoothing: 0.05
+  region_dropout: 0.1
+  grad_clip: 1.0
+precision: bf16
+lr: 0.0001
+weight_decay: 0.0001
+epochs: 40
+early_stopping_patience: 10
+seed: 1
+augmentation:
+  enabled: true
+  horizontal_flip: 0.5
+  vertical_flip: 0.5
+  rotation90: true
+lr_scheduler: cosine
+warmup_epochs: 2
+min_lr: 1.0e-06

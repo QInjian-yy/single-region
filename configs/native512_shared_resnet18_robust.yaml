@@ -35,6 +35,7 @@ training:
   region_microbatch_size: 2
   max_train_regions: 24
   class_weight: balanced
+  sr_stop_after_epochs: 3  # Set to a positive integer; null keeps SR on.
 
 precision: bf16
 optimizer: adamw

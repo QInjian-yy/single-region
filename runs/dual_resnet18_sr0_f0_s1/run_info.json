@@ -1,0 +1,10 @@
+{
+  "experiment_id": "EXP-20261028-195409-4e9bdd480f21",
+  "started_at": "2026-10-28T19:54:09.107153+08:00",
+  "fold": 0,
+  "git_commit": "",
+  "gpu": "NVIDIA A100-PCIE-40GB",
+  "status": "incomplete",
+  "model": "metasr-dualpath-v1",
+  "mil_pooling": "abmil"
+}

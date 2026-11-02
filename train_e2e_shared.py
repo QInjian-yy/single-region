@@ -63,6 +63,9 @@ def load_config(path):
     training.setdefault("region_microbatch_size", 2)
     training.setdefault("class_weight", "balanced")
     training.setdefault("max_train_regions", 24)
+    sr_epochs = training.get("sr_stop_after_epochs")
+    if sr_epochs is not None and (type(sr_epochs) is not int or sr_epochs < 1):
+        raise ValueError("training.sr_stop_after_epochs must be a positive integer or null")
     if training["class_weight"] not in ("none", "balanced"):
         raise ValueError("training.class_weight must be none or balanced")
 
@@ -381,14 +384,20 @@ def main():
     best_threshold = 0.5
     stale = 0
     iteration = 0
+    sr_epochs = config["training"].get("sr_stop_after_epochs")
     with (args.output / "history.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = None
         for epoch in range(1, config["epochs"] + 1):
+            epoch_config = dict(config)
+            if sr_epochs is not None and epoch > sr_epochs:
+                epoch_config["lambda_sr"] = 0.0
+            if sr_epochs is not None and epoch == sr_epochs + 1 and config["lambda_sr"] > 0:
+                print(f"[SR] disabled after {sr_epochs} epochs", flush=True)
             online = []
             for sample in loaders[0]:
                 iteration += 1
                 result = train_wsi(
-                    model, sample, optimizer, device, config, iteration % 10 == 0
+                    model, sample, optimizer, device, epoch_config, iteration % 10 == 0
                 )
                 ema.update(model)
                 online.append(result)
@@ -404,6 +413,7 @@ def main():
             apply_threshold(val_result, threshold)
             row = {
                 "epoch": epoch,
+                "lambda_sr": epoch_config["lambda_sr"],
                 **{
                     key: sum(r.get(key, 0.0) for r in online) / len(online)
                     for key in (
@@ -482,6 +492,7 @@ def main():
                 "best_epoch": best_epoch,
                 "best_selection_score": best_score,
                 "checkpoint_metric": config["checkpoint_metric"],
+                "epoch_lambda_sr": epoch_config["lambda_sr"],
             }
             torch.save(
                 {
