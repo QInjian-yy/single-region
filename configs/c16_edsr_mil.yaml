@@ -1,0 +1,67 @@
+data_mode: native512
+data_manifest: Manifests/patch_manifest.csv
+sr_model: edsr
+classification_encoder: dual_resnet18
+classification_head: linear
+
+classification:
+  pretrained: true
+  trainable: layer4
+  embedding_dim: 256
+  region_dropout: 0.2
+  attention_hidden_dim: 128
+  topk: 5
+  bag_region_dropout: 0.1
+  attention_dropout: 0.1
+  classifier_dropout: 0.3
+  freeze_backbone_epochs: 3
+  backbone_lr: 1.0e-5
+  head_lr: 2.0e-4
+
+metasr:
+  scale: 16
+  rgb_range: 1
+  channels: 64
+  blocks: 8
+  residual_scale: 0.1
+  dropout: 0.0
+  checkpoint_blocks: true
+  hr_tile: 256
+
+lambda_sr: 0.1
+sr_train_crop: 256
+sr_lr: 1.0e-4
+
+training:
+  use_region_microbatch: true
+  region_microbatch_size: 2
+  # Random per-epoch region subsets reduce slide-specific memorisation.
+  max_train_regions: 24
+  class_weight: balanced
+
+precision: bf16
+optimizer: adamw
+lr: 2.0e-4
+weight_decay: 0.01
+label_smoothing: 0.05
+gradient_clip_norm: 1.0
+epochs: 60
+min_epochs: 5
+early_stopping_patience: 15
+early_stopping_min_delta: 1.0e-3
+checkpoint_metric: val_loss
+scheduler: plateau
+scheduler_patience: 5
+scheduler_factor: 0.5
+min_lr: 1.0e-6
+seed: 1
+
+augmentation:
+  enabled: true
+  horizontal_flip: 0.5
+  vertical_flip: 0.5
+  rotation90: true
+  brightness: 0.08
+  contrast: 0.08
+  saturation: 0.08
+  hue: 0.01
