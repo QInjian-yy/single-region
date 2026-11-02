@@ -14,7 +14,6 @@ from models.spp_ln import LayerNormalizedSPP
  
 
 def _replace_bn_with_gn(module, num_groups=32):
-    # Verbatim helper from E2E/downstream/shared_model.py, enabled by user request.
     for name, child in list(module.named_children()):
         if isinstance(child, nn.BatchNorm2d):
             channels = child.num_features
@@ -183,6 +182,12 @@ class MetaSRABMIL(nn.Module):
 
 def model_from_checkpoint(saved, device="cpu"):
     """Construct the saved architecture and strictly load every model parameter."""
+    if saved.get("format") == "metasr-shared-resnet-srcls-v2":
+        from models.shared_resnet_sr import (
+            model_from_checkpoint as load_shared_resnet_checkpoint,
+        )
+
+        return load_shared_resnet_checkpoint(saved, device)
     config = saved["config"]
     checkpoint_data_spec(saved)
     if saved.get("format") == "metasr-abmil-v1":

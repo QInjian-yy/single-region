@@ -1,5 +1,3 @@
-"""Explicit full 8K inference; stream GPU tiles directly into a CPU/disk .npy array."""
-
 import argparse
 from pathlib import Path
 
@@ -14,7 +12,11 @@ from wsi_data import load_images
 
 @torch.no_grad()
 def reconstruct(model, lr, output_path):
-    feature = model.sr.extract_features(lr)
+    feature = (
+        model.encode_sr_features(lr)
+        if hasattr(model, "encode_sr_features")
+        else model.sr.extract_features(lr)
+    )
     b, _, h, w = feature.shape
     scale = model.sr.scale
     output = np.lib.format.open_memmap(output_path, mode="w+", dtype=np.float32,

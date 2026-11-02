@@ -118,9 +118,16 @@ def train_wsi(model, sample, optimizer, device, config, log_gradients=False):
         raise FloatingPointError("Non-finite joint loss")
     total.backward()
     norms = {"rdn": gradient_norm(model.sr), "region_encoder": gradient_norm(model.region_encoder),
-             "abmil": gradient_norm(model.mil_head), "classifier": gradient_norm(model.classifier),
+             "abmil": (gradient_norm(model.mil_head)
+                       if hasattr(model, "mil_head")
+                       else gradient_norm(model.classifier_head.mil)),
+             "classifier": (gradient_norm(model.classifier)
+                            if hasattr(model, "classifier")
+                            else gradient_norm(model.classifier_head.classifier)),
              "p2w": (gradient_norm(model.sr.P2W)
                      if hasattr(model.sr, "P2W") else 0.0)}
+    if hasattr(model, "encoder"):
+        norms["shared_encoder"] = gradient_norm(model.encoder)
     if not all(math.isfinite(value) for value in norms.values()):
         raise FloatingPointError(f"Non-finite gradients: {norms}")
     if log_gradients:
@@ -129,15 +136,19 @@ def train_wsi(model, sample, optimizer, device, config, log_gradients=False):
     if clip > 0:
         torch.nn.utils.clip_grad_norm_(model.parameters(), clip)
     optimizer.step()
+    primary_gradient = max(
+        norms.get("shared_encoder", 0.0),
+        norms.get("rdn", 0.0),
+    )
     return {"train_loss_cls": cls.item(), "train_loss_sr": sr.item(),
-            "train_loss_total": total.item(), "grad_norm": norms["rdn"],
+            "train_loss_total": total.item(), "grad_norm": primary_gradient,
             **memory_summary(device)}
 
 
 @torch.no_grad()
 def evaluate(model, loader, device, config):
-    # Matches E2E's offline classification-only train/val evaluation semantics.
     model.eval()
+    decision_threshold = float(config.get("decision_threshold", 0.5))
     labels, scores, decisions, predictions = [], [], [], []
     loss_sum = 0.0
     for sample in loader:
@@ -158,7 +169,7 @@ def evaluate(model, loader, device, config):
                 logits, target, config, use_class_weights=False
             ).item()
         score = torch.softmax(logits.float(), dim=1)[0, 1].item()
-        decision = logits.argmax(dim=1).item()
+        decision = int(score >= decision_threshold)
         labels.append(sample["label"])
         scores.append(score)
         decisions.append(decision)

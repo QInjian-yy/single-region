@@ -11,7 +11,8 @@ import torch
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from wsi_data import collate_one_wsi, discover_fold_ids, load_fold_datasets, load_images
+from wsi_data import (Camelyon16WSI, collate_one_wsi, discover_fold_ids,
+                      load_fold_datasets, load_images)
 
 
 def write_csv(path, fields, rows):
@@ -72,6 +73,23 @@ class WSIDataTests(unittest.TestCase):
         (self.root / "images_8192" / "slide_1_r1.png").unlink()
         with self.assertRaisesRegex(FileNotFoundError, "all 2 regions required"):
             load_fold_datasets(self.root, 0)
+
+    def test_region_limit_preserves_pairs_and_full_evaluation(self):
+        sample = {
+            "slide_id": "slide_large", "label": 1, "n_regions": 25,
+            "lr_paths": [self.root / "images_256" / f"region_{i}.png" for i in range(25)],
+            "hr_paths": [self.root / "images_8192" / f"region_{i}.png" for i in range(25)],
+        }
+        dataset = Camelyon16WSI([sample], max_regions=24)
+        selected = dataset[0]
+        self.assertEqual(selected["n_regions"], 24)
+        self.assertEqual(len(set(selected["lr_paths"])), 24)
+        self.assertEqual([path.name for path in selected["lr_paths"]],
+                         [path.name for path in selected["hr_paths"]])
+        self.assertEqual(selected["lr_paths"],
+                         [path for path in sample["lr_paths"] if path in selected["lr_paths"]])
+        self.assertEqual(sample["n_regions"], 25)
+        self.assertIs(dataset.evaluation_view()[0], sample)
 
     def test_sr_off_does_not_require_hr_files(self):
         (self.root / "images_8192" / "slide_1_r1.png").unlink()
