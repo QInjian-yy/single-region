@@ -9,6 +9,7 @@ shared_encoder:
   encoder_lr: 1.0e-5
 
 classification:
+  pooling: [attention, mean, topk]  # Select any nonempty subset; omission keeps all three.
   embedding_dim: 256
   attention_hidden_dim: 128
   topk: 5

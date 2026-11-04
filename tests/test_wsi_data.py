@@ -140,6 +140,24 @@ class WSIDataTests(unittest.TestCase):
         train, _ = load_fold_datasets(self.root, 0)
         self.assertEqual(len(train), 4)
 
+    def test_fivefold_is_explicit_and_preserves_legacy_default(self):
+        split_dir = self.root / "downstream_train"
+        for fold in range(5):
+            val_case = "case_{}".format((fold + 1) % 5)
+            train = [row["case_id"] for row in self.labels if row["case_id"] != val_case]
+            rows = [{"train": case, "val": val_case if i == 0 else ""}
+                    for i, case in enumerate(train)]
+            write_csv(split_dir / "splits_5fold_{}.csv".format(fold), ("train", "val"), rows)
+        self.assertEqual(discover_fold_ids(split_dir, "5fold"), [0, 1, 2, 3, 4])
+        self.assertEqual(discover_fold_ids(split_dir), [0, 1, 2, 3, 4])
+        _, old_val = load_fold_datasets(self.root, 0)
+        _, new_val = load_fold_datasets(self.root, 0, split_scheme="5fold")
+        self.assertEqual(old_val.samples[0]["case_id"], "case_0")
+        self.assertEqual(new_val.samples[0]["case_id"], "case_1")
+        self.assertEqual(new_val.split_csv.name, "splits_5fold_0.csv")
+        with self.assertRaisesRegex(ValueError, "3fold or 5fold"):
+            load_fold_datasets(self.root, 0, split_scheme="unknown")
+
     def test_manifest_split_column_ignored(self):
         rows = []
         for row in self.regions:

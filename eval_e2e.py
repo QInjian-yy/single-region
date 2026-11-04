@@ -32,6 +32,8 @@ def main():
     model = model_from_checkpoint(saved, device)
     _, val = load_fold_datasets(args.data_root, saved["fold"], args.labels_csv, args.split_dir,
                                require_hr=False,
+                               **({"split_scheme": saved["config"]["split_scheme"]}
+                                  if "split_scheme" in saved["config"] else {}),
                                **({"data_mode": spec.mode,
                                    "manifest_csv": saved["config"].get("data_manifest", "manifests/patch_manifest.csv")}
                                   if spec.mode == "native512" else {}))

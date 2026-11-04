@@ -111,6 +111,7 @@ class SharedClassifierHead(nn.Module):
         attention_dropout: float = 0.2,
         projection_dropout: float = 0.2,
         classifier_dropout: float = 0.4,
+        pooling=RobustMILPooling.POOLING_BRANCHES,
     ):
         super().__init__()
         self.projection = nn.Sequential(
@@ -125,12 +126,19 @@ class SharedClassifierHead(nn.Module):
             topk=topk,
             region_dropout=region_dropout,
             attention_dropout=attention_dropout,
+            pooling=pooling,
         )
+        # Preserve legacy RNG consumption so MIL selection leaves SR initialization unchanged.
+        legacy_dim = embedding_dim * 3
         self.classifier = nn.Sequential(
-            nn.LayerNorm(self.mil.output_dim),
+            nn.LayerNorm(legacy_dim),
             nn.Dropout(classifier_dropout),
-            nn.Linear(self.mil.output_dim, 2),
+            nn.Linear(legacy_dim, 2),
         )
+        if self.mil.output_dim != legacy_dim:
+            with torch.random.fork_rng(devices=[]):
+                self.classifier[0] = nn.LayerNorm(self.mil.output_dim)
+                self.classifier[2] = nn.Linear(self.mil.output_dim, 2)
 
     def forward(self, stage4: torch.Tensor):
         mean = F.adaptive_avg_pool2d(stage4, 1).flatten(1)
@@ -277,6 +285,7 @@ class SharedResNetSRMIL(nn.Module):
             attention_dropout=classifier.get("attention_dropout", 0.2),
             projection_dropout=classifier.get("projection_dropout", 0.2),
             classifier_dropout=classifier.get("classifier_dropout", 0.4),
+            pooling=classifier.get("pooling", RobustMILPooling.POOLING_BRANCHES),
         )
         self.sr = SharedFeatureSRDecoder(
             stage_channels=self.encoder.stage_channels,
@@ -298,6 +307,8 @@ class SharedResNetSRMIL(nn.Module):
             "scale": scale,
             "num_classes": 2,
         }
+        if self.classifier_head.mil.pooling != RobustMILPooling.POOLING_BRANCHES:
+            self._arch["mil_pooling"] = list(self.classifier_head.mil.pooling)
 
     @property
     def region_encoder(self):
@@ -376,5 +387,10 @@ def model_from_checkpoint(saved, device="cpu"):
         sr_dropout=metasr.get("dropout", 0.05),
         hr_tile=metasr.get("hr_tile", 256),
     ).to(device)
+    saved_pooling = RobustMILPooling.normalize_pooling(
+        saved.get("architecture", {}).get("mil_pooling", RobustMILPooling.POOLING_BRANCHES)
+    )
+    if model.classifier_head.mil.pooling != saved_pooling:
+        raise ValueError("Checkpoint MIL pooling disagrees with classification.pooling")
     model.load_state_dict(saved["model_state"], strict=True)
     return model

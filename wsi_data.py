@@ -55,33 +55,42 @@ def _label_path(downstream, explicit):
     return candidates[0]
 
 
-def discover_fold_ids(split_directory):
-    """Return sorted fold ids from existing ``splits_<id>.csv`` files."""
+def _split_prefix(split_scheme):
+    prefixes = {"3fold": "splits_", "5fold": "splits_5fold_"}
+    if split_scheme not in prefixes:
+        raise ValueError("split_scheme must be 3fold or 5fold")
+    return prefixes[split_scheme]
+
+
+def discover_fold_ids(split_directory, split_scheme="3fold"):
+    """Return sorted fold ids for the selected naming scheme."""
     directory = Path(split_directory)
+    prefix = _split_prefix(split_scheme)
     folds = []
-    for path in sorted(directory.glob("splits_*.csv")):
-        suffix = path.stem.removeprefix("splits_")
+    for path in sorted(directory.glob(prefix + "*.csv")):
+        suffix = path.stem.removeprefix(prefix)
         if suffix.isdigit():
             folds.append(int(suffix))
     if not folds:
-        raise FileNotFoundError("No splits_*.csv found in {}".format(directory))
+        raise FileNotFoundError("No {}<fold>.csv found in {}".format(prefix, directory))
     return folds
 
 
-def _split_directory(downstream, explicit):
+def _split_directory(downstream, explicit, split_scheme="3fold"):
+    first_split = _split_prefix(split_scheme) + "0.csv"
     if explicit is not None:
         directory = Path(explicit)
-    elif (downstream / "splits_0.csv").is_file():
+    elif (downstream / first_split).is_file():
         directory = downstream
     else:
-        candidates = sorted({path.parent for path in downstream.rglob("splits_0.csv")})
+        candidates = sorted({path.parent for path in downstream.rglob(first_split)})
         if len(candidates) != 1:
             raise ValueError(
                 "Expected one cross-validation directory below {}; found {}. "
                 "Set --split-dir explicitly.".format(downstream, candidates)
             )
         directory = candidates[0]
-    discover_fold_ids(directory)
+    discover_fold_ids(directory, split_scheme)
     return directory
 
 
@@ -132,12 +141,12 @@ class Camelyon16WSI(Dataset):
 
 def load_fold_datasets(data_root, fold, labels_csv=None, split_dir=None, *, augmentation=None,
                        require_hr=True, data_mode="legacy256", manifest_csv=None,
-                       max_train_regions=None):
+                       max_train_regions=None, split_scheme="3fold"):
     """Return (train, val) for one fold.
 
     Legacy regions use ``manifests/patch_manifest.csv`` (filename + slide_id).
     Explicit native512 mode reads the detailed export CSV and verification report.
-    Case train/val comes from ``downstream_train/splits_<fold>.csv`` only.
+    Case train/val comes from the selected 3-fold or 5-fold CSV scheme.
     Augmentation is opt-in for training use; a train split alone never enables it.
     """
     root = Path(data_root)
@@ -146,8 +155,8 @@ def load_fold_datasets(data_root, fold, labels_csv=None, split_dir=None, *, augm
         raise ValueError("manifest_csv requires explicit native512 mode")
     downstream = root / "downstream_train"
     label_path = _label_path(downstream, labels_csv)
-    split_directory = _split_directory(downstream, split_dir)
-    available_folds = discover_fold_ids(split_directory)
+    split_directory = _split_directory(downstream, split_dir, split_scheme)
+    available_folds = discover_fold_ids(split_directory, split_scheme)
     if fold not in available_folds:
         raise ValueError("fold must be one of {}; got {}".format(available_folds, fold))
     label_rows = _read_csv(label_path, ("case_id", "slide_id", "label"))
@@ -191,7 +200,7 @@ def load_fold_datasets(data_root, fold, labels_csv=None, split_dir=None, *, augm
     if missing_regions:
         raise ValueError("Labelled WSIs missing manifest regions: {}".format(sorted(missing_regions)))
 
-    split_path = split_directory / "splits_{}.csv".format(fold)
+    split_path = split_directory / "{}{}.csv".format(_split_prefix(split_scheme), fold)
     split_rows = _read_csv(split_path, ("train", "val"))
     split_cases = {name: [row[name] for row in split_rows if row[name]]
                    for name in ("train", "val")}

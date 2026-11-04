@@ -18,6 +18,7 @@ from torch.utils.data import DataLoader
 from augmentation import load_augmentation_config
 from data_modes import data_spec, validate_data_config
 from engine import evaluate, train_wsi
+from models.robust_mil import RobustMILPooling
 from models.shared_resnet_sr import (
     CHECKPOINT_FORMAT,
     SharedResNetSRMIL,
@@ -42,6 +43,9 @@ def load_config(path):
         raise ValueError("shared_encoder.trainable must be frozen, layer3, layer4, or all")
 
     classification = config.setdefault("classification", {})
+    classification["pooling"] = list(RobustMILPooling.normalize_pooling(
+        classification.get("pooling", RobustMILPooling.POOLING_BRANCHES)
+    ))
     classification.setdefault("embedding_dim", 256)
     classification.setdefault("attention_hidden_dim", 128)
     classification.setdefault("topk", 5)
@@ -288,11 +292,14 @@ def main():
     parser.add_argument("--fold", type=int, default=0)
     parser.add_argument("--labels-csv", type=Path)
     parser.add_argument("--split-dir", type=Path)
+    parser.add_argument("--split-scheme", choices=("3fold", "5fold"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--device", default="cuda:0")
     args = parser.parse_args()
 
     config = load_config(args.config)
+    if args.split_scheme is not None:
+        config["split_scheme"] = args.split_scheme
     spec = data_spec(config)
     if spec.mode == "legacy256":
         args.labels_csv = args.labels_csv or ROOT / "downstream_train/camelyon16_labels.csv"
@@ -336,6 +343,7 @@ def main():
         require_hr=float(config["lambda_sr"]) > 0,
         augmentation=config.get("augmentation"),
         max_train_regions=config["training"]["max_train_regions"],
+        split_scheme=config.get("split_scheme", "3fold"),
         **native_options,
     )
     if {sample["label"] for sample in val_data.samples} != {0, 1}:

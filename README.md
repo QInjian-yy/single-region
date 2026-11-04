@@ -197,3 +197,25 @@ Git 仓库副本继续保留已有审计、测试和历史报告，旧记录不�
 配置、完整测试结果、坐标约定、显存限制和待确认后执行的命令见
 [native512 兼容性报告](reports/native512_compatibility_20261021.md)。
 # single-region
+
+## 共享 ResNet 的 MIL 选择
+
+使用 `train_e2e_shared.py` 时，在现有 YAML 的 `classification` 下添加或修改
+`pooling`，保留其余字段。例如只使用门控注意力：
+
+```yaml
+classification:
+  pooling: [attention]
+```
+
+可选 `attention`、`mean`、`topk` 中任意非空组合；例如 `[mean]`、`[topk]`、
+`[attention, mean]`、`[attention, topk]` 或 `[mean, topk]`。单个字符串如
+`pooling: mean` 也支持。拼接顺序固定为 attention、mean、topk；不写该字段
+时沿用原三路 `[attention, mean, topk]`。
+
+每路输出 256 维时，选择 1/2/3 路分别得到 256/512/768 维 WSI 表征，
+分类层自动匹配维度。region embedding、Dropout 设置及 SR 分支保持原样。
+`topk` 仍按每个特征维度取最大的 k 个值求均值，不按注意力挑选 region。
+
+选择会保存在运行配置和 checkpoint 中。缺少该选项的旧 checkpoint 仍按三路
+严格加载；切换组合需要使用新的输出目录训练，不能直接套用不同组合的分类头权重。

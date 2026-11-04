@@ -205,7 +205,7 @@ class SharedResNetSRTests(unittest.TestCase):
         samples = [{"slide_id": str(label), "label": label, "n_regions": 1,
                     "lr_paths": [0], "hr_paths": [0]} for label in (0, 1)]
         train_data, val_data = Camelyon16WSI(samples), Camelyon16WSI(samples)
-        weights, checkpoints = [], []
+        weights, checkpoints, saved_schemes = [], [], []
 
         def train(model, sample, optimizer, device, current, log_gradients):
             weights.append(current["lambda_sr"])
@@ -223,6 +223,7 @@ class SharedResNetSRTests(unittest.TestCase):
         def capture(saved, path):
             checkpoints.append((path.name, saved["epoch"], saved["epoch_lambda_sr"],
                                 saved["config"]["lambda_sr"]))
+            saved_schemes.append((saved["fold"], saved["config"].get("split_scheme")))
 
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -234,12 +235,14 @@ class SharedResNetSRTests(unittest.TestCase):
                     path.write_text(yaml.safe_dump(config), encoding="utf-8")
                     output = root / f"run_{sr_epochs}"
                     args = ["train_e2e_shared.py", "--config", str(path), "--data-root", str(root),
-                            "--output", str(output), "--device", "cpu"]
+                            "--output", str(output), "--device", "cpu",
+                            "--fold", "4", "--split-scheme", "5fold"]
                     weights.clear()
                     checkpoints.clear()
+                    saved_schemes.clear()
                     with patch.object(sys, "argv", args), \
                          patch("train_e2e_shared.run_shared_model_gate", return_value={}), \
-                         patch("train_e2e_shared.load_fold_datasets", return_value=(train_data, val_data)), \
+                         patch("train_e2e_shared.load_fold_datasets", return_value=(train_data, val_data)) as loader, \
                          patch("train_e2e_shared.train_wsi", side_effect=train), \
                          patch("train_e2e_shared.evaluate", side_effect=validate), \
                          patch("train_e2e_shared.provenance", return_value={}), \
@@ -252,6 +255,9 @@ class SharedResNetSRTests(unittest.TestCase):
                     self.assertEqual(weights, [value for value in expected for _ in range(2)])
                     self.assertEqual([float(row["lambda_sr"]) for row in rows], expected)
                     self.assertIn(("last.pth", 3, expected[-1], 0.05), checkpoints)
+                    self.assertEqual(loader.call_args.kwargs["split_scheme"], "5fold")
+                    self.assertTrue(saved_schemes)
+                    self.assertTrue(all(item == (4, "5fold") for item in saved_schemes))
 
 
 if __name__ == "__main__":

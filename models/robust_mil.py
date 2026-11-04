@@ -80,11 +80,25 @@ class ImageNetRegionEncoder(nn.Module):
 
 
 class RobustMILPooling(nn.Module):
-    """Gated attention + mean + top-k pooling, without fixed SPP bins."""
+    """Select and concatenate gated attention, mean and/or top-k pooling."""
+
+    POOLING_BRANCHES = ("attention", "mean", "topk")
+
+    @classmethod
+    def normalize_pooling(cls, pooling):
+        if isinstance(pooling, str):
+            pooling = (pooling,)
+        if not isinstance(pooling, (list, tuple)) or not pooling:
+            raise ValueError("classification.pooling must select attention, mean and/or topk")
+        if (any(not isinstance(name, str) or name not in cls.POOLING_BRANCHES for name in pooling)
+                or len(set(pooling)) != len(pooling)):
+            raise ValueError("classification.pooling must contain unique attention, mean or topk values")
+        return tuple(name for name in cls.POOLING_BRANCHES if name in pooling)
 
     def __init__(self, input_dim=256, hidden_dim=128, topk=5,
-                 region_dropout=0.1, attention_dropout=0.1):
+                 region_dropout=0.1, attention_dropout=0.1, pooling=POOLING_BRANCHES):
         super().__init__()
+        self.pooling = self.normalize_pooling(pooling)
         if input_dim < 1 or hidden_dim < 1 or topk < 1:
             raise ValueError("MIL dimensions and topk must be positive")
         if not 0 <= region_dropout < 1 or not 0 <= attention_dropout < 1:
@@ -95,7 +109,7 @@ class RobustMILPooling(nn.Module):
         self.attention_dropout = nn.Dropout(attention_dropout)
         self.region_dropout = region_dropout
         self.topk = topk
-        self.output_dim = input_dim * 3
+        self.output_dim = input_dim * len(self.pooling)
 
     def forward(self, embeddings):
         if embeddings.ndim != 2 or embeddings.shape[0] < 1:
@@ -107,12 +121,16 @@ class RobustMILPooling(nn.Module):
             mask = keep >= self.region_dropout
             if mask.any():
                 embeddings = embeddings[mask]
-        x = self.attention_dropout(embeddings)
-        gated = torch.tanh(self.attention_V(x)) * torch.sigmoid(self.attention_U(x))
-        scores = self.attention_w(gated).squeeze(-1)
-        weights = torch.softmax(scores, dim=0)
-        attention = (weights.unsqueeze(-1) * embeddings).sum(dim=0, keepdim=True)
-        mean = embeddings.mean(dim=0, keepdim=True)
-        k = min(self.topk, embeddings.shape[0])
-        top = embeddings.topk(k, dim=0).values.mean(dim=0, keepdim=True)
-        return torch.cat((attention, mean, top), dim=1), weights
+        pooled, weights = [], None
+        if "attention" in self.pooling:
+            x = self.attention_dropout(embeddings)
+            gated = torch.tanh(self.attention_V(x)) * torch.sigmoid(self.attention_U(x))
+            scores = self.attention_w(gated).squeeze(-1)
+            weights = torch.softmax(scores, dim=0)
+            pooled.append((weights.unsqueeze(-1) * embeddings).sum(dim=0, keepdim=True))
+        if "mean" in self.pooling:
+            pooled.append(embeddings.mean(dim=0, keepdim=True))
+        if "topk" in self.pooling:
+            k = min(self.topk, embeddings.shape[0])
+            pooled.append(embeddings.topk(k, dim=0).values.mean(dim=0, keepdim=True))
+        return torch.cat(pooled, dim=1), weights

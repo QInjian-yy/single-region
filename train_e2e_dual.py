@@ -87,11 +87,14 @@ def main():
     parser.add_argument("--fold", type=int, default=0)
     parser.add_argument("--labels-csv", type=Path)
     parser.add_argument("--split-dir", type=Path)
+    parser.add_argument("--split-scheme", choices=("3fold", "5fold"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--device", default="cuda:0")
     args = parser.parse_args()
 
     config = load_config(args.config)
+    if args.split_scheme is not None:
+        config["split_scheme"] = args.split_scheme
     if args.mil_pooling is not None:
         config["mil_pooling"] = args.mil_pooling
     spec = data_spec(config)
@@ -142,6 +145,7 @@ def main():
         args.split_dir,
         require_hr=float(config.get("lambda_sr", 0.0)) > 0,
         augmentation=config.get("augmentation"),
+        split_scheme=config.get("split_scheme", "3fold"),
         **native_options,
     )
     if set(s["label"] for s in val_data.samples) != {0, 1}:

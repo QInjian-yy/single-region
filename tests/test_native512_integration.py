@@ -19,6 +19,7 @@ from PIL import Image
 import eval_e2e
 import infer_sr
 import train_e2e
+import train_e2e_shared
 from augmentation import AugmentedPath
 from data_modes import checkpoint_data_spec, data_spec, validate_data_config
 from engine import evaluate, train_wsi, wsi_loss
@@ -76,10 +77,14 @@ class Native512IntegrationTests(unittest.TestCase):
             if "metasr" not in original or original.get("data_mode") == "native512":
                 continue
             with self.subTest(config=path.name):
-                config = train_e2e.load_config(path)
+                loader = train_e2e_shared.load_config if "shared_encoder" in original else train_e2e.load_config
+                config = loader(path)
                 self.assertEqual(data_spec(config).metadata(), {
                     "mode": "legacy256", "lr_size": 256, "hr_size": 8192, "scale": 32})
-                self.assertNotIn("data_mode", config)
+                if "data_mode" not in original:
+                    self.assertNotIn("data_mode", config)
+                else:
+                    self.assertEqual(config["data_mode"], original["data_mode"])
         first = train_e2e.load_config(ROOT / "configs/spp_d1_native512_aug_sr0.yaml")
         second = train_e2e.load_config(ROOT / "configs/spp_d1_1344_native512_aug_sr0.yaml")
         self.assertEqual(first["classification_encoder"], "spp")
@@ -239,6 +244,20 @@ class Native512IntegrationTests(unittest.TestCase):
                     "require_hr": False, "data_mode": "native512",
                     "manifest_csv": "Manifests/patch_manifest.csv"})
                 self.assertEqual(loader.call_args.args[2:], (None, None))
+
+    def test_eval_entry_uses_checkpoint_fivefold_scheme(self):
+        saved = self.saved(self.model())
+        saved["config"]["split_scheme"] = "5fold"
+        with patch("sys.argv", ["eval_e2e.py", "--checkpoint", "unused.pth",
+                                "--data-root", "unused", "--device", "cpu"]), \
+             patch("eval_e2e.torch.load", return_value=saved), \
+             patch("eval_e2e.model_from_checkpoint"), \
+             patch("eval_e2e.load_fold_datasets", return_value=([], [self.sample])) as loader, \
+             patch("eval_e2e.provenance", return_value=saved["data_provenance"]), \
+             patch("eval_e2e.evaluate", return_value={"predictions": []}), \
+             redirect_stdout(io.StringIO()):
+            eval_e2e.main()
+        self.assertEqual(loader.call_args.kwargs["split_scheme"], "5fold")
 
     def test_native_provenance_hashes_selected_manifest_and_verification(self):
         with tempfile.TemporaryDirectory() as temp:

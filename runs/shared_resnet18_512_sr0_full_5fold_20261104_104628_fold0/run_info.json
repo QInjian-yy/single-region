@@ -1,0 +1,14 @@
+{
+  "experiment_id": "EXP-20261104-104651-7359a014d14c",
+  "started_at": "2026-11-04T10:46:51.547507+08:00",
+  "fold": 0,
+  "git_commit": "cd71c89f01d2707ad618cbb9a30b77632885326b",
+  "gpu": "NVIDIA A100-PCIE-40GB",
+  "status": "early_stopped",
+  "model": "metasr-shared-resnet-srcls-v2",
+  "best_epoch": 21,
+  "best_val_auc": 0.6407624633431085,
+  "best_decision_threshold": 0.8671463429927826,
+  "best_selection_score": 0.6407624633431085,
+  "finished_at": "2026-11-04T12:03:10.601128+08:00"
+}
