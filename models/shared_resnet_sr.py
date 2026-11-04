@@ -10,6 +10,7 @@ from torchvision.models import ResNet18_Weights, resnet18
 from data_modes import checkpoint_data_spec
 from models.edsr_sr import ResidualBlock, UpsampleBlock
 from models.robust_mil import RobustMILPooling
+from models.vib import GaussianVIB, normalize_vib_config
 
 CHECKPOINT_FORMAT = "metasr-shared-resnet-srcls-v2"
 
@@ -112,6 +113,7 @@ class SharedClassifierHead(nn.Module):
         projection_dropout: float = 0.2,
         classifier_dropout: float = 0.4,
         pooling=RobustMILPooling.POOLING_BRANCHES,
+        vib_enabled: bool = False,
     ):
         super().__init__()
         self.projection = nn.Sequential(
@@ -139,6 +141,11 @@ class SharedClassifierHead(nn.Module):
             with torch.random.fork_rng(devices=[]):
                 self.classifier[0] = nn.LayerNorm(self.mil.output_dim)
                 self.classifier[2] = nn.Linear(self.mil.output_dim, 2)
+        self.vib = None
+        if vib_enabled:
+            # Do not change the initialization of existing heads or the SR decoder.
+            with torch.random.fork_rng(devices=[]):
+                self.vib = GaussianVIB(embedding_dim)
 
     def forward(self, stage4: torch.Tensor):
         mean = F.adaptive_avg_pool2d(stage4, 1).flatten(1)
@@ -146,9 +153,14 @@ class SharedClassifierHead(nn.Module):
         std = variance.clamp_min(1e-6).sqrt()
         return self.projection(torch.cat((mean, std), dim=1))
 
-    def forward_embeddings(self, embeddings: torch.Tensor):
+    def forward_embeddings(self, embeddings: torch.Tensor, *, return_kl=False):
+        if self.vib is not None:
+            embeddings, kl = self.vib(embeddings)
         pooled, attention = self.mil(embeddings)
-        return self.classifier(pooled), attention
+        logits = self.classifier(pooled)
+        if return_kl:
+            return logits, attention, kl if self.vib is not None else embeddings.new_zeros(())
+        return logits, attention
 
 
 class SharedFeatureSRDecoder(nn.Module):
@@ -268,6 +280,9 @@ class SharedResNetSRMIL(nn.Module):
         super().__init__()
         encoder = dict(shared_encoder or {})
         classifier = dict(classification or {})
+        vib = normalize_vib_config(classifier.get("vib"))
+        self.vib_enabled = vib["enabled"]
+        self.vib_beta = vib["beta"]
         if encoder.get("backbone", "resnet18") != "resnet18":
             raise ValueError("shared_encoder.backbone must be resnet18")
         self.encoder = SharedResNet18Encoder(
@@ -286,6 +301,7 @@ class SharedResNetSRMIL(nn.Module):
             projection_dropout=classifier.get("projection_dropout", 0.2),
             classifier_dropout=classifier.get("classifier_dropout", 0.4),
             pooling=classifier.get("pooling", RobustMILPooling.POOLING_BRANCHES),
+            vib_enabled=self.vib_enabled,
         )
         self.sr = SharedFeatureSRDecoder(
             stage_channels=self.encoder.stage_channels,
@@ -309,6 +325,8 @@ class SharedResNetSRMIL(nn.Module):
         }
         if self.classifier_head.mil.pooling != RobustMILPooling.POOLING_BRANCHES:
             self._arch["mil_pooling"] = list(self.classifier_head.mil.pooling)
+        if self.vib_enabled:
+            self._arch["vib"] = vib
 
     @property
     def region_encoder(self):
@@ -326,6 +344,10 @@ class SharedResNetSRMIL(nn.Module):
     def forward_embeddings(self, embeddings: torch.Tensor):
         logits, _ = self.classifier_head.forward_embeddings(embeddings)
         return logits
+
+    def forward_embeddings_with_kl(self, embeddings: torch.Tensor):
+        logits, _, kl = self.classifier_head.forward_embeddings(embeddings, return_kl=True)
+        return logits, kl
 
     def encode_sr_features(self, lr: torch.Tensor) -> torch.Tensor:
         return self.sr.fuse_stages(
@@ -354,7 +376,10 @@ class SharedResNetSRMIL(nn.Module):
         box=None,
     ):
         sr_feature, embeddings = self.encode_regions(lr)
-        logits = self.forward_embeddings(embeddings)
+        if self.vib_enabled:
+            logits, kl = self.forward_embeddings_with_kl(embeddings)
+        else:
+            logits = self.forward_embeddings(embeddings)
         cls_loss = F.cross_entropy(logits, target)
         sr_loss = cls_loss.new_zeros(())
         if lambda_sr:
@@ -364,7 +389,10 @@ class SharedResNetSRMIL(nn.Module):
             if prediction.shape != hr_crop.shape:
                 raise ValueError("Predicted SR crop and GT crop must have identical shapes")
             sr_loss = F.l1_loss(prediction.float(), hr_crop.float())
-        return cls_loss + lambda_sr * sr_loss, cls_loss, sr_loss, logits
+        total = cls_loss + lambda_sr * sr_loss
+        if self.vib_enabled:
+            total = total + self.vib_beta * kl
+        return total, cls_loss, sr_loss, logits
 
 
 def model_from_checkpoint(saved, device="cpu"):
@@ -392,5 +420,9 @@ def model_from_checkpoint(saved, device="cpu"):
     )
     if model.classifier_head.mil.pooling != saved_pooling:
         raise ValueError("Checkpoint MIL pooling disagrees with classification.pooling")
+    saved_vib = normalize_vib_config(saved.get("architecture", {}).get("vib"))
+    if (model.vib_enabled != saved_vib["enabled"]
+            or (model.vib_enabled and model.vib_beta != saved_vib["beta"])):
+        raise ValueError("Checkpoint VIB architecture disagrees with classification.vib")
     model.load_state_dict(saved["model_state"], strict=True)
     return model

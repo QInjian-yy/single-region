@@ -55,7 +55,7 @@ def classification_loss(logits, target, config, use_class_weights=True):
     )
 
 
-def wsi_loss(model, sample, device, config):
+def wsi_loss(model, sample, device, config, *, return_kl=False):
     """Retain a normal autograd graph; no gradient cache, BN replay or RNG restore."""
     n = sample["n_regions"]
     spec = _sample_data_spec(model, sample, config)
@@ -82,11 +82,19 @@ def wsi_loss(model, sample, device, config):
                     prediction = model.sr.decode_crop(feature[index:index+1], box)
                     sr_terms.append(F.l1_loss(prediction.float(), truth) / n)
     with autocast(device, config["precision"]):
-        logits = model.forward_embeddings(torch.cat(embeddings))
+        if getattr(model, "vib_enabled", False):
+            logits, kl = model.forward_embeddings_with_kl(torch.cat(embeddings))
+        else:
+            logits = model.forward_embeddings(torch.cat(embeddings))
+            kl = logits.new_zeros((), dtype=torch.float32)
         target = torch.tensor([sample["label"]], dtype=torch.long, device=device)
         cls_loss = classification_loss(logits, target, config)
     sr_loss = torch.stack(sr_terms).sum() if sr_terms else cls_loss.new_zeros(())
-    return cls_loss + coefficient * sr_loss, cls_loss, sr_loss, logits
+    total = cls_loss + coefficient * sr_loss
+    if getattr(model, "vib_enabled", False):
+        total = total + model.vib_beta * kl
+    result = (total, cls_loss, sr_loss, logits)
+    return (*result, kl) if return_kl else result
 
 
 def _sample_data_spec(model, sample, config):
@@ -116,7 +124,7 @@ def train_wsi(model, sample, optimizer, device, config, log_gradients=False):
     optimizer.zero_grad(set_to_none=True)
     if device.type == "cuda":
         torch.cuda.reset_peak_memory_stats(device)
-    total, cls, sr, logits = wsi_loss(model, sample, device, config)
+    total, cls, sr, logits, kl = wsi_loss(model, sample, device, config, return_kl=True)
     if not torch.isfinite(total):
         raise FloatingPointError("Non-finite joint loss")
     total.backward()
@@ -143,9 +151,12 @@ def train_wsi(model, sample, optimizer, device, config, log_gradients=False):
         norms.get("shared_encoder", 0.0),
         norms.get("rdn", 0.0),
     )
-    return {"train_loss_cls": cls.item(), "train_loss_sr": sr.item(),
-            "train_loss_total": total.item(), "grad_norm": primary_gradient,
-            **memory_summary(device)}
+    result = {"train_loss_cls": cls.item(), "train_loss_sr": sr.item(),
+              "train_loss_total": total.item(), "grad_norm": primary_gradient,
+              **memory_summary(device)}
+    if getattr(model, "vib_enabled", False):
+        result.update(train_loss_kl=kl.item(), train_loss_vib=(model.vib_beta * kl).item())
+    return result
 
 
 @torch.no_grad()

@@ -19,6 +19,7 @@ from augmentation import load_augmentation_config
 from data_modes import data_spec, validate_data_config
 from engine import evaluate, train_wsi
 from models.robust_mil import RobustMILPooling
+from models.vib import normalize_vib_config
 from models.shared_resnet_sr import (
     CHECKPOINT_FORMAT,
     SharedResNetSRMIL,
@@ -55,6 +56,7 @@ def load_config(path):
     classification.setdefault("classifier_dropout", 0.4)
     classification.setdefault("head_lr", 2e-4)
     classification.setdefault("encoder_lr", 1e-5)
+    classification["vib"] = normalize_vib_config(classification.get("vib"))
 
     metasr = config.setdefault("metasr", {})
     metasr.setdefault("channels", 64)
@@ -453,6 +455,12 @@ def main():
                     for key in ("max_memory_allocated", "max_memory_reserved")
                 },
             }
+            if model.vib_enabled:
+                row.update(
+                    vib_beta=model.vib_beta,
+                    **{key: sum(r[key] for r in online) / len(online)
+                       for key in ("train_loss_kl", "train_loss_vib")},
+                )
             if writer is None:
                 writer = csv.DictWriter(handle, fieldnames=list(row))
                 writer.writeheader()

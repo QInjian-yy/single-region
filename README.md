@@ -219,3 +219,5 @@ classification:
 
 选择会保存在运行配置和 checkpoint 中。缺少该选项的旧 checkpoint 仍按三路
 严格加载；切换组合需要使用新的输出目录训练，不能直接套用不同组合的分类头权重。
+
+共享 ResNet 还支持默认关闭的 [VIB 抗过拟合实验功能](VIB.md)，可与上述 MIL 组合配合使用。
