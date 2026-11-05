@@ -297,6 +297,8 @@ def main():
     parser.add_argument("--split-scheme", choices=("3fold", "5fold"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--device", default="cuda:0")
+    parser.add_argument("--gradient-diagnostics", action="store_true",
+                        help="Log CE/SR gradients on trainable shared layer4 every 10 training steps")
     args = parser.parse_args()
 
     config = load_config(args.config)
@@ -406,8 +408,11 @@ def main():
             online = []
             for sample in loaders[0]:
                 iteration += 1
+                diagnostics = ({"gradient_task_step": iteration}
+                               if args.gradient_diagnostics and iteration % 10 == 0 else {})
                 result = train_wsi(
-                    model, sample, optimizer, device, epoch_config, iteration % 10 == 0
+                    model, sample, optimizer, device, epoch_config, iteration % 10 == 0,
+                    **diagnostics,
                 )
                 ema.update(model)
                 online.append(result)

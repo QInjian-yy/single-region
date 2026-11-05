@@ -119,7 +119,56 @@ def gradient_norm(module):
     return torch.stack(values).norm().item() if values else 0.0
 
 
-def train_wsi(model, sample, optimizer, device, config, log_gradients=False):
+def _gradient_l2(gradients):
+    values = [gradient.detach().float().norm() for gradient in gradients if gradient is not None]
+    return torch.stack(values).norm().item() if values else 0.0
+
+
+def task_gradient_metrics(parameters, loss_ce, loss_sr, coefficient):
+    """Inspect the existing graph without accumulating into parameter .grad."""
+    metrics = {
+        "grad_ce_shared": None,
+        "grad_sr_shared_raw": None,
+        "grad_sr_shared_weighted": None,
+        "grad_ratio": None,
+        "grad_cosine": None,
+        "loss_ce": loss_ce.detach().item(),
+        "loss_sr": loss_sr.detach().item(),
+        "lambda_sr": float(coefficient),
+        "sr_status": "not_applicable_lambda_sr_zero",
+    }
+    if not parameters:
+        metrics["sr_status"] = "not_applicable_no_trainable_layer4"
+        return metrics
+    ce_gradients = torch.autograd.grad(
+        loss_ce, parameters, retain_graph=True, allow_unused=True
+    )
+    ce_norm = _gradient_l2(ce_gradients)
+    metrics["grad_ce_shared"] = ce_norm
+    if not coefficient:
+        return metrics
+    sr_gradients = torch.autograd.grad(
+        loss_sr, parameters, retain_graph=True, allow_unused=True
+    )
+    sr_norm = _gradient_l2(sr_gradients)
+    weighted_norm = abs(float(coefficient)) * sr_norm
+    metrics.update(
+        grad_sr_shared_raw=sr_norm,
+        grad_sr_shared_weighted=weighted_norm,
+        grad_ratio=weighted_norm / ce_norm if ce_norm else None,
+        sr_status="active",
+    )
+    if ce_norm and sr_norm:
+        products = [(ce.detach().float() * sr.detach().float()).sum()
+                    for ce, sr in zip(ce_gradients, sr_gradients)
+                    if ce is not None and sr is not None]
+        dot = torch.stack(products).sum().item() if products else 0.0
+        metrics["grad_cosine"] = max(-1.0, min(1.0, dot / (ce_norm * sr_norm)))
+    return metrics
+
+
+def train_wsi(model, sample, optimizer, device, config, log_gradients=False,
+              *, gradient_task_step=None):
     model.train()
     optimizer.zero_grad(set_to_none=True)
     if device.type == "cuda":
@@ -127,7 +176,14 @@ def train_wsi(model, sample, optimizer, device, config, log_gradients=False):
     total, cls, sr, logits, kl = wsi_loss(model, sample, device, config, return_kl=True)
     if not torch.isfinite(total):
         raise FloatingPointError("Non-finite joint loss")
+    if gradient_task_step is not None:
+        diagnostic_parameters = tuple(p for p in model.encoder.layer4.parameters() if p.requires_grad)
+        task_metrics = task_gradient_metrics(diagnostic_parameters, cls, sr, config["lambda_sr"])
     total.backward()
+    if gradient_task_step is not None:
+        task_metrics["grad_total_shared_preclip"] = (
+            gradient_norm(model.encoder.layer4) if diagnostic_parameters else None
+        )
     norms = {"rdn": gradient_norm(model.sr), "region_encoder": gradient_norm(model.region_encoder),
              "abmil": (gradient_norm(model.mil_head)
                        if hasattr(model, "mil_head")
@@ -146,7 +202,14 @@ def train_wsi(model, sample, optimizer, device, config, log_gradients=False):
     clip = float(config.get("gradient_clip_norm", 0.0))
     if clip > 0:
         torch.nn.utils.clip_grad_norm_(model.parameters(), clip)
+    if gradient_task_step is not None:
+        task_metrics["grad_total_shared_postclip"] = (
+            gradient_norm(model.encoder.layer4) if diagnostic_parameters else None
+        )
     optimizer.step()
+    if gradient_task_step is not None:
+        print(f"[gradient_tasks] step={gradient_task_step} slide_id={sample['slide_id']} "
+              f"N={sample['n_regions']} {task_metrics}", flush=True)
     primary_gradient = max(
         norms.get("shared_encoder", 0.0),
         norms.get("rdn", 0.0),

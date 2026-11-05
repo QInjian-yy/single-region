@@ -221,3 +221,22 @@ classification:
 严格加载；切换组合需要使用新的输出目录训练，不能直接套用不同组合的分类头权重。
 
 共享 ResNet 还支持默认关闭的 [VIB 抗过拟合实验功能](VIB.md)，可与上述 MIL 组合配合使用。
+
+## 可选 SR/CE 梯度诊断
+
+在原来的 `train_e2e_shared.py` 命令中加 `--gradient-diagnostics`，每逢全局训练
+step 10、20、30…输出一条 `[gradient_tasks]`，可随现有 `tee` 一起写入 `.log`。
+默认关闭，无需修改任何 YAML。只检查 `encoder.layer4` 中可训练的参数。
+
+`grad_ce_shared`、`grad_sr_shared_raw` 是同一 WSI、同一次前向图中 CE 和未加权
+SR loss 的梯度 L2 范数；`grad_sr_shared_weighted` 为 `abs(lambda_sr)` 乘以 SR
+范数，`grad_ratio` 为加权 SR/CE 范数，`grad_cosine` 为 CE/SR 原始梯度余弦。
+`grad_total_shared_preclip/postclip` 直接读取原有 `total.backward()` 和全模型
+梯度裁剪前后的 layer4 梯度；如启用了 VIB，总梯度也包含原有 KL 项。
+同时记录 `loss_ce`、未加权 `loss_sr` 和当前 step 的实际 `lambda_sr`。
+
+SR=0 时不计算 SR 梯度，其范数、比例、余弦记录为 `None`，
+`sr_status=not_applicable_lambda_sr_zero`；layer4 完全冻结时所有梯度诊断为
+`None`，状态为 `not_applicable_no_trainable_layer4`。零范数时比例或余弦也为
+`None`。诊断使用 `autograd.grad(retain_graph=True)`，不写入 `.grad`，不增加
+前向传播；记录步骤会增加梯度计算耗时，不改变原有 backward、裁剪和更新。

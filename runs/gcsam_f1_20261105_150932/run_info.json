@@ -1,0 +1,13 @@
+{
+  "experiment_id": "EXP-20261105-151949-9f814bd5fea6",
+  "started_at": "2026-11-05T15:19:49.381174+08:00",
+  "fold": 1,
+  "git_commit": "82d4eb88814e8ba1929ffeabc3874564d1d04c00",
+  "gpu": "NVIDIA RTX A4000",
+  "status": "incomplete",
+  "model": "metasr-shared-resnet-srcls-v2",
+  "optimizer": "gcsam",
+  "base_optimizer": "adamw",
+  "rho": 0.05,
+  "training_entry": "train_e2e_gcsam.py"
+}
