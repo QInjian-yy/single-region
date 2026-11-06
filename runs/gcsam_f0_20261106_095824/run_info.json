@@ -1,0 +1,18 @@
+{
+  "experiment_id": "EXP-20261106-100745-ca121619984d",
+  "started_at": "2026-11-06T10:07:45.401513+08:00",
+  "fold": 0,
+  "git_commit": "079a232d101b83f6aa30695143d6b251ed108636",
+  "gpu": "NVIDIA RTX A4000",
+  "status": "early_stopped",
+  "model": "metasr-shared-resnet-srcls-v2",
+  "optimizer": "gcsam",
+  "base_optimizer": "adamw",
+  "rho": 0.05,
+  "training_entry": "train_e2e_gcsam.py",
+  "best_epoch": 49,
+  "best_val_auc": 0.6788856304985337,
+  "best_decision_threshold": 0.12962307780981064,
+  "best_selection_score": 0.6788856304985337,
+  "finished_at": "2026-11-06T18:17:05.796580+08:00"
+}
