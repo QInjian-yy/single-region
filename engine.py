@@ -43,6 +43,12 @@ def region_batch_size(config, n_regions):
 
 
 def classification_loss(logits, target, config, use_class_weights=True):
+    smoothing = float(config.get("label_smoothing", 0.0))
+    if use_class_weights and (config.get("training") or {}).get("class_weight") == "wsi_balanced":
+        per_wsi = F.cross_entropy(logits, target, label_smoothing=smoothing, reduction="none")
+        weight = per_wsi.new_tensor(config["class_weight_values"])
+        return (per_wsi * weight[target]).mean()
+
     values = config.get("class_weight_values") if use_class_weights else None
     weight = None
     if values is not None:
@@ -51,7 +57,7 @@ def classification_loss(logits, target, config, use_class_weights=True):
         logits,
         target,
         weight=weight,
-        label_smoothing=float(config.get("label_smoothing", 0.0)),
+        label_smoothing=smoothing,
     )
 
 

@@ -1,7 +1,6 @@
 """Isolated GCSAM + AdamW training, with the shared-model evaluation protocol.
 
-The baseline validation/main-loop code is deliberately copied to keep the
-original entry and engine untouched. Shared utilities are imported unchanged.
+The training loop is isolated and reuses the baseline loss and evaluation utilities.
 """
 
 from __future__ import annotations
@@ -84,8 +83,8 @@ def load_config(path):
     sr_epochs = training.get("sr_stop_after_epochs")
     if sr_epochs is not None and (type(sr_epochs) is not int or sr_epochs < 1):
         raise ValueError("training.sr_stop_after_epochs must be a positive integer or null")
-    if training["class_weight"] not in ("none", "balanced"):
-        raise ValueError("training.class_weight must be none or balanced")
+    if training["class_weight"] not in ("none", "balanced", "wsi_balanced"):
+        raise ValueError("training.class_weight must be none, balanced or wsi_balanced")
 
     for name in (
         "lambda_sr",
@@ -158,6 +157,8 @@ def load_config(path):
     config.setdefault("split_scheme", "5fold")
     if config["split_scheme"] != "5fold":
         raise ValueError("GCSAM requires split_scheme: 5fold")
+    if config.get("split_protocol") not in (None, "repeated_90_10_holdout"):
+        raise ValueError("split_protocol must be repeated_90_10_holdout or omitted")
     return config
 
 
@@ -183,6 +184,17 @@ def main():
     config = load_config(args.config)
     if args.split_scheme is not None:
         config["split_scheme"] = args.split_scheme
+    protocol = None
+    if config.get("split_protocol") == "repeated_90_10_holdout":
+        if args.split_dir is None:
+            parser.error("--split-dir is required for repeated_90_10_holdout")
+        protocol_path = args.split_dir / "protocol.json"
+        protocol = json.loads(protocol_path.read_text(encoding="utf-8"))
+        if (protocol["validation_fraction"], protocol["repeats"]) != (0.1, 5):
+            raise ValueError(f"{protocol_path} must describe five repeated 90/10 splits")
+        split_record = next((split for split in protocol["splits"] if split["run"] == args.fold), None)
+        if split_record is None:
+            parser.error(f"--fold {args.fold} is not listed in {protocol_path}")
     spec = data_spec(config)
     if spec.mode == "legacy256":
         args.labels_csv = args.labels_csv or ROOT / "downstream_train/camelyon16_labels.csv"
@@ -225,6 +237,16 @@ def main():
     )
     if {sample["label"] for sample in val_data.samples} != {0, 1}:
         raise ValueError("Validation needs both classes")
+    data_info = provenance(args.data_root, train_data)
+    if protocol is not None:
+        expected_hashes = {
+            "manifest": protocol["manifest_sha256"],
+            "labels": protocol["labels_sha256"],
+            "split": split_record["csv_sha256"],
+        }
+        for name, digest in expected_hashes.items():
+            if data_info[name]["sha256"] != digest:
+                raise ValueError(f"{name} SHA-256 does not match {protocol_path}: {data_info[name]['path']}")
     configure_class_weights(config, train_data)
     loaders = [
         DataLoader(data, batch_size=1, shuffle=shuffle, collate_fn=collate_one_wsi)
@@ -252,7 +274,6 @@ def main():
     print(f"[optimizer] GCSAM + AdamW from epoch 1; rho={optimizer.rho}; "
           "GC=ascent-only; normalization=after_gc", flush=True)
 
-    data_info = provenance(args.data_root, train_data)
     (args.output / "config.yaml").write_text(
         yaml.safe_dump(config, sort_keys=False), encoding="utf-8"
     )
@@ -263,6 +284,8 @@ def main():
     info["model"] = CHECKPOINT_FORMAT
     info.update(optimizer="gcsam", base_optimizer="adamw", rho=optimizer.rho,
                 training_entry="train_e2e_gcsam.py")
+    if protocol is not None:
+        info.update(split_protocol=config["split_protocol"], split_seed=split_record["seed"])
     info_file = args.output / "run_info.json"
     info_file.write_text(json.dumps(info, indent=2), encoding="utf-8")
 

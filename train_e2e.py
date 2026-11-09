@@ -180,7 +180,7 @@ def build_optimizer(model, config):
 
 
 def configure_class_weights(config, dataset):
-    if (config.get("training") or {}).get("class_weight", "none") != "balanced":
+    if (config.get("training") or {}).get("class_weight", "none") not in ("balanced", "wsi_balanced"):
         config.pop("class_weight_values", None)
         return
     counts = Counter(sample["label"] for sample in dataset.samples)

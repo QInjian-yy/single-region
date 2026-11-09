@@ -1,0 +1,3 @@
+# Keep the original bytes for inputs checked by SHA-256.
+/reference.csv -text
+/splits_90_10_repeated_seed42/splits_5fold_*.csv -text
