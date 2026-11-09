@@ -1,0 +1,13 @@
+{
+  "experiment_id": "EXP-20261107-141945-af17aba69456",
+  "started_at": "2026-11-07T14:19:45.610291+08:00",
+  "fold": 1,
+  "git_commit": "079a232d101b83f6aa30695143d6b251ed108636",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "status": "incomplete",
+  "model": "metasr-shared-resnet-srcls-v2",
+  "optimizer": "gcsam",
+  "base_optimizer": "adamw",
+  "rho": 0.05,
+  "training_entry": "train_e2e_gcsam.py"
+}
