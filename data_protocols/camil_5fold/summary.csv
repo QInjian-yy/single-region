@@ -1,0 +1,6 @@
+fold,train_wsis,train_normal,train_tumor,train_regions,train_original_train_wsis,train_original_test_wsis,val_wsis,val_normal,val_tumor,val_regions,val_original_train_wsis,val_original_test_wsis,test_wsis,test_normal,test_tumor,test_regions,test_original_train_wsis,test_original_test_wsis
+0,235,139,96,3786,158,77,79,47,32,1349,48,31,79,47,32,1396,58,21
+1,235,139,96,3835,163,72,79,47,32,1347,53,26,79,47,32,1349,48,31
+2,236,140,96,3968,153,83,78,46,32,1216,58,20,79,47,32,1347,53,26
+3,237,141,96,4092,159,78,78,46,32,1223,47,31,78,46,32,1216,58,20
+4,236,140,96,3912,159,77,79,47,32,1396,58,21,78,46,32,1223,47,31

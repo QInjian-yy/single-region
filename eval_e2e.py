@@ -14,7 +14,7 @@ from train_e2e import ROOT, provenance
 from wsi_data import collate_one_wsi, load_fold_datasets
 
 
-def main():
+def main(argv=None, *, model_loader=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--data-root", type=Path, required=True)
@@ -22,14 +22,14 @@ def main():
     parser.add_argument("--split-dir", type=Path)
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--predictions-csv", type=Path)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     saved = torch.load(args.checkpoint, map_location="cpu", weights_only=False)
     spec = checkpoint_data_spec(saved)
     if spec.mode == "legacy256":
         args.labels_csv = args.labels_csv or ROOT / "downstream_train/camelyon16_labels.csv"
         args.split_dir = args.split_dir or ROOT / "downstream_train"
     device = torch.device(args.device)
-    model = model_from_checkpoint(saved, device)
+    model = (model_loader or model_from_checkpoint)(saved, device)
     _, val = load_fold_datasets(args.data_root, saved["fold"], args.labels_csv, args.split_dir,
                                require_hr=False,
                                **({"split_scheme": saved["config"]["split_scheme"]}

@@ -168,7 +168,7 @@ def build_optimizer(model, config):
     return GCSAM(base, rho=config["gcsam"]["rho"])
 
 
-def main():
+def main(*, model_factory=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--augmentation-config", type=Path)
@@ -258,7 +258,7 @@ def main():
     ]
 
     metasr = config["metasr"]
-    model = SharedResNetSRMIL(
+    model = (model_factory or SharedResNetSRMIL)(
         shared_encoder=config["shared_encoder"],
         classification=config["classification"],
         scale=metasr["scale"],
@@ -281,7 +281,8 @@ def main():
         json.dumps(data_info, indent=2), encoding="utf-8"
     )
     info = run_metadata(args.fold, device)
-    info["model"] = CHECKPOINT_FORMAT
+    model_format = CHECKPOINT_FORMAT if model_factory is None else model.architecture()["type"]
+    info["model"] = model_format
     info.update(optimizer="gcsam", base_optimizer="adamw", rho=optimizer.rho,
                 training_entry="train_e2e_gcsam.py")
     if protocol is not None:
@@ -399,7 +400,7 @@ def main():
             checkpoint_config = copy.deepcopy(config)
             checkpoint_config["decision_threshold"] = threshold
             common = {
-                "format": CHECKPOINT_FORMAT,
+                "format": model_format,
                 "architecture": ema.module.architecture(),
                 "data_spec": spec.metadata(),
                 "epoch": epoch,

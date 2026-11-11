@@ -1,0 +1,24 @@
+{
+  "experiment_id": "EXP-20261110-121546-f222ad4196a5",
+  "started_at": "2026-11-10T12:15:46.210950+08:00",
+  "fold": 1,
+  "git_commit": "079a232d101b83f6aa30695143d6b251ed108636",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "status": "early_stopped",
+  "model": "metasr-shared-resnet-srcls-v2",
+  "optimizer": "gcsam",
+  "training_entry": "train_e2e_camil.py",
+  "split_protocol": "camil_5fold",
+  "patient_grouping": "slide_id_proxy_NO_PATIENT_LEVEL_GUARANTEE",
+  "split_counts": {
+    "train": 235,
+    "val": 79,
+    "test": 79
+  },
+  "base_optimizer": "adamw",
+  "rho": 0.05,
+  "best_epoch": 58,
+  "best_val_auc": 0.7396941489361702,
+  "best_decision_threshold": 0.09187303110957146,
+  "finished_at": "2026-11-10T14:39:40.072972+08:00"
+}

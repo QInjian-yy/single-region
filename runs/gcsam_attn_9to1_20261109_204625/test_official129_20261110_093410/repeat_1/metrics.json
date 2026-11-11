@@ -1,0 +1,32 @@
+{
+  "loss": 0.9944621604080348,
+  "auc": 0.6521683673469388,
+  "acc": 0.5658914728682171,
+  "bacc": 0.590688775510204,
+  "sensitivity": 0.6938775510204082,
+  "specificity": 0.4875,
+  "checkpoint_epoch": 5,
+  "checkpoint_fold": 1,
+  "weight_source": "model_state",
+  "decision_threshold": 0.09025336056947708,
+  "slide_count": 129,
+  "TN": 39,
+  "FP": 41,
+  "FN": 15,
+  "TP": 34,
+  "checkpoint_sha256": "4c7792c8f4fac4d7448915395ebdba0e099fa861fe50d45128cfaf09a3fdd13e",
+  "reference_sha256": "6ee635afcfbf21afdc1f87789db095847ee58ef21c089c2f911d211b05af0590",
+  "manifest_sha256": "9b2f7296309fb2486233d8e495a1e9de04cfcd9d46315b4a0cb7d762d9d23e95",
+  "verification_sha256": "418be9248489ce454536e48d572ef2be0584cf052f9a57b2e6036c0f975c5bbf",
+  "code_sha256": {
+    "engine.py": "6c70eff160dc3c1cb6e859ec65e5b36c298d42a655d6e9970c0441092a99e544",
+    "models/shared_resnet_sr.py": "47f3957bcf8adb0c4e054f81ef920ad425ecbf0f07aad32874a0a3973d364762",
+    "models/robust_mil.py": "08bad08f05c05ed5fd35464bd138215a48ac44d3b92cdc438eb350f4918ae229",
+    "wsi_data.py": "0c475b73fe69e8e225c68764e4e10fc9b998cf949e417e11a4339da2b14d83f4",
+    "native_data.py": "4f4a2264a84764f71f02514361dd512a5cb381ef1781630ab96b4e0f21573aac",
+    "data_modes.py": "3ca0c78c9918cebe286a1451e4d00b48944f6e95f089a58dd53d59646b6b6033",
+    "augmentation.py": "8374cf019c003e98feb990e96ae19882a2c3d2e2fff9e69fac5169ba8fafd168"
+  },
+  "device": "cuda:0",
+  "precision": "bf16"
+}

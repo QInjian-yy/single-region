@@ -1,0 +1,2383 @@
+{
+  "note": "Images stay in original source roots; dataset_sources.json is an index only.",
+  "root_by_source": {
+    "official_train": {
+      "root": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_train",
+      "manifest": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_train/Manifests/patch_manifest.csv",
+      "verification": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_train/verification/report.json",
+      "manifest_sha256": "b93c01f83d2c5b8271181d202748ab6facd9312765e39e00b8204b6cf8b5e3e0",
+      "verification_sha256": "2d837488b58a835dc5f37ec2d3c1857014b7513351218450b1481c8d8528f516",
+      "wsis": 264,
+      "regions": 4343
+    },
+    "official_test": {
+      "root": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_test",
+      "manifest": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_test/manifests/patch_manifest.csv",
+      "verification": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_test/verification/report.json",
+      "manifest_sha256": "9b2f7296309fb2486233d8e495a1e9de04cfcd9d46315b4a0cb7d762d9d23e95",
+      "verification_sha256": "418be9248489ce454536e48d572ef2be0584cf052f9a57b2e6036c0f975c5bbf",
+      "wsis": 129,
+      "regions": 2188
+    }
+  },
+  "slides": {
+    "normal_001": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_001",
+      "n_regions": 5
+    },
+    "normal_002": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_002",
+      "n_regions": 6
+    },
+    "normal_003": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_003",
+      "n_regions": 11
+    },
+    "normal_004": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_004",
+      "n_regions": 3
+    },
+    "normal_005": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_005",
+      "n_regions": 6
+    },
+    "normal_006": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_006",
+      "n_regions": 3
+    },
+    "normal_007": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_007",
+      "n_regions": 6
+    },
+    "normal_008": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_008",
+      "n_regions": 2
+    },
+    "normal_009": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_009",
+      "n_regions": 12
+    },
+    "normal_010": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_010",
+      "n_regions": 5
+    },
+    "normal_011": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_011",
+      "n_regions": 18
+    },
+    "normal_012": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_012",
+      "n_regions": 7
+    },
+    "normal_013": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_013",
+      "n_regions": 3
+    },
+    "normal_014": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_014",
+      "n_regions": 5
+    },
+    "normal_015": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_015",
+      "n_regions": 9
+    },
+    "normal_017": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_017",
+      "n_regions": 1
+    },
+    "normal_018": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_018",
+      "n_regions": 7
+    },
+    "normal_020": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_020",
+      "n_regions": 2
+    },
+    "normal_021": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_021",
+      "n_regions": 1
+    },
+    "normal_022": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_022",
+      "n_regions": 11
+    },
+    "normal_023": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_023",
+      "n_regions": 3
+    },
+    "normal_024": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_024",
+      "n_regions": 14
+    },
+    "normal_025": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_025",
+      "n_regions": 14
+    },
+    "normal_026": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_026",
+      "n_regions": 12
+    },
+    "normal_028": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_028",
+      "n_regions": 10
+    },
+    "normal_029": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_029",
+      "n_regions": 5
+    },
+    "normal_030": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_030",
+      "n_regions": 3
+    },
+    "normal_031": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_031",
+      "n_regions": 13
+    },
+    "normal_032": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_032",
+      "n_regions": 14
+    },
+    "normal_033": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_033",
+      "n_regions": 20
+    },
+    "normal_034": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_034",
+      "n_regions": 22
+    },
+    "normal_035": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_035",
+      "n_regions": 3
+    },
+    "normal_036": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_036",
+      "n_regions": 11
+    },
+    "normal_037": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_037",
+      "n_regions": 14
+    },
+    "normal_038": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_038",
+      "n_regions": 2
+    },
+    "normal_039": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_039",
+      "n_regions": 16
+    },
+    "normal_040": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_040",
+      "n_regions": 25
+    },
+    "normal_041": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_041",
+      "n_regions": 11
+    },
+    "normal_043": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_043",
+      "n_regions": 2
+    },
+    "normal_044": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_044",
+      "n_regions": 9
+    },
+    "normal_046": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_046",
+      "n_regions": 6
+    },
+    "normal_047": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_047",
+      "n_regions": 10
+    },
+    "normal_048": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_048",
+      "n_regions": 6
+    },
+    "normal_049": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_049",
+      "n_regions": 7
+    },
+    "normal_050": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_050",
+      "n_regions": 19
+    },
+    "normal_051": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_051",
+      "n_regions": 4
+    },
+    "normal_052": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_052",
+      "n_regions": 21
+    },
+    "normal_053": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_053",
+      "n_regions": 21
+    },
+    "normal_054": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_054",
+      "n_regions": 4
+    },
+    "normal_055": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_055",
+      "n_regions": 9
+    },
+    "normal_056": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_056",
+      "n_regions": 10
+    },
+    "normal_057": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_057",
+      "n_regions": 11
+    },
+    "normal_058": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_058",
+      "n_regions": 11
+    },
+    "normal_059": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_059",
+      "n_regions": 4
+    },
+    "normal_060": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_060",
+      "n_regions": 3
+    },
+    "normal_061": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_061",
+      "n_regions": 19
+    },
+    "normal_062": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_062",
+      "n_regions": 6
+    },
+    "normal_063": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_063",
+      "n_regions": 13
+    },
+    "normal_064": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_064",
+      "n_regions": 16
+    },
+    "normal_065": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_065",
+      "n_regions": 10
+    },
+    "normal_066": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_066",
+      "n_regions": 33
+    },
+    "normal_067": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_067",
+      "n_regions": 20
+    },
+    "normal_068": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_068",
+      "n_regions": 11
+    },
+    "normal_069": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_069",
+      "n_regions": 17
+    },
+    "normal_070": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_070",
+      "n_regions": 22
+    },
+    "normal_071": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_071",
+      "n_regions": 10
+    },
+    "normal_072": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_072",
+      "n_regions": 12
+    },
+    "normal_073": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_073",
+      "n_regions": 16
+    },
+    "normal_074": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_074",
+      "n_regions": 20
+    },
+    "normal_075": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_075",
+      "n_regions": 16
+    },
+    "normal_076": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_076",
+      "n_regions": 37
+    },
+    "normal_077": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_077",
+      "n_regions": 9
+    },
+    "normal_078": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_078",
+      "n_regions": 9
+    },
+    "normal_079": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_079",
+      "n_regions": 15
+    },
+    "normal_080": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_080",
+      "n_regions": 24
+    },
+    "normal_081": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_081",
+      "n_regions": 14
+    },
+    "normal_082": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_082",
+      "n_regions": 17
+    },
+    "normal_083": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_083",
+      "n_regions": 6
+    },
+    "normal_084": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_084",
+      "n_regions": 3
+    },
+    "normal_085": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_085",
+      "n_regions": 10
+    },
+    "normal_087": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_087",
+      "n_regions": 19
+    },
+    "normal_088": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_088",
+      "n_regions": 22
+    },
+    "normal_089": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_089",
+      "n_regions": 35
+    },
+    "normal_090": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_090",
+      "n_regions": 23
+    },
+    "normal_091": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_091",
+      "n_regions": 37
+    },
+    "normal_092": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_092",
+      "n_regions": 9
+    },
+    "normal_093": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_093",
+      "n_regions": 13
+    },
+    "normal_094": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_094",
+      "n_regions": 11
+    },
+    "normal_095": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_095",
+      "n_regions": 24
+    },
+    "normal_096": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_096",
+      "n_regions": 16
+    },
+    "normal_097": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_097",
+      "n_regions": 21
+    },
+    "normal_098": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_098",
+      "n_regions": 8
+    },
+    "normal_099": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_099",
+      "n_regions": 22
+    },
+    "normal_100": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_100",
+      "n_regions": 14
+    },
+    "normal_101": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_101",
+      "n_regions": 19
+    },
+    "normal_102": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_102",
+      "n_regions": 18
+    },
+    "normal_103": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_103",
+      "n_regions": 12
+    },
+    "normal_104": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_104",
+      "n_regions": 27
+    },
+    "normal_105": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_105",
+      "n_regions": 17
+    },
+    "normal_106": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_106",
+      "n_regions": 24
+    },
+    "normal_107": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_107",
+      "n_regions": 21
+    },
+    "normal_108": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_108",
+      "n_regions": 4
+    },
+    "normal_109": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_109",
+      "n_regions": 18
+    },
+    "normal_110": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_110",
+      "n_regions": 13
+    },
+    "normal_111": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_111",
+      "n_regions": 38
+    },
+    "normal_112": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_112",
+      "n_regions": 28
+    },
+    "normal_113": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_113",
+      "n_regions": 23
+    },
+    "normal_114": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_114",
+      "n_regions": 34
+    },
+    "normal_115": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_115",
+      "n_regions": 14
+    },
+    "normal_116": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_116",
+      "n_regions": 10
+    },
+    "normal_117": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_117",
+      "n_regions": 18
+    },
+    "normal_118": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_118",
+      "n_regions": 19
+    },
+    "normal_119": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_119",
+      "n_regions": 19
+    },
+    "normal_120": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_120",
+      "n_regions": 24
+    },
+    "normal_121": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_121",
+      "n_regions": 24
+    },
+    "normal_122": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_122",
+      "n_regions": 22
+    },
+    "normal_123": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_123",
+      "n_regions": 14
+    },
+    "normal_124": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_124",
+      "n_regions": 26
+    },
+    "normal_125": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_125",
+      "n_regions": 30
+    },
+    "normal_126": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_126",
+      "n_regions": 20
+    },
+    "normal_127": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_127",
+      "n_regions": 20
+    },
+    "normal_128": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_128",
+      "n_regions": 18
+    },
+    "normal_129": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_129",
+      "n_regions": 30
+    },
+    "normal_130": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_130",
+      "n_regions": 21
+    },
+    "normal_131": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_131",
+      "n_regions": 25
+    },
+    "normal_132": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_132",
+      "n_regions": 20
+    },
+    "normal_133": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_133",
+      "n_regions": 17
+    },
+    "normal_134": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_134",
+      "n_regions": 9
+    },
+    "normal_135": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_135",
+      "n_regions": 19
+    },
+    "normal_136": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_136",
+      "n_regions": 20
+    },
+    "normal_137": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_137",
+      "n_regions": 32
+    },
+    "normal_138": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_138",
+      "n_regions": 19
+    },
+    "normal_139": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_139",
+      "n_regions": 21
+    },
+    "normal_140": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_140",
+      "n_regions": 21
+    },
+    "normal_141": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_141",
+      "n_regions": 7
+    },
+    "normal_142": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_142",
+      "n_regions": 28
+    },
+    "normal_143": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_143",
+      "n_regions": 21
+    },
+    "normal_145": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_145",
+      "n_regions": 30
+    },
+    "normal_146": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_146",
+      "n_regions": 24
+    },
+    "normal_147": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_147",
+      "n_regions": 28
+    },
+    "normal_148": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_148",
+      "n_regions": 11
+    },
+    "normal_149": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_149",
+      "n_regions": 26
+    },
+    "normal_150": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_150",
+      "n_regions": 8
+    },
+    "normal_151": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_151",
+      "n_regions": 17
+    },
+    "normal_152": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_152",
+      "n_regions": 14
+    },
+    "normal_153": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_153",
+      "n_regions": 15
+    },
+    "normal_154": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_154",
+      "n_regions": 24
+    },
+    "normal_155": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_155",
+      "n_regions": 14
+    },
+    "normal_156": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_156",
+      "n_regions": 15
+    },
+    "normal_157": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_157",
+      "n_regions": 22
+    },
+    "normal_158": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_158",
+      "n_regions": 24
+    },
+    "normal_159": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_159",
+      "n_regions": 20
+    },
+    "normal_160": {
+      "source": "official_train",
+      "label": 0,
+      "group_id": "normal_160",
+      "n_regions": 33
+    },
+    "test_001": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_001",
+      "n_regions": 20
+    },
+    "test_002": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_002",
+      "n_regions": 15
+    },
+    "test_003": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_003",
+      "n_regions": 10
+    },
+    "test_004": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_004",
+      "n_regions": 15
+    },
+    "test_005": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_005",
+      "n_regions": 9
+    },
+    "test_006": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_006",
+      "n_regions": 20
+    },
+    "test_007": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_007",
+      "n_regions": 9
+    },
+    "test_008": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_008",
+      "n_regions": 24
+    },
+    "test_009": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_009",
+      "n_regions": 12
+    },
+    "test_010": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_010",
+      "n_regions": 23
+    },
+    "test_011": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_011",
+      "n_regions": 16
+    },
+    "test_012": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_012",
+      "n_regions": 23
+    },
+    "test_013": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_013",
+      "n_regions": 7
+    },
+    "test_014": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_014",
+      "n_regions": 29
+    },
+    "test_015": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_015",
+      "n_regions": 6
+    },
+    "test_016": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_016",
+      "n_regions": 26
+    },
+    "test_017": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_017",
+      "n_regions": 12
+    },
+    "test_018": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_018",
+      "n_regions": 11
+    },
+    "test_019": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_019",
+      "n_regions": 44
+    },
+    "test_020": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_020",
+      "n_regions": 5
+    },
+    "test_021": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_021",
+      "n_regions": 27
+    },
+    "test_022": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_022",
+      "n_regions": 21
+    },
+    "test_023": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_023",
+      "n_regions": 14
+    },
+    "test_024": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_024",
+      "n_regions": 9
+    },
+    "test_025": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_025",
+      "n_regions": 4
+    },
+    "test_026": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_026",
+      "n_regions": 28
+    },
+    "test_027": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_027",
+      "n_regions": 10
+    },
+    "test_028": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_028",
+      "n_regions": 20
+    },
+    "test_029": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_029",
+      "n_regions": 7
+    },
+    "test_030": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_030",
+      "n_regions": 10
+    },
+    "test_031": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_031",
+      "n_regions": 23
+    },
+    "test_032": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_032",
+      "n_regions": 19
+    },
+    "test_033": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_033",
+      "n_regions": 61
+    },
+    "test_034": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_034",
+      "n_regions": 13
+    },
+    "test_035": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_035",
+      "n_regions": 15
+    },
+    "test_036": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_036",
+      "n_regions": 10
+    },
+    "test_037": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_037",
+      "n_regions": 41
+    },
+    "test_038": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_038",
+      "n_regions": 12
+    },
+    "test_039": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_039",
+      "n_regions": 4
+    },
+    "test_040": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_040",
+      "n_regions": 9
+    },
+    "test_041": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_041",
+      "n_regions": 25
+    },
+    "test_042": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_042",
+      "n_regions": 41
+    },
+    "test_043": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_043",
+      "n_regions": 6
+    },
+    "test_044": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_044",
+      "n_regions": 11
+    },
+    "test_045": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_045",
+      "n_regions": 8
+    },
+    "test_046": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_046",
+      "n_regions": 7
+    },
+    "test_047": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_047",
+      "n_regions": 17
+    },
+    "test_048": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_048",
+      "n_regions": 27
+    },
+    "test_050": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_050",
+      "n_regions": 16
+    },
+    "test_051": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_051",
+      "n_regions": 10
+    },
+    "test_052": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_052",
+      "n_regions": 13
+    },
+    "test_053": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_053",
+      "n_regions": 26
+    },
+    "test_054": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_054",
+      "n_regions": 15
+    },
+    "test_055": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_055",
+      "n_regions": 9
+    },
+    "test_056": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_056",
+      "n_regions": 24
+    },
+    "test_057": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_057",
+      "n_regions": 7
+    },
+    "test_058": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_058",
+      "n_regions": 26
+    },
+    "test_059": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_059",
+      "n_regions": 15
+    },
+    "test_060": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_060",
+      "n_regions": 7
+    },
+    "test_061": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_061",
+      "n_regions": 16
+    },
+    "test_062": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_062",
+      "n_regions": 9
+    },
+    "test_063": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_063",
+      "n_regions": 21
+    },
+    "test_064": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_064",
+      "n_regions": 4
+    },
+    "test_065": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_065",
+      "n_regions": 5
+    },
+    "test_066": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_066",
+      "n_regions": 32
+    },
+    "test_067": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_067",
+      "n_regions": 22
+    },
+    "test_068": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_068",
+      "n_regions": 23
+    },
+    "test_069": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_069",
+      "n_regions": 60
+    },
+    "test_070": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_070",
+      "n_regions": 10
+    },
+    "test_071": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_071",
+      "n_regions": 28
+    },
+    "test_072": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_072",
+      "n_regions": 5
+    },
+    "test_073": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_073",
+      "n_regions": 22
+    },
+    "test_074": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_074",
+      "n_regions": 20
+    },
+    "test_075": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_075",
+      "n_regions": 16
+    },
+    "test_076": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_076",
+      "n_regions": 20
+    },
+    "test_077": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_077",
+      "n_regions": 24
+    },
+    "test_078": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_078",
+      "n_regions": 26
+    },
+    "test_079": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_079",
+      "n_regions": 16
+    },
+    "test_080": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_080",
+      "n_regions": 26
+    },
+    "test_081": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_081",
+      "n_regions": 11
+    },
+    "test_082": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_082",
+      "n_regions": 19
+    },
+    "test_083": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_083",
+      "n_regions": 5
+    },
+    "test_084": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_084",
+      "n_regions": 12
+    },
+    "test_085": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_085",
+      "n_regions": 6
+    },
+    "test_086": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_086",
+      "n_regions": 14
+    },
+    "test_087": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_087",
+      "n_regions": 11
+    },
+    "test_088": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_088",
+      "n_regions": 10
+    },
+    "test_089": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_089",
+      "n_regions": 18
+    },
+    "test_090": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_090",
+      "n_regions": 26
+    },
+    "test_091": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_091",
+      "n_regions": 6
+    },
+    "test_092": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_092",
+      "n_regions": 33
+    },
+    "test_093": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_093",
+      "n_regions": 10
+    },
+    "test_094": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_094",
+      "n_regions": 18
+    },
+    "test_095": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_095",
+      "n_regions": 14
+    },
+    "test_096": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_096",
+      "n_regions": 5
+    },
+    "test_097": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_097",
+      "n_regions": 19
+    },
+    "test_098": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_098",
+      "n_regions": 23
+    },
+    "test_099": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_099",
+      "n_regions": 23
+    },
+    "test_100": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_100",
+      "n_regions": 27
+    },
+    "test_101": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_101",
+      "n_regions": 26
+    },
+    "test_102": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_102",
+      "n_regions": 17
+    },
+    "test_103": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_103",
+      "n_regions": 11
+    },
+    "test_104": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_104",
+      "n_regions": 21
+    },
+    "test_105": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_105",
+      "n_regions": 33
+    },
+    "test_106": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_106",
+      "n_regions": 8
+    },
+    "test_107": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_107",
+      "n_regions": 4
+    },
+    "test_108": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_108",
+      "n_regions": 9
+    },
+    "test_109": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_109",
+      "n_regions": 22
+    },
+    "test_110": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_110",
+      "n_regions": 20
+    },
+    "test_111": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_111",
+      "n_regions": 10
+    },
+    "test_112": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_112",
+      "n_regions": 10
+    },
+    "test_113": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_113",
+      "n_regions": 31
+    },
+    "test_114": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_114",
+      "n_regions": 24
+    },
+    "test_115": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_115",
+      "n_regions": 4
+    },
+    "test_116": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_116",
+      "n_regions": 29
+    },
+    "test_117": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_117",
+      "n_regions": 11
+    },
+    "test_118": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_118",
+      "n_regions": 7
+    },
+    "test_119": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_119",
+      "n_regions": 5
+    },
+    "test_120": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_120",
+      "n_regions": 29
+    },
+    "test_121": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_121",
+      "n_regions": 9
+    },
+    "test_122": {
+      "source": "official_test",
+      "label": 1,
+      "group_id": "test_122",
+      "n_regions": 13
+    },
+    "test_123": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_123",
+      "n_regions": 6
+    },
+    "test_124": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_124",
+      "n_regions": 4
+    },
+    "test_125": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_125",
+      "n_regions": 22
+    },
+    "test_126": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_126",
+      "n_regions": 16
+    },
+    "test_127": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_127",
+      "n_regions": 44
+    },
+    "test_128": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_128",
+      "n_regions": 8
+    },
+    "test_129": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_129",
+      "n_regions": 5
+    },
+    "test_130": {
+      "source": "official_test",
+      "label": 0,
+      "group_id": "test_130",
+      "n_regions": 12
+    },
+    "tumor_001": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_001",
+      "n_regions": 15
+    },
+    "tumor_002": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_002",
+      "n_regions": 7
+    },
+    "tumor_003": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_003",
+      "n_regions": 13
+    },
+    "tumor_004": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_004",
+      "n_regions": 20
+    },
+    "tumor_005": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_005",
+      "n_regions": 7
+    },
+    "tumor_006": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_006",
+      "n_regions": 26
+    },
+    "tumor_007": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_007",
+      "n_regions": 15
+    },
+    "tumor_008": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_008",
+      "n_regions": 16
+    },
+    "tumor_009": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_009",
+      "n_regions": 21
+    },
+    "tumor_010": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_010",
+      "n_regions": 19
+    },
+    "tumor_011": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_011",
+      "n_regions": 12
+    },
+    "tumor_012": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_012",
+      "n_regions": 10
+    },
+    "tumor_013": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_013",
+      "n_regions": 11
+    },
+    "tumor_014": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_014",
+      "n_regions": 18
+    },
+    "tumor_015": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_015",
+      "n_regions": 34
+    },
+    "tumor_016": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_016",
+      "n_regions": 9
+    },
+    "tumor_017": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_017",
+      "n_regions": 15
+    },
+    "tumor_018": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_018",
+      "n_regions": 19
+    },
+    "tumor_019": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_019",
+      "n_regions": 7
+    },
+    "tumor_020": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_020",
+      "n_regions": 18
+    },
+    "tumor_021": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_021",
+      "n_regions": 22
+    },
+    "tumor_022": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_022",
+      "n_regions": 12
+    },
+    "tumor_023": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_023",
+      "n_regions": 9
+    },
+    "tumor_024": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_024",
+      "n_regions": 20
+    },
+    "tumor_025": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_025",
+      "n_regions": 13
+    },
+    "tumor_026": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_026",
+      "n_regions": 30
+    },
+    "tumor_027": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_027",
+      "n_regions": 23
+    },
+    "tumor_028": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_028",
+      "n_regions": 24
+    },
+    "tumor_029": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_029",
+      "n_regions": 16
+    },
+    "tumor_030": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_030",
+      "n_regions": 22
+    },
+    "tumor_031": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_031",
+      "n_regions": 6
+    },
+    "tumor_032": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_032",
+      "n_regions": 27
+    },
+    "tumor_033": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_033",
+      "n_regions": 15
+    },
+    "tumor_034": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_034",
+      "n_regions": 8
+    },
+    "tumor_035": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_035",
+      "n_regions": 8
+    },
+    "tumor_036": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_036",
+      "n_regions": 25
+    },
+    "tumor_037": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_037",
+      "n_regions": 16
+    },
+    "tumor_038": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_038",
+      "n_regions": 3
+    },
+    "tumor_039": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_039",
+      "n_regions": 7
+    },
+    "tumor_040": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_040",
+      "n_regions": 20
+    },
+    "tumor_041": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_041",
+      "n_regions": 17
+    },
+    "tumor_042": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_042",
+      "n_regions": 10
+    },
+    "tumor_043": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_043",
+      "n_regions": 8
+    },
+    "tumor_044": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_044",
+      "n_regions": 17
+    },
+    "tumor_045": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_045",
+      "n_regions": 16
+    },
+    "tumor_046": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_046",
+      "n_regions": 26
+    },
+    "tumor_047": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_047",
+      "n_regions": 21
+    },
+    "tumor_048": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_048",
+      "n_regions": 19
+    },
+    "tumor_049": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_049",
+      "n_regions": 8
+    },
+    "tumor_050": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_050",
+      "n_regions": 17
+    },
+    "tumor_051": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_051",
+      "n_regions": 22
+    },
+    "tumor_052": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_052",
+      "n_regions": 21
+    },
+    "tumor_053": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_053",
+      "n_regions": 19
+    },
+    "tumor_054": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_054",
+      "n_regions": 22
+    },
+    "tumor_055": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_055",
+      "n_regions": 13
+    },
+    "tumor_056": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_056",
+      "n_regions": 15
+    },
+    "tumor_057": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_057",
+      "n_regions": 8
+    },
+    "tumor_058": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_058",
+      "n_regions": 11
+    },
+    "tumor_059": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_059",
+      "n_regions": 6
+    },
+    "tumor_060": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_060",
+      "n_regions": 11
+    },
+    "tumor_061": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_061",
+      "n_regions": 23
+    },
+    "tumor_062": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_062",
+      "n_regions": 15
+    },
+    "tumor_063": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_063",
+      "n_regions": 20
+    },
+    "tumor_064": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_064",
+      "n_regions": 9
+    },
+    "tumor_065": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_065",
+      "n_regions": 6
+    },
+    "tumor_066": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_066",
+      "n_regions": 10
+    },
+    "tumor_067": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_067",
+      "n_regions": 11
+    },
+    "tumor_068": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_068",
+      "n_regions": 21
+    },
+    "tumor_069": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_069",
+      "n_regions": 11
+    },
+    "tumor_070": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_070",
+      "n_regions": 10
+    },
+    "tumor_071": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_071",
+      "n_regions": 27
+    },
+    "tumor_072": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_072",
+      "n_regions": 28
+    },
+    "tumor_073": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_073",
+      "n_regions": 26
+    },
+    "tumor_074": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_074",
+      "n_regions": 16
+    },
+    "tumor_075": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_075",
+      "n_regions": 9
+    },
+    "tumor_076": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_076",
+      "n_regions": 25
+    },
+    "tumor_077": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_077",
+      "n_regions": 21
+    },
+    "tumor_078": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_078",
+      "n_regions": 24
+    },
+    "tumor_079": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_079",
+      "n_regions": 23
+    },
+    "tumor_080": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_080",
+      "n_regions": 14
+    },
+    "tumor_081": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_081",
+      "n_regions": 13
+    },
+    "tumor_082": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_082",
+      "n_regions": 9
+    },
+    "tumor_083": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_083",
+      "n_regions": 28
+    },
+    "tumor_084": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_084",
+      "n_regions": 13
+    },
+    "tumor_085": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_085",
+      "n_regions": 18
+    },
+    "tumor_086": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_086",
+      "n_regions": 30
+    },
+    "tumor_087": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_087",
+      "n_regions": 17
+    },
+    "tumor_088": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_088",
+      "n_regions": 25
+    },
+    "tumor_089": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_089",
+      "n_regions": 34
+    },
+    "tumor_090": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_090",
+      "n_regions": 23
+    },
+    "tumor_091": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_091",
+      "n_regions": 9
+    },
+    "tumor_092": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_092",
+      "n_regions": 45
+    },
+    "tumor_093": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_093",
+      "n_regions": 18
+    },
+    "tumor_094": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_094",
+      "n_regions": 22
+    },
+    "tumor_095": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_095",
+      "n_regions": 42
+    },
+    "tumor_096": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_096",
+      "n_regions": 19
+    },
+    "tumor_097": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_097",
+      "n_regions": 28
+    },
+    "tumor_098": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_098",
+      "n_regions": 14
+    },
+    "tumor_099": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_099",
+      "n_regions": 18
+    },
+    "tumor_100": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_100",
+      "n_regions": 18
+    },
+    "tumor_101": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_101",
+      "n_regions": 22
+    },
+    "tumor_102": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_102",
+      "n_regions": 41
+    },
+    "tumor_103": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_103",
+      "n_regions": 26
+    },
+    "tumor_104": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_104",
+      "n_regions": 28
+    },
+    "tumor_105": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_105",
+      "n_regions": 11
+    },
+    "tumor_106": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_106",
+      "n_regions": 30
+    },
+    "tumor_107": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_107",
+      "n_regions": 13
+    },
+    "tumor_108": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_108",
+      "n_regions": 29
+    },
+    "tumor_109": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_109",
+      "n_regions": 19
+    },
+    "tumor_110": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_110",
+      "n_regions": 17
+    },
+    "tumor_111": {
+      "source": "official_train",
+      "label": 1,
+      "group_id": "tumor_111",
+      "n_regions": 10
+    }
+  }
+}

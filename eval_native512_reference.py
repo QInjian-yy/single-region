@@ -24,7 +24,7 @@ def sha256(path):
     return digest.hexdigest()
 
 
-def main():
+def main(argv=None, *, model_loader=None, checkpoint_formats=("metasr-shared-resnet-srcls-v2",)):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--data-root", type=Path, required=True)
@@ -33,11 +33,11 @@ def main():
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--use-ema", action="store_true",
                         help="Load ema_model_state from a last.pth checkpoint")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     # The user's checkpoint is trusted and its SHA256 was verified before transfer.
     saved = torch.load(args.checkpoint, map_location="cpu", weights_only=False)
-    if saved.get("format") != "metasr-shared-resnet-srcls-v2":
+    if saved.get("format") not in checkpoint_formats:
         raise ValueError("Expected the shared ResNet18 SR/classification checkpoint")
     weight_source = "ema_model_state" if args.use_ema else "model_state"
     if weight_source not in saved:
@@ -94,7 +94,7 @@ def main():
           f"weights: {weight_source}; threshold: {config['decision_threshold']}; device: {device}", flush=True)
     print("The saved threshold is fixed; no test-set threshold selection is performed.", flush=True)
     selected = dict(saved, model_state=saved[weight_source])
-    model = model_from_checkpoint(selected, device)
+    model = (model_loader or model_from_checkpoint)(selected, device)
     loader = DataLoader(Camelyon16WSI(samples), batch_size=1, collate_fn=collate_one_wsi)
 
     def progress():

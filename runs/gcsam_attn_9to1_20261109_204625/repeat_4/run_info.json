@@ -1,0 +1,18 @@
+{
+  "experiment_id": "EXP-20261110-010731-505bc6f5e74a",
+  "started_at": "2026-11-10T01:07:31.389201+08:00",
+  "fold": 4,
+  "git_commit": "079a232d101b83f6aa30695143d6b251ed108636",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "status": "early_stopped",
+  "model": "metasr-shared-resnet-srcls-v2",
+  "optimizer": "gcsam",
+  "base_optimizer": "adamw",
+  "rho": 0.05,
+  "training_entry": "train_e2e_gcsam.py",
+  "best_epoch": 57,
+  "best_val_auc": 0.8295454545454545,
+  "best_decision_threshold": 0.36805951595306396,
+  "best_selection_score": 0.8295454545454545,
+  "finished_at": "2026-11-10T03:30:03.858705+08:00"
+}
