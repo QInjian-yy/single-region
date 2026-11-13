@@ -1,6 +1,6 @@
-# CAMIL 划分：7组完整五折实验对比
+# CAMIL 划分：8组完整五折实验对比与旧划分补跑快照
 
-核对日期：2026-11-13。本目录独立归档第二周的 7 组、35 折记录。
+核对日期：2026-11-13。本目录独立归档第二周的 8 组CAMIL实验、40 折记录，另附旧划分Fold 3–4的补跑快照。
 
 当前结果：ASRD+AEM 的五折平均 Test AUC 最高（0.669788），与 ASRD（0.668913）仅差 0.000874。新增 SR 前10轮和分类器 Dropout=0.3 均降低各自对照的平均 Test AUC。SR 组在所选验证阈值下的 Test BACC 和肿瘤召回率最高，体现指标之间的取舍。
 
@@ -8,11 +8,11 @@
 
 - 每折读取最终用于 Test 的 best checkpoint 对应 epoch；Train/Val 来自该 epoch 的 history.csv，Test 来自 test_predictions.csv 独立重算。Train 指训练集在评估模式下的指标。
 - 表中均值为五折等权宏平均；± 为五折样本标准差（ddof=1），不是置信区间。相同训练 seed=1，五折来自固定划分，不能当作五次独立随机种子重复。
-- 70份 Val/Test 逐片预测的 AUC 经 sklearn 重算，最大差值为0；ACC、BACC、敏感度、特异度及预测类别也逐项核对一致。
-- 35份 run_info 均为 early_stopped，epoch连续、数值有限；按 min_epochs=5、patience=12、min_delta=0.001 重放选择/早停，35折均与记录一致。
+- 80份 CAMIL Val/Test 逐片预测的 AUC 经 sklearn 重算，与记录一致（浮点误差容限1e-12）；ACC、BACC、敏感度、特异度及预测类别也逐项核对一致。
+- 40份 CAMIL run_info 均为 early_stopped，epoch连续、数值有限；按 min_epochs=5、patience=12、min_delta=0.001 重放选择/早停，40折均与记录一致。
 - 各组对应折的划分、标签、source index、两个源 manifest 的记录哈希一致；本地 protocol、source index、labels 和五折 CSV 的文件哈希与记录一致。
 - 按五折 CSV 与逐片预测核对：每折 Train/Val/Test 的 WSI ID 无重叠，测试集覆盖393张不同WSI，每张恰好测试一次。该检查只验证 WSI 级分离，未验证患者级独立性。
-- 每折阈值由其 Val 预测选择，并原样用于 Test；35折全部匹配。Train ACC/BACC 使用0.5阈值，不能把其与自适应阈值的 Val/Test ACC 差值直接等同泛化差距。
+- 每折阈值由其 Val 预测选择，并原样用于 Test；40折全部匹配。Train ACC/BACC 使用0.5阈值，不能把其与自适应阈值的 Val/Test ACC 差值直接等同泛化差距。
 - 分析未重跑图像推理，也未验证服务器当时所有未提交源码的逐字一致性。Train AUC来自历史记录；Val/Test AUC来自独立数值复算。
 
 ## 三个集合的 AUC
@@ -26,6 +26,7 @@
 | Attention + AdamW + ASRD + AEM | 0.863210 ± 0.092527 | 0.691547 ± 0.075034 | 0.669788 ± 0.081876 |
 | Attention + AdamW + ASRD + SR前10轮 | 0.821061 ± 0.094688 | 0.673782 ± 0.046760 | 0.655371 ± 0.083730 |
 | Attention + AdamW + 分类器Dropout 0.3 | 0.861709 ± 0.079141 | 0.661991 ± 0.062626 | 0.649232 ± 0.096856 |
+| Attention + AdamW + 冻结ResNet18 | 0.838964 ± 0.075093 | 0.647975 ± 0.083019 | 0.660482 ± 0.083960 |
 
 ## 逐折 Test AUC
 
@@ -38,6 +39,7 @@
 | Attention + AdamW + ASRD + AEM | 0.654920 | 0.736037 | 0.635971 | 0.763247 | 0.558764 |
 | Attention + AdamW + ASRD + SR前10轮 | 0.655918 | 0.672872 | 0.638963 | 0.771739 | 0.537364 |
 | Attention + AdamW + 分类器Dropout 0.3 | 0.657247 | 0.740691 | 0.606715 | 0.734035 | 0.507473 |
+| Attention + AdamW + 冻结ResNet18 | 0.654255 | 0.687168 | 0.653923 | 0.770380 | 0.536685 |
 
 ## Test 阈值指标（五折均值，%）
 
@@ -50,10 +52,11 @@
 | Attention + AdamW + ASRD + AEM | 63.36 | 61.34 | 50.00 | 72.67 |
 | Attention + AdamW + ASRD + SR前10轮 | 61.59 | 62.65 | 68.12 | 57.18 |
 | Attention + AdamW + 分类器Dropout 0.3 | 61.33 | 59.11 | 46.88 | 71.35 |
+| Attention + AdamW + 冻结ResNet18 | 63.37 | 62.31 | 56.25 | 68.36 |
 
 ## 配置对照与消融
 
-共同配置：Native512，ImageNet ResNet18，仅训练layer4，冻结BN，256维Embedding，全量Region整批输入；bf16、seed=1、EMA=0.999、head_lr=0.0002、encoder_lr=0.00001、weight_decay=0.01、label_smoothing=0.1。VIB关闭；翻转、90度旋转及颜色扰动相同。class_weight 字段均为 balanced；每折按训练标签计算的 class_weight_values 在各组之间一致。每组跨折配置仅该权重数组变化。
+共同配置：Native512，ImageNet ResNet18，原7组仅训练layer4、新增冻结组冻结整个编码器，均冻结BN，256维Embedding，全量Region整批输入；bf16、seed=1、EMA=0.999、head_lr=0.0002、encoder_lr=0.00001、weight_decay=0.01、label_smoothing=0.1。VIB关闭；翻转、90度旋转及颜色扰动相同。class_weight 字段均为 balanced；每折按训练标签计算的 class_weight_values 在各组之间一致。每组跨折配置仅该权重数组变化。
 
 对照比较逐折核对了全部 YAML 字段，差异如下：
 
@@ -109,12 +112,13 @@
 | Attention + AdamW + ASRD + AEM | 68, 18, 5, 5, 16 | 80, 30, 17, 17, 28 | 0.171662 |
 | Attention + AdamW + ASRD + SR前10轮 | 65, 5, 5, 5, 10 | 77, 17, 17, 17, 22 | 0.147280 |
 | Attention + AdamW + 分类器Dropout 0.3 | 60, 33, 5, 23, 9 | 72, 45, 17, 35, 21 | 0.199718 |
+| Attention + AdamW + 冻结ResNet18 | 33, 17, 5, 5, 27 | 45, 29, 17, 17, 39 | 0.190989 |
 
 训练AUC比验证AUC高的现象仍广泛存在。不同组的best时点不同，不能只靠Train–Val均值差缩小就断言正则有效。SR组Fold4由epoch10的Train/Val=0.8958/0.6350走到epoch22的0.9638/0.5894，属于训练继续改善而验证恶化的具体例子。
 
 当前 min_epochs=5 同时约束最佳模型保存：第1–4轮即使Val AUC更高也不会成为best。已有权重中最高Val为AEM组Fold2、epoch5、0.776155；全部history的原始最高Val为ASRD组Fold2、epoch2、0.799592，后者未被当前保存规则选中。以上是规则的实际行为，不能据此推断未保存模型的Test结果。
 
-Fold4在7组中的Test AUC均最低，范围0.5075–0.5625；Fold2常出现Val较高而Test一般，Fold3则常出现相反现象。差异提示结果受具体折影响明显，当前结果不支持仅增加正则即可解决这些问题。
+Fold4在8组CAMIL实验中的Test AUC均最低，范围0.5075–0.5625；Fold2常出现Val较高而Test一般，Fold3则常出现相反现象。差异提示结果受具体折影响明显，当前结果不支持仅增加正则即可解决这些问题。
 
 ## 记录耗时与边界
 
@@ -127,10 +131,16 @@ Fold4在7组中的Test AUC均最低，范围0.5075–0.5625；Fold2常出现Val�
 | Attention + AdamW + ASRD + AEM | 4.00 |
 | Attention + AdamW + ASRD + SR前10轮 | 25.88 |
 | Attention + AdamW + 分类器Dropout 0.3 | 4.40 |
+| Attention + AdamW + 冻结ResNet18 | 3.53 |
 
 时长是run_info起止时间之和，受早停轮数、并发任务和I/O影响，不能当作受控单步速度对比。SR组累计约25.88小时，ASRD对照约3.63小时。
 
 ## 源目录
+
+- Attention + AdamW + 冻结ResNet18：[源记录](camil_attn_adamw_frozen_5fold)。
+- 旧划分补跑：[Fold 3–4及运行中快照](gcsam_mean_legacy5fold_f3_f4_20261113_145057/README.md)。
+
+
 
 - Attention + GCSAM：[源记录](camil_attn_3090_20261110_104709)。
 - Attention + AdamW：[源记录](camil_attn_adamw_3090_20261110_193735)。
@@ -140,4 +150,14 @@ Fold4在7组中的Test AUC均最低，范围0.5075–0.5625；Fold2常出现Val�
 - Attention + AdamW + ASRD + SR前10轮：[源记录](camil_attn_adamw_asrd_sr0p05_first10_20261111_204023)。
 - Attention + AdamW + 分类器Dropout 0.3：[源记录](camil_attn_adamw_clsdrop03_5fold)。
 
-输出附带 summary.csv（七组汇总）、fold_metrics.csv（35折详细结果，包括Train/Val/Test、阈值、混淆计数、best/stop epoch）、archive_manifest.json（归档文件SHA-256）。归档中的原始实验记录保持字节一致；未包含模型权重。
+输出附带 summary.csv（八组CAMIL汇总）、fold_metrics.csv（40折CAMIL详细结果，包括Train/Val/Test、阈值、混淆计数、best/stop epoch）、archive_manifest.json（归档文件SHA-256）。归档中的原始实验记录保持字节一致；未包含模型权重。
+
+## 2026-11-13新增：冻结编码器对照
+
+逐折核对全部YAML字段，唯一差异是shared_encoder.trainable由layer4变为frozen。MIL仍为Attention，优化器仍为AdamW，SR=0，不含ASRD/AEM；数据划分和来源哈希与原Attention+AdamW一致。
+
+平均Test AUC：0.663155 → 0.660482，差值-0.002673；3/5折提高。该差值不足以支持稳定优劣结论。平均Train AUC为0.838964，Val AUC为0.647975，Test BACC为0.623063。
+
+## 旧划分补跑状态
+
+[旧Fold 3–4目录](gcsam_mean_legacy5fold_f3_f4_20261113_145057/README.md)使用264张WSI旧内部五折Train/Val协议。Fold 3在epoch 65早停，最佳epoch 53、Val AUC=0.823188。Fold 4由用户确认仍在训练；本地仅下载到epoch 57，当前所选最佳epoch 56、Val AUC=0.900758。Fold 4保留incomplete，所有数字均是当前快照；不计算旧五折的最终均值，也不纳入上面CAMIL的Test统计。

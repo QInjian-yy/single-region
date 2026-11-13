@@ -1,0 +1,74 @@
+data_mode: native512
+data_manifest: Manifests/patch_manifest.csv
+split_scheme: 5fold
+shared_encoder:
+  backbone: resnet18
+  pretrained: true
+  trainable: layer4
+  freeze_bn: true
+  encoder_lr: 1.0e-05
+classification:
+  pooling:
+  - mean
+  embedding_dim: 256
+  attention_hidden_dim: 128
+  topk: 5
+  region_dropout: 0.0
+  attention_dropout: 0.0
+  projection_dropout: 0.0
+  classifier_dropout: 0.0
+  head_lr: 0.0002
+  encoder_lr: 1.0e-05
+  vib:
+    enabled: false
+    beta: 0.0001
+metasr:
+  scale: 16
+  rgb_range: 1
+  channels: 64
+  residual_scale: 0.1
+  dropout: 0.0
+  hr_tile: 256
+lambda_sr: 0.0
+sr_train_crop: 128
+sr_lr: 0.0001
+training:
+  use_region_microbatch: false
+  region_microbatch_size: 2
+  max_train_regions: null
+  class_weight: balanced
+  sr_stop_after_epochs: 3
+optimizer: gcsam
+gcsam:
+  enabled: true
+  base_optimizer: adamw
+  rho: 0.05
+  start_epoch: 1
+precision: bf16
+lr: 0.0002
+weight_decay: 0.01
+label_smoothing: 0.1
+gradient_clip_norm: 1.0
+epochs: 300
+min_epochs: 5
+early_stopping_patience: 12
+early_stopping_min_delta: 0.001
+checkpoint_metric: val_auc
+scheduler: plateau
+scheduler_patience: 4
+scheduler_factor: 0.5
+min_lr: 1.0e-06
+ema_decay: 0.999
+seed: 1
+augmentation:
+  enabled: true
+  horizontal_flip: 0.5
+  vertical_flip: 0.5
+  rotation90: true
+  brightness: 0.15
+  contrast: 0.15
+  saturation: 0.1
+  hue: 0.01
+class_weight_values:
+- 0.8396226415094339
+- 1.160377358490566

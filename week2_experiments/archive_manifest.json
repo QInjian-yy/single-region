@@ -1,9 +1,9 @@
 {
   "archive": "week2_experiments",
   "created_at": "2026-11-13T09:58:37.871292+08:00",
-  "experiment_count": 7,
-  "fold_count": 35,
-  "original_record_files": 252,
+  "experiment_count": 9,
+  "fold_count": 42,
+  "original_record_files": 298,
   "model_weights_included": false,
   "experiments": [
     "camil_attn_3090_20261110_104709",
@@ -12,13 +12,20 @@
     "camil_attn_adamw_asrd_3090_20261111_102911",
     "camil_attn_adamw_asrd_aem_20261111_154122",
     "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023",
-    "camil_attn_adamw_clsdrop03_5fold"
+    "camil_attn_adamw_clsdrop03_5fold",
+    "camil_attn_adamw_frozen_5fold",
+    "gcsam_mean_legacy5fold_f3_f4_20261113_145057"
   ],
   "files": [
     {
       "path": ".gitattributes",
       "bytes": 67,
       "sha256": "8114364b86a955d75860492db091f8545c786e4eb7355e1204ca01304c48c7f8"
+    },
+    {
+      "path": "audit_additions_20261113.json",
+      "bytes": 33986,
+      "sha256": "e11d22dee662f106609f1ec5aa128bd98eeb2d9f56a308c76761567b782686e7"
     },
     {
       "path": "camil_attn_3090_20261110_104709/fold_0/best_val_predictions.csv",
@@ -1101,6 +1108,186 @@
       "sha256": "db337bfbe7382aca6a922902be3cc24bcfdf824b0684d7ce0f2155966f54c1a8"
     },
     {
+      "path": "camil_attn_adamw_frozen_5fold/fold_0/best_val_predictions.csv",
+      "bytes": 2979,
+      "sha256": "59158f406034098ac83608f5d9bffb6a418b19a0f3fc08d59dd0dae43e3553f1"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_0/config.yaml",
+      "bytes": 1326,
+      "sha256": "f0b77de85d42fc7de106d6d575269b5c905e6b11c48420173c22c3fd2c94e5ae"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_0/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_0/history.csv",
+      "bytes": 11410,
+      "sha256": "30317527b33e66c8417aaa0b61a7795475e1f9315450145eba498538baea24d6"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_0/run_info.json",
+      "bytes": 692,
+      "sha256": "d95d532c5bd5f2e92cc8f8c45015cdf6f684ae993277f1b783eff6395943cac8"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_0/test_metrics.json",
+      "bytes": 343,
+      "sha256": "4a882f3195b4ac86b20c704efab21370da1e6b8b4c71783f7b6dad90481dbe99"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_0/test_predictions.csv",
+      "bytes": 3015,
+      "sha256": "b928a0ccbc50c7aed94e91f9d0f2b9ae5245b5c3111c5778789cd49366daa213"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_1/best_val_predictions.csv",
+      "bytes": 2992,
+      "sha256": "56711241366c2dfa2f24f0b3abfbe3020078f9752e7a654faeb406cc83744687"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_1/config.yaml",
+      "bytes": 1326,
+      "sha256": "f0b77de85d42fc7de106d6d575269b5c905e6b11c48420173c22c3fd2c94e5ae"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_1/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_1/history.csv",
+      "bytes": 7335,
+      "sha256": "0a6522856cfd39d7cab6d12d753ffe2f13397504f25e5574552066d75d78fd57"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_1/run_info.json",
+      "bytes": 692,
+      "sha256": "8c3ef75ff584a5e80b0c970dc1760071b02dc90c1812389b97e9cd39beed2ba3"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_1/test_metrics.json",
+      "bytes": 342,
+      "sha256": "c4214b92ea6737a34708531ea5cc2bcaf25b5145e3fa935a5e6a7bce5a6a26e3"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_1/test_predictions.csv",
+      "bytes": 2986,
+      "sha256": "bb33024fac1e6fead61bfff1d3bc3a0eb9dc9877fb3aa255e29496340e7424c7"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_2/best_val_predictions.csv",
+      "bytes": 2991,
+      "sha256": "e94d25698dc70b95cbf01c64c23f3bb6e761875e19b6f51c2976f3a80dea910e"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_2/config.yaml",
+      "bytes": 1326,
+      "sha256": "2090782d3cd6547466c22d51f5db50e4513066b24dea23196e910f72120a3eee"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_2/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_2/history.csv",
+      "bytes": 4369,
+      "sha256": "2f7060792f16666735f3343a359a5e1c83d0661bff113ae7faa4406a71e8b879"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_2/run_info.json",
+      "bytes": 693,
+      "sha256": "96db17af1c70372eabd58ccb56c97477919ebd78e7f5de2542b70afda0136033"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_2/test_metrics.json",
+      "bytes": 344,
+      "sha256": "2f3a1fe82a1374568abe16b345977affd4a362576bbcb7bd01c6d18e9f60b1d5"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_2/test_predictions.csv",
+      "bytes": 3019,
+      "sha256": "08f134245a249aeff0d20b37f388ea5460a0a52a9cdfc3d56bbeccf229e572e2"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_3/best_val_predictions.csv",
+      "bytes": 2965,
+      "sha256": "c13b2f28ea1d5304bd832a02089cfd24214e38cb985483386e0b4c7b444426a8"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_3/config.yaml",
+      "bytes": 1325,
+      "sha256": "c22ec2ab68d137b04f3f59338f464df64de8745da6ab02947af9dd77638ade07"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_3/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_3/history.csv",
+      "bytes": 4372,
+      "sha256": "c5cf13a21638704617e12667c98230e431a55b5b626e485ac752145b7d01f699"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_3/run_info.json",
+      "bytes": 693,
+      "sha256": "d0367fc7eda274073f347c575a0de3ee545d0b1f56d291b8dea481e9ad4ae925"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_3/test_metrics.json",
+      "bytes": 345,
+      "sha256": "c554e8d072dcac7e0733d08aaa5740757489fbbdc0cfbd5a973474d8c32281e9"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_3/test_predictions.csv",
+      "bytes": 2985,
+      "sha256": "52704af48852cc2308ec619bb9d74a4108230bcb6644edd6ef357446caee23bb"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_4/best_val_predictions.csv",
+      "bytes": 2998,
+      "sha256": "e9de580356b40bc91e44b2d008485547d9c25fa111639e2fe8eb0ba82d3a90ad"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_4/config.yaml",
+      "bytes": 1326,
+      "sha256": "2090782d3cd6547466c22d51f5db50e4513066b24dea23196e910f72120a3eee"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_4/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_4/history.csv",
+      "bytes": 9750,
+      "sha256": "c4786af1784192bf69b94308e04f26982a2d19ce106ccce820590b55072fd943"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_4/run_info.json",
+      "bytes": 692,
+      "sha256": "591cbb2dff12f610a30ae5cde75a020115b22bf78ab65ca9304c7c5575771210"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_4/test_metrics.json",
+      "bytes": 338,
+      "sha256": "9fa678c728b9e6c9ed9b96fe202da4b958291b5b308cf4fad2525ee098dc1186"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/fold_4/test_predictions.csv",
+      "bytes": 2940,
+      "sha256": "60e970d9dcdb7268679610c5c95ff5332daefc66e6c1d894f365f5e4c0a660b6"
+    },
+    {
+      "path": "camil_attn_adamw_frozen_5fold/summary.json",
+      "bytes": 2114,
+      "sha256": "ed832544fbf8de31a303bb500c4dd0366296df0efe0a51fb5769f6a95beb62d0"
+    },
+    {
       "path": "camil_mean_adamw_5fold_20261111/fold_0/best_val_predictions.csv",
       "bytes": 2980,
       "sha256": "7c3e5baa34f357ecd09c76dceedecc7042c097d4e1e0aa5f0bd68bf94cc50d96"
@@ -1282,23 +1469,97 @@
     },
     {
       "path": "comparison.md",
-      "bytes": 11244,
-      "sha256": "5c95b030fbfd683e2314b56538aedc81213a195d1fd96bb750c32c33389b3089"
+      "bytes": 12960,
+      "sha256": "35c12ba586fe939b0d4d83a6996aa0432bf1ba663e2c8104e3ac1057c683bab9"
     },
     {
       "path": "fold_metrics.csv",
-      "bytes": 16678,
-      "sha256": "64ce65837463ea9ead656380c832580b0589625b319b39293c5a4cf82829a5f5"
+      "bytes": 18974,
+      "sha256": "f88d417196229ce8e90cf97b7aebddc63f101e9819a447883b14ad2f003ef4a5"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_3/best_val_predictions.csv",
+      "bytes": 2060,
+      "sha256": "09a147664d1f8a1061303ee54d6a6b47477365b664ed3044391acdf85feff15d"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_3/config.yaml",
+      "bytes": 1397,
+      "sha256": "f4d25eb7fe57429026f3f9b6cd5d03148cd7966823bba70dc4596502d1bc47d2"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_3/data_provenance.json",
+      "bytes": 1135,
+      "sha256": "9f0266c55810b7893c5761192fc54cd706147eaaa2441042925b7c51d714f1fb"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_3/history.csv",
+      "bytes": 26088,
+      "sha256": "fd1577509afc38f626302f6d30ba8333da6e3b773bc1b380ae9ab16136626e46"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_3/run_info.json",
+      "bytes": 608,
+      "sha256": "2dcefa1103c641f5f8a37103734c01969e4bf83ff41bb2f73e940259ef172d26"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_4/best_val_predictions.csv",
+      "bytes": 2030,
+      "sha256": "c3cc4ce77bfc8d16758fabbeb86ab5de5e606b8a5ed879b34c8f1b0e26389a18"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_4/config.yaml",
+      "bytes": 1396,
+      "sha256": "e5a0f67cc9818c410f4182485bd904d8c0961567aa6121e6ded4720931260aa8"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_4/data_provenance.json",
+      "bytes": 1135,
+      "sha256": "4e60758bb599e945efd69d160db6e34cc74c55be4650fe3e489fbc974817978d"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_4/history.csv",
+      "bytes": 22628,
+      "sha256": "b280128cbd6017ba4e8a8e1a76af8e3e96155adaa0cb8ee95e31f1154e02e437"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/fold_4/run_info.json",
+      "bytes": 398,
+      "sha256": "dffc4236bb3c65579018b94cb5e98d4bf4384bd82ae6cf28ede957dd22265269"
+    },
+    {
+      "path": "gcsam_mean_legacy5fold_f3_f4_20261113_145057/README.md",
+      "bytes": 2182,
+      "sha256": "04e0b547c8429e6cd13b953b7bdf0d6b178f91a7a4b68adcfe791e0ed1b4d1b8"
     },
     {
       "path": "README.md",
-      "bytes": 4040,
-      "sha256": "a3422c770ab0ccfcbfc45055c43994b472de0e63f10d30cf3eb82ebacf420d17"
+      "bytes": 5162,
+      "sha256": "ae9de48f7dbf1587a9b7f863168cedc2a59dbdf1c6ff7b3dddf660fd060c5d15"
     },
     {
       "path": "summary.csv",
-      "bytes": 4136,
-      "sha256": "c3da2ed9c743c019b98604f65deebde78e827f7a448b4c1b58417be1222f47da"
+      "bytes": 4654,
+      "sha256": "186723e830f089df0a7a922e2806ea2193f1cf355e247599bc706dcd81b16989"
+    }
+  ],
+  "updated_at": "2026-11-13T19:59:17.641748+08:00",
+  "completed_fold_count": 41,
+  "incomplete_fold_count": 1,
+  "camil_experiment_count": 8,
+  "camil_fold_count": 40,
+  "legacy_supplement_experiment_count": 1,
+  "legacy_supplement_fold_count": 2,
+  "summary_csv_scope": "Eight completed CAMIL groups only; legacy Fold 3/4 are described separately",
+  "running_snapshots": [
+    {
+      "experiment": "gcsam_mean_legacy5fold_f3_f4_20261113_145057",
+      "fold": 4,
+      "status": "incomplete",
+      "last_epoch": 57,
+      "selected_epoch": 56,
+      "val_auc_at_snapshot": 0.9007575757575758,
+      "verified_at": "2026-11-13T19:56:04.680575+08:00"
     }
   ]
 }
