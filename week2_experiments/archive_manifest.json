@@ -1,0 +1,1304 @@
+{
+  "archive": "week2_experiments",
+  "created_at": "2026-11-13T09:58:37.871292+08:00",
+  "experiment_count": 7,
+  "fold_count": 35,
+  "original_record_files": 252,
+  "model_weights_included": false,
+  "experiments": [
+    "camil_attn_3090_20261110_104709",
+    "camil_attn_adamw_3090_20261110_193735",
+    "camil_mean_adamw_5fold_20261111",
+    "camil_attn_adamw_asrd_3090_20261111_102911",
+    "camil_attn_adamw_asrd_aem_20261111_154122",
+    "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023",
+    "camil_attn_adamw_clsdrop03_5fold"
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 67,
+      "sha256": "8114364b86a955d75860492db091f8545c786e4eb7355e1204ca01304c48c7f8"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_0/best_val_predictions.csv",
+      "bytes": 2997,
+      "sha256": "c7099f3586f30a8c7b264350a499eefd9d54e33b3bbbd98b7169f0c337a6af16"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_0/config.yaml",
+      "bytes": 1402,
+      "sha256": "370789eaa77a8bd014aca335e0778540836a58a22d6f48e35b952b2db350cb9b"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_0/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_0/history.csv",
+      "bytes": 10845,
+      "sha256": "05a8cdf2597b6a6abe07c28a77ee999036e16686bcc523131d0a2555944f74eb"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_0/run_info.json",
+      "bytes": 738,
+      "sha256": "8002704c51681b00e76975e4d7c7b1df66fa382bb9faaff4df8d8e548291e194"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_0/test_metrics.json",
+      "bytes": 344,
+      "sha256": "fd30bbfea0ca5d47a8e3743387ea0df7636652d658b103b25d3bc2366f0ad62f"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_0/test_predictions.csv",
+      "bytes": 3022,
+      "sha256": "25d6a6a1d0384e2b73a07290c85a112421a47eabfb8d1b16110292ecb42c2f44"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_1/best_val_predictions.csv",
+      "bytes": 3019,
+      "sha256": "373506eda41d6f4c62379eb5d7c2c1a57668fda609ce298f63f4498a27e5f315"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_1/config.yaml",
+      "bytes": 1402,
+      "sha256": "370789eaa77a8bd014aca335e0778540836a58a22d6f48e35b952b2db350cb9b"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_1/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_1/history.csv",
+      "bytes": 17796,
+      "sha256": "c046fef4d3d42cfbfdac8b1fd3fd47c1adbaccea962cce48a7f3e6751cdf6cdc"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_1/run_info.json",
+      "bytes": 738,
+      "sha256": "6b776d213641c226df589b6dba992a02debc4cd839fd24da432f0392bf5579b4"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_1/test_metrics.json",
+      "bytes": 343,
+      "sha256": "2a34f837b0311993130402df00e34200e1c4f9cc09d45952636940a86b272b1b"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_1/test_predictions.csv",
+      "bytes": 3008,
+      "sha256": "7a55d5ea12a7fc2407ab5c01686885b2bbdcad49b13ddf4cdbcc159de5186b68"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_2/best_val_predictions.csv",
+      "bytes": 2996,
+      "sha256": "a8b9d0c0dffd20e11a3ea16b47ee41512a28a3262d0234b46d8014a21ba825be"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_2/config.yaml",
+      "bytes": 1402,
+      "sha256": "f866e1e0489d7066be40d5005828f68531244badfd57087970942698beb7260d"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_2/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_2/history.csv",
+      "bytes": 4703,
+      "sha256": "5641125328ade92d6219580764429ec374fbfd8dbcc725bd3aad0a3ce7d2a1d8"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_2/run_info.json",
+      "bytes": 737,
+      "sha256": "2ff6a428d30e26baa3d0e25009209e1d1b32871ebf74d6b613c2f6dbfacc1cbd"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_2/test_metrics.json",
+      "bytes": 344,
+      "sha256": "7a4673b5d74ba981f69dd1ce56447a765883db5da45aefc04120513218d778fb"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_2/test_predictions.csv",
+      "bytes": 3024,
+      "sha256": "26c6167608e8ef6474a90e7b8d861f8dc782d8fc62e34b2d9c575440fbbc58ef"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_3/best_val_predictions.csv",
+      "bytes": 2969,
+      "sha256": "0ad8fcdf5f1391dc9281149f739ded477ddbcb62b79907def251a974d52f2eb3"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_3/config.yaml",
+      "bytes": 1401,
+      "sha256": "4b38b92aaf11f8d0569866fbcc096b38a00c28715bd155dfdfc809903b278adf"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_3/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_3/history.csv",
+      "bytes": 4611,
+      "sha256": "94cc569e824c1d414d992f044cb1f6a4c7502e1eb8f48a13be5c882ee6d3c92d"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_3/run_info.json",
+      "bytes": 737,
+      "sha256": "7fe60ca37bce9ff8915d5e8f27824cf205a0f2a468f6b21f03c4f1ee7641afa7"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_3/test_metrics.json",
+      "bytes": 336,
+      "sha256": "5b909fea31c25128580df9be48e4e19465aade242cfb2b313c05739894f5377d"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_3/test_predictions.csv",
+      "bytes": 2988,
+      "sha256": "2dbb98c09287ce9a380e71f5bc43dadbd2acf3f6bda828b66edf879f7a451e4f"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_4/best_val_predictions.csv",
+      "bytes": 3017,
+      "sha256": "2299e15cf472f8b0f0d29f59045fe6386afc0258d2996a1c30bcceb487a1ed2d"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_4/config.yaml",
+      "bytes": 1402,
+      "sha256": "f866e1e0489d7066be40d5005828f68531244badfd57087970942698beb7260d"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_4/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_4/history.csv",
+      "bytes": 14688,
+      "sha256": "0eb8c56799bbcd80cbb6841147f8b0e2487f235221520f38d18c1637218b884c"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_4/run_info.json",
+      "bytes": 738,
+      "sha256": "d5ad863cc1d3f18d355c014524a1e343a984df98f31d5512da0103485b37be18"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_4/test_metrics.json",
+      "bytes": 345,
+      "sha256": "b2e27a5f303691e66a8991eb7d70432f124c4f79ab05bc25850e2fc4b1c10ac1"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/fold_4/test_predictions.csv",
+      "bytes": 2956,
+      "sha256": "1b8974579bb86d1d020effbbfcc619f0d30586132879b2cee88cccd7e6f18016"
+    },
+    {
+      "path": "camil_attn_3090_20261110_104709/summary.json",
+      "bytes": 2114,
+      "sha256": "295aa1785d85f3d3dd26a75eac1a379e73f1e2cb9b4f7ff0a810a73578433552"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_0/best_val_predictions.csv",
+      "bytes": 2977,
+      "sha256": "be8253dbb23bb248d72e3ca0d975cd2e0253a3a489999e18f23168c04fee2336"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_0/config.yaml",
+      "bytes": 1326,
+      "sha256": "95ba78c7651e56bf5f0053df8e906a1744405c4f39aa2feaed92342870098d2d"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_0/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_0/history.csv",
+      "bytes": 19810,
+      "sha256": "63d93a29e7bd69963f70a821ad9291f9065f0ccd6aa95185ffdd9881958be0fc"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_0/run_info.json",
+      "bytes": 694,
+      "sha256": "10426a86b0108d0c232ca6780e1c31c313eb65a3c37c31b8075c26e2983090f7"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_0/test_metrics.json",
+      "bytes": 347,
+      "sha256": "47f51936eb932f3ff1474b84d79fc3740e4f28e56752ae5a3b49ceced1f74c39"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_0/test_predictions.csv",
+      "bytes": 2998,
+      "sha256": "962f7d45f91d5ff50eab8df57bd558638fa9baef7627bf53c8361e5a1dcb158c"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_1/best_val_predictions.csv",
+      "bytes": 2986,
+      "sha256": "70282100be7d7915098c7e9009a94e6ff38e811306b743094d8aad4a5f30342f"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_1/config.yaml",
+      "bytes": 1326,
+      "sha256": "95ba78c7651e56bf5f0053df8e906a1744405c4f39aa2feaed92342870098d2d"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_1/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_1/history.csv",
+      "bytes": 17998,
+      "sha256": "8315ef5dbe3ac338b2625a77947aaed376f032d9657ceb3073f483fa5899725c"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_1/run_info.json",
+      "bytes": 693,
+      "sha256": "cbd850fa9c45cf0b4476fa24c86f7be1aa29a51fcde199413b19281ceac0767c"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_1/test_metrics.json",
+      "bytes": 345,
+      "sha256": "2da6d3636088d162f13a285d648ccc5d880a38f19045b460992133d5842177a7"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_1/test_predictions.csv",
+      "bytes": 2985,
+      "sha256": "9281aa932cbbe78c21a6871293de0dc47eb2223e084252b6b8561df347e62496"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_2/best_val_predictions.csv",
+      "bytes": 2996,
+      "sha256": "a4ba44e5acd5e8b125b72d14e2728907a660a316c7b1e53b158ec2d2af3488be"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_2/config.yaml",
+      "bytes": 1326,
+      "sha256": "e790923715d9387e16ef0e7df86a9be67a19daf231e3094c3f3419438878b51b"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_2/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_2/history.csv",
+      "bytes": 4618,
+      "sha256": "67a3742022af40922a3ed133a96dcbf07a5d2e15c59825d347e0217e12d1f98a"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_2/run_info.json",
+      "bytes": 693,
+      "sha256": "b1bc194de4e0e84c82c52271798d15351d555762aeca220f857af8b28102c387"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_2/test_metrics.json",
+      "bytes": 342,
+      "sha256": "032d0b447323bbae9a2cd6ed355e176dac6b06fa99085e6408bb754e1f6d4e79"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_2/test_predictions.csv",
+      "bytes": 3018,
+      "sha256": "71bbc3f61616376f3f57285beb9ad16d7de8861158aec37b57e337030d5537b1"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_3/best_val_predictions.csv",
+      "bytes": 2941,
+      "sha256": "ce772a32030c89ffc037c2ba880c5f48e54c9989d57e3d48d6ccc5edf4b6bccb"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_3/config.yaml",
+      "bytes": 1325,
+      "sha256": "e54ec6011cda7e33c6654f3560d659b395bf78ad6706d1ad4df8451ccd7fba34"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_3/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_3/history.csv",
+      "bytes": 6427,
+      "sha256": "cd5a2253fd7c6ae17980faeecaf17cf745ef45d546ecf00e58ac48cdcc879724"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_3/run_info.json",
+      "bytes": 693,
+      "sha256": "393a10bd427f113e06229d8ee60148727373d28d207f6b8e5a626600ea759f45"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_3/test_metrics.json",
+      "bytes": 345,
+      "sha256": "5ccf5a4b7536a474654797a64ed134c4e1e9569b5b3101585f3b65142cd469f5"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_3/test_predictions.csv",
+      "bytes": 2970,
+      "sha256": "f7faa8431cf8d836f62a4df2262e2fa64c6225a146d99e7c007ca495047341f1"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_4/best_val_predictions.csv",
+      "bytes": 2994,
+      "sha256": "65aab2692322de0afe9625b95e7240a4a95aaa0104ced8dacd81e85263a320de"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_4/config.yaml",
+      "bytes": 1326,
+      "sha256": "e790923715d9387e16ef0e7df86a9be67a19daf231e3094c3f3419438878b51b"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_4/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_4/history.csv",
+      "bytes": 19646,
+      "sha256": "bc81110c68790435f7a107de7c3705891046002396420b6f4dc27deeef74e749"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_4/run_info.json",
+      "bytes": 665,
+      "sha256": "11a9485449df3975b23b92fe3c3449ea3b6f7de6bcfaf03c76cb59106eacdc76"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_4/test_metrics.json",
+      "bytes": 314,
+      "sha256": "f0efda6db26cbcf19655f46ca910f8fd04220449dc0f245d0451b343ea96a49b"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/fold_4/test_predictions.csv",
+      "bytes": 2939,
+      "sha256": "999e59d30dc3fc26c675a5cbeed561bf5bcb2f535b3f79b22eb442b00696c675"
+    },
+    {
+      "path": "camil_attn_adamw_3090_20261110_193735/summary.json",
+      "bytes": 2095,
+      "sha256": "f0e9e116fe787727abf920a80eb03b73cd48dc6578e0abbd14193ac7f23e3af1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_0/best_val_predictions.csv",
+      "bytes": 2979,
+      "sha256": "26e236d971f43ad101f288b928b4609ca5e4bc96ad3b8e451b4a2bcbcfd218ce"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_0/config.yaml",
+      "bytes": 1447,
+      "sha256": "ac8ad60a72570c75c362112576d65d0ec1393dce6d1aff6766706ce61a939962"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_0/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_0/history.csv",
+      "bytes": 11270,
+      "sha256": "6d7a74feff0702af39d7bfa96ba02f9c0e0fa116a0a6f7ab43ef4baace330a66"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_0/run_info.json",
+      "bytes": 699,
+      "sha256": "9753191703563813fa6dfc05537eec9551ec75aa9c4ef622d8b2d6bac97df4dc"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_0/test_metrics.json",
+      "bytes": 343,
+      "sha256": "4aa967c625986236078280721ec0fea55ca60e5805ae54d97a62c465438331bb"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_0/test_predictions.csv",
+      "bytes": 3000,
+      "sha256": "e15025bf89b7c491f3e1a0ec9278f7220148a192e64997193b8bcb0fe2611597"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_1/best_val_predictions.csv",
+      "bytes": 2991,
+      "sha256": "9fd5489b3aef2c2a03d0c32933517fa1c5240c53077acdc3a46fa7a97c4bb584"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_1/config.yaml",
+      "bytes": 1447,
+      "sha256": "ac8ad60a72570c75c362112576d65d0ec1393dce6d1aff6766706ce61a939962"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_1/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_1/history.csv",
+      "bytes": 7798,
+      "sha256": "30573bcf8cbd197a71ff04f32ea03796e8056065fa001fe759ecddda63024f00"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_1/run_info.json",
+      "bytes": 699,
+      "sha256": "bf9723a8c0efe97b8abecd1bef06eca9d5a2fa5645199a375545b558ef2472db"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_1/test_metrics.json",
+      "bytes": 345,
+      "sha256": "f1fbba3fc7c25e37e9e9903d04e271373fed25763d69dd4dd5570f5698da0599"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_1/test_predictions.csv",
+      "bytes": 2985,
+      "sha256": "a2d0cb237dce1f97a78c9fa3fdfed00ef019cb2ad838b623d23eaa1cab02c4a7"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_2/best_val_predictions.csv",
+      "bytes": 2995,
+      "sha256": "67cc521c390bd4c006155d54b8dafe776d71257fee79cc77321aa048cb58f2c6"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_2/config.yaml",
+      "bytes": 1447,
+      "sha256": "6f8a3d3d866a1a01a0b223e50789a345d147a1516f7a95d66483b7ec9ddf1f23"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_2/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_2/history.csv",
+      "bytes": 4601,
+      "sha256": "bd982b3b6d049816e95801d03c86ae3de4d67d11de885abcf92267fadcfe857c"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_2/run_info.json",
+      "bytes": 697,
+      "sha256": "fdb6d2a973977977b0288cf81557a928d2c08d782a8ec5e7df376b4cc9653cba"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_2/test_metrics.json",
+      "bytes": 343,
+      "sha256": "b42b1bf8714e802e89ae5be7946ada21c06eb024a87812f97a0871c48f6a5052"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_2/test_predictions.csv",
+      "bytes": 3017,
+      "sha256": "9bbb94c1f8fd35f7734487ee2b83af04a738179f68642f5805bb8432596b376d"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_3/best_val_predictions.csv",
+      "bytes": 2967,
+      "sha256": "2bb3de9f5dc3f0dce19891bec0088c3a7e7502ab5adf89373fb750f6b8865915"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_3/config.yaml",
+      "bytes": 1446,
+      "sha256": "742e1fc24a67c3761f8085732a67644c187362e747ee7c79175fbffa360fcaf5"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_3/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_3/history.csv",
+      "bytes": 5201,
+      "sha256": "6311b90aa2f4c96ab70dbae251436a1e5a6210afbc428904f37c1c298943b827"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_3/run_info.json",
+      "bytes": 688,
+      "sha256": "e53cd9c5879838ff7960bed81d9b860804736de45717626402a4aa7502ab80bb"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_3/test_metrics.json",
+      "bytes": 335,
+      "sha256": "312bd96e5c3562d1316691034c0ba7afd5491aed22560a6657e168d92302b46e"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_3/test_predictions.csv",
+      "bytes": 2981,
+      "sha256": "cc092406d29e9d5df5580b4e60b2c627c19b1790cd999c24af20a7ac012b1c02"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_4/best_val_predictions.csv",
+      "bytes": 2996,
+      "sha256": "70e3aae5fcfd8c4c0e5708476d7d05bba44d4cf9c188b4be140602e324061929"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_4/config.yaml",
+      "bytes": 1447,
+      "sha256": "6f8a3d3d866a1a01a0b223e50789a345d147a1516f7a95d66483b7ec9ddf1f23"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_4/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_4/history.csv",
+      "bytes": 13095,
+      "sha256": "e44b5681b4fc8529a2526ed70648a41f46651c293e94f3d704b3fe1020022c51"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_4/run_info.json",
+      "bytes": 698,
+      "sha256": "1aff2fdac7fe2090b44c6543813700adb838ea78895c1d1d1b94501e67d52f39"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_4/test_metrics.json",
+      "bytes": 344,
+      "sha256": "6a072299fa750c2beee27eb7abfa2ac0be192fa02eaa4739760ad80f50d44f94"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/fold_4/test_predictions.csv",
+      "bytes": 2943,
+      "sha256": "3333114c9c98c8e147b17ed8769b19b0d1a36a34c4ceffe21286edd797fc29b5"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_3090_20261111_102911/summary.json",
+      "bytes": 2112,
+      "sha256": "87b611cab3b252e332e363f28b4fe61b2bc831f62f184130a36c5cf12d83636b"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_0/best_val_predictions.csv",
+      "bytes": 2966,
+      "sha256": "d7716b5e4320965d471bdc6e9187cb66d76beaa5491fb4f41d84d80155d2b240"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_0/config.yaml",
+      "bytes": 1511,
+      "sha256": "7b2c9c1e0329caa0a7c6f960636831d3c29844aa4fbb1f54fb2236125529b48a"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_0/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_0/history.csv",
+      "bytes": 26888,
+      "sha256": "f2a2adede2283ab604aa663ea63b548b7dfc2100dcf79fb0da98f533e0b67f52"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_0/run_info.json",
+      "bytes": 841,
+      "sha256": "7ff06d6cd68e8f1fde78e2384d311ff119e7cd52eeca9609117a87232c3ac662"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_0/test_metrics.json",
+      "bytes": 343,
+      "sha256": "02d0266a098f80d341d1af44a78fe6fc6df4eb5e770d4dd96ab84471ba959a8e"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_0/test_predictions.csv",
+      "bytes": 2994,
+      "sha256": "94f031a15ddd051f209d2ca5b52d42c462f49721d8ae37d8f34492b752fd063a"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_1/best_val_predictions.csv",
+      "bytes": 2995,
+      "sha256": "aab443f39d16c530d01d83313b93394568073296cddd938d27075ae3d1875d0a"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_1/config.yaml",
+      "bytes": 1511,
+      "sha256": "7b2c9c1e0329caa0a7c6f960636831d3c29844aa4fbb1f54fb2236125529b48a"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_1/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_1/history.csv",
+      "bytes": 10489,
+      "sha256": "7d7da8cbc67c82159c820af963cbcb0d8060b24db7ff2edc6c43af514871e2db"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_1/run_info.json",
+      "bytes": 842,
+      "sha256": "ce28b87330ed8b5f75f7d7091ecd5c6dc2108dfd66cc23b27396e4ed402baa98"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_1/test_metrics.json",
+      "bytes": 341,
+      "sha256": "a1594ed171e0ed6205bea015a9a6db0d1d3d58b2f79cd6eb25f1dcc005414ef2"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_1/test_predictions.csv",
+      "bytes": 2988,
+      "sha256": "a918555f452c654ead298fe78796993b63d75f929133bc1c430801e30e4829ec"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_2/best_val_predictions.csv",
+      "bytes": 2985,
+      "sha256": "0efd60b64df5ef65d38e348b7bc6bc8f8dba7cf1ee8f41755543b56bce2de386"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_2/config.yaml",
+      "bytes": 1511,
+      "sha256": "1e867e74f3f574de5a05d1209246c8e0ae7ced66b742dc7acf732b981f303d3e"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_2/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_2/history.csv",
+      "bytes": 6030,
+      "sha256": "57139894baad6164f3d899238bbc33829ca868f1fd2922a8378361eb1cf65220"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_2/run_info.json",
+      "bytes": 842,
+      "sha256": "7975680f062bcda7b78196e24e69fc9ffca72def2ee52b37e132583019757253"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_2/test_metrics.json",
+      "bytes": 345,
+      "sha256": "7c896b4d15647d7755e60ac192ad08dff0fea17eb20636da6464e201579e2a35"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_2/test_predictions.csv",
+      "bytes": 3013,
+      "sha256": "a967496db5419633a779f6bfa6dc2a810fe07074701f7308cfc536d7d9704d0d"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_3/best_val_predictions.csv",
+      "bytes": 2973,
+      "sha256": "7f39c3f5697ba3f7bcd070b420a832aac598caa16c422dbe1daddd58c4007c36"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_3/config.yaml",
+      "bytes": 1510,
+      "sha256": "f5de244614d761035fbbe56940fd25bbf4d0865e04031e0527f09ff389665e40"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_3/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_3/history.csv",
+      "bytes": 6027,
+      "sha256": "e4849ae971e13933bc91876b5571c5d4884a7e670629435f7a110e2795d17155"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_3/run_info.json",
+      "bytes": 842,
+      "sha256": "418a8528c55a44bebd6948c95d3fe2e22039aaf65ce668f6e7a88b77e88d73ae"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_3/test_metrics.json",
+      "bytes": 342,
+      "sha256": "186c16cc4fef7c5e434d4e831328f67fbc2afd511678be2fe69379e668333580"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_3/test_predictions.csv",
+      "bytes": 2985,
+      "sha256": "9335e6f1d3ae701cee0105574ccbc2082146f4d0035052019526687cd1bf4e3e"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_4/best_val_predictions.csv",
+      "bytes": 2999,
+      "sha256": "99d00bb20d5150de06f3443cba7ea5bfbf2cc645a916afd4c8e0b6d9f5df568b"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_4/config.yaml",
+      "bytes": 1511,
+      "sha256": "1e867e74f3f574de5a05d1209246c8e0ae7ced66b742dc7acf732b981f303d3e"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_4/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_4/history.csv",
+      "bytes": 9858,
+      "sha256": "2f4f58efc83c9c99ba77aa2927e3ddb77c79c01a0f26911c9869e80771cb7b70"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_4/run_info.json",
+      "bytes": 842,
+      "sha256": "20238ae7ff53b7f21bbb96d90e3b60223e62cd2a36932773661e4c840c8206ce"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_4/test_metrics.json",
+      "bytes": 344,
+      "sha256": "1065bd7c63d05d10e2d856545e0cbdda62cdc6b86d0c8210c75e9722082094ec"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/fold_4/test_predictions.csv",
+      "bytes": 2939,
+      "sha256": "72a3d12a3537af8fae935b2a9d1419dc2a7b02a6c5425fcb29700bdb8a91be8a"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_aem_20261111_154122/summary.json",
+      "bytes": 2117,
+      "sha256": "a0822a34b4ea13e0a21e26c9fdeb8a889444f41648e444aeb0e1c5fd958c21e4"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_0/best_val_predictions.csv",
+      "bytes": 2974,
+      "sha256": "2fe42236fbaea2bc67ebb4367c5c4cff11dd44fe37fbd106497cdbdb9de78fe8"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_0/config.yaml",
+      "bytes": 1449,
+      "sha256": "a46f63c33240b0aea506fe6f2f7e2294404696377e514386407255561d38f351"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_0/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_0/history.csv",
+      "bytes": 20800,
+      "sha256": "72f322df0e3d75810676c62a5fbcb81bcbeb5e0791380406b62370d8dfe84da9"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_0/run_info.json",
+      "bytes": 699,
+      "sha256": "40f6c4944e24a16f6fe0c45d55387198497e8db79d1a379fdc2159bb803ae83f"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_0/test_metrics.json",
+      "bytes": 346,
+      "sha256": "b393ebfdbc5e34f32fcf8d6f7f28f3400b6509b2a1207b332d74c298fe365dd3"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_0/test_predictions.csv",
+      "bytes": 3001,
+      "sha256": "e1a05d9001474b2ec50a49fe003da0e9d423b9e2f310dbd48760487acf6a2d96"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_1/best_val_predictions.csv",
+      "bytes": 3015,
+      "sha256": "6bf2e17cbb68e80460a8b85f6d0808b475ec1738549782ea4afa8d5d829be843"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_1/config.yaml",
+      "bytes": 1449,
+      "sha256": "a46f63c33240b0aea506fe6f2f7e2294404696377e514386407255561d38f351"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_1/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_1/history.csv",
+      "bytes": 4782,
+      "sha256": "1ad374f541a828ce8d8d08eaaabff7d484189d84b6fec8a1512f97a915547a4a"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_1/run_info.json",
+      "bytes": 698,
+      "sha256": "adafd24471722d9c9d5927f10a76a8caa52cb4e999124b5bf3a2518cd82820f7"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_1/test_metrics.json",
+      "bytes": 344,
+      "sha256": "eb313485cd7284b9f656e2473e768c88be9e55378da11becab26cb82fb1289e6"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_1/test_predictions.csv",
+      "bytes": 3001,
+      "sha256": "7bbbda817fac73f51f918a3e4a053f164577d28532a9bc0b224e660241bf8580"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_2/best_val_predictions.csv",
+      "bytes": 2976,
+      "sha256": "b3f10d5b726d30dbe36465629f6d6db1e6fc0822313968392ef6bd9f123a99ae"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_2/config.yaml",
+      "bytes": 1449,
+      "sha256": "3bed084c71e111af7e89180546f58d8da48cde49bb1b7f8350fbd3caab88ed76"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_2/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_2/history.csv",
+      "bytes": 4776,
+      "sha256": "375823a8892459e70670a8b8ba4044944b9229d8934915105a9009f16cd2e6cd"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_2/run_info.json",
+      "bytes": 698,
+      "sha256": "a9afb69e627d1a8addcb0457c5ef58caca0eab1d93841b3e7445e2ed6153f3af"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_2/test_metrics.json",
+      "bytes": 343,
+      "sha256": "6c4ce6c8873a0a4650214cfcb70c1025a8f31ac303f78e6811c97ab89294f71b"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_2/test_predictions.csv",
+      "bytes": 3019,
+      "sha256": "956b012e54705c3aab8671cff0af8dfe095c2d7779f6a62a1fa6ef9a74a158dd"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_3/best_val_predictions.csv",
+      "bytes": 2962,
+      "sha256": "a6ba126231b107072c10378e343377d24ff427cf5ef66c6f0555db4c202cefe4"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_3/config.yaml",
+      "bytes": 1448,
+      "sha256": "989bdbe38c5425eace846c5dcc2022db2eb719b58e0f2aaa3344cb888e6ae31c"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_3/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_3/history.csv",
+      "bytes": 4733,
+      "sha256": "1413abdc3bb964d7361d89f912d50ea28ea5a6739d94e861309b6824e3e6ec24"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_3/run_info.json",
+      "bytes": 698,
+      "sha256": "567e2620aaef31720a7c51a56a8caf11b18ac1c2c3e57698117a3d32cf113384"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_3/test_metrics.json",
+      "bytes": 344,
+      "sha256": "aed3282954ce60ff11c70c0b5076b3b900baf2f6931904be773d61043c11200a"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_3/test_predictions.csv",
+      "bytes": 2990,
+      "sha256": "8301a867b3342f3d5f7a94a47eb4809f9a647f4ac51863b227820ce294269cb0"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_4/best_val_predictions.csv",
+      "bytes": 3014,
+      "sha256": "cda5c45b18ba07ee58a1b825fbee64242b972897b00135d652678f1c2dd23f8c"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_4/config.yaml",
+      "bytes": 1449,
+      "sha256": "3bed084c71e111af7e89180546f58d8da48cde49bb1b7f8350fbd3caab88ed76"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_4/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_4/history.csv",
+      "bytes": 6143,
+      "sha256": "6b1d059c5d30e2cb941495c589b3cb0f68cfb63390e30ca2572cc6d0a6728196"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_4/run_info.json",
+      "bytes": 698,
+      "sha256": "98dba26b9bb1081ab94e732e44ef4c836b6638202424600538572949396ce181"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_4/test_metrics.json",
+      "bytes": 345,
+      "sha256": "18838d750a5d6f08e2605f9d9cd58eac3bd5859481e4dc30f4196717717f1cbe"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/fold_4/test_predictions.csv",
+      "bytes": 2944,
+      "sha256": "bc3325b220af9e6acbe8583e53090858918c083341033e564e2e7a98f13bee84"
+    },
+    {
+      "path": "camil_attn_adamw_asrd_sr0p05_first10_20261111_204023/summary.json",
+      "bytes": 2124,
+      "sha256": "7c2ac390f0e403869d90f8f70eebd466ab5cd14f414f91581afa132d53ad5d85"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_0/best_val_predictions.csv",
+      "bytes": 2978,
+      "sha256": "f558c24feaee763a1a41197862f0d284d123a5f1fdb7ac389d694513ad0a1cfd"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_0/config.yaml",
+      "bytes": 1326,
+      "sha256": "3b3f28abc0c96a5b6388d26457355e8a5a83fac9c8687964ced318f9167da986"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_0/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_0/history.csv",
+      "bytes": 19229,
+      "sha256": "01860dab5cd1eb76efde700cdff316535b20ff32f72d47876729af2a0b30f79d"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_0/run_info.json",
+      "bytes": 694,
+      "sha256": "c8cd23945df2786bf8d490148ad5bea66fb8b2d63ed3cc96578eccfaefd389a4"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_0/test_metrics.json",
+      "bytes": 344,
+      "sha256": "b46ac05a9f1f9ad5da6500001df4357e11fbc329ba3108b8d1bcbdb82bb694b2"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_0/test_predictions.csv",
+      "bytes": 2999,
+      "sha256": "ee67b6baccebeed99695d6d1947fb5d4bb316ad2ac20fe747650a42040bdfdab"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_1/best_val_predictions.csv",
+      "bytes": 2979,
+      "sha256": "ef22e6575cb3e643da9696a7b3fb74b796e5338cc47d1092129bc08ff6117444"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_1/config.yaml",
+      "bytes": 1326,
+      "sha256": "3b3f28abc0c96a5b6388d26457355e8a5a83fac9c8687964ced318f9167da986"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_1/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_1/history.csv",
+      "bytes": 11989,
+      "sha256": "cab0cd48fa49e5cedfd697484aa53357a6198951c562cd7a008bbab09424a0e6"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_1/run_info.json",
+      "bytes": 693,
+      "sha256": "80b1cf58e0ddee42a972479bffc4f88423f76b8780947c75acb2058c7d7ecee4"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_1/test_metrics.json",
+      "bytes": 344,
+      "sha256": "3e1014255acdc2f13c6190e40bd7671cf4247cf3b4061a4ca0cddda62bf22810"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_1/test_predictions.csv",
+      "bytes": 2972,
+      "sha256": "b6b7ce196106fcd007f4cb943689deae59ed2f461ba073bc9247b858bfc02686"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_2/best_val_predictions.csv",
+      "bytes": 2978,
+      "sha256": "e560a9b321b1c6018a4acfdf1236e65a16d532bc1d170e6a5d5189ec8e9b664f"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_2/config.yaml",
+      "bytes": 1326,
+      "sha256": "59d5df9d8aedfa91d01219dd7faf7774851515dcef2ca2b5db85d2bfdf4829fa"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_2/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_2/history.csv",
+      "bytes": 4575,
+      "sha256": "f04d5022854356681e69e1d1110640f9b60fe0ee53cee717bc4aa91eae19be26"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_2/run_info.json",
+      "bytes": 693,
+      "sha256": "d477cea166928e4cb176f2e2703c08e69edeb00656d40c70b236ab03cfb24da7"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_2/test_metrics.json",
+      "bytes": 342,
+      "sha256": "e32a0cf5239e47271d02e4c948000a6e9a6b885d197342e1519c57236fa551f0"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_2/test_predictions.csv",
+      "bytes": 3016,
+      "sha256": "9d61196dc3a1363a4be5c33ece572a9a48b8fcf932964afcddd92d88a1324d0b"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_3/best_val_predictions.csv",
+      "bytes": 2946,
+      "sha256": "e898fd986e494954f70664464621aa446fa884d60aa6995482a79fe7716d321e"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_3/config.yaml",
+      "bytes": 1325,
+      "sha256": "557178a1d2c22b6255751c589f79027c83ed3edc3cb23f0b407ad7590bec99c3"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_3/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_3/history.csv",
+      "bytes": 9349,
+      "sha256": "72252075d8a792bb5894033ab1405c1808a01e3c851b77b61e2c6676360e575c"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_3/run_info.json",
+      "bytes": 693,
+      "sha256": "3e84b7142ef91bc173b225586ec1eeaf03d0aa79fc3db47aa4dbab6ff3a3535c"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_3/test_metrics.json",
+      "bytes": 345,
+      "sha256": "ce181bada2e017546d6e59644271d0a90b4fd03f9c7a6183e6f2fac66c921abe"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_3/test_predictions.csv",
+      "bytes": 2964,
+      "sha256": "54da4f8efe1a95d55640b48bfdd312e8b7411ce9d7e790b6fab7fd8e5f45e3be"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_4/best_val_predictions.csv",
+      "bytes": 3004,
+      "sha256": "5bef5bf92eea79d86ab3463c6ccf4b90a99914a460ae513e76753163168fcbb6"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_4/config.yaml",
+      "bytes": 1326,
+      "sha256": "59d5df9d8aedfa91d01219dd7faf7774851515dcef2ca2b5db85d2bfdf4829fa"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_4/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_4/history.csv",
+      "bytes": 5717,
+      "sha256": "b77bb835f0874193273c1f79483438f906db8f2bcfbbf03b6c0bd514a47119e8"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_4/run_info.json",
+      "bytes": 692,
+      "sha256": "94e60afb8d31f9d4864b539ab0dd7e2b251ed67c17d7aedfbcf325bc34a171de"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_4/test_metrics.json",
+      "bytes": 339,
+      "sha256": "b70fc803a465ce3c3685e462e359a5d5a23a783985ad71d823d1df2ee449b912"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/fold_4/test_predictions.csv",
+      "bytes": 2935,
+      "sha256": "207141bad2a0252fca4523e42804fda5ddc601756c06508a0766bcd6db72ed11"
+    },
+    {
+      "path": "camil_attn_adamw_clsdrop03_5fold/summary.json",
+      "bytes": 2116,
+      "sha256": "db337bfbe7382aca6a922902be3cc24bcfdf824b0684d7ce0f2155966f54c1a8"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_0/best_val_predictions.csv",
+      "bytes": 2980,
+      "sha256": "7c3e5baa34f357ecd09c76dceedecc7042c097d4e1e0aa5f0bd68bf94cc50d96"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_0/config.yaml",
+      "bytes": 1321,
+      "sha256": "eb3ea67dd1517a05db9647e5696a6594ca80579e377ca0f3c1eb85f8ba1ae088"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_0/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_0/history.csv",
+      "bytes": 11552,
+      "sha256": "c06b0dc4eacefb3fb25ab88cd643ec9ba4619cf4a47720d295288cfa31abf9bf"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_0/run_info.json",
+      "bytes": 694,
+      "sha256": "402966bf0ec56b909556d634cbd69d225b494d4831a4d553f700a568855ae8fe"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_0/test_metrics.json",
+      "bytes": 346,
+      "sha256": "a90b81aa2e6de08c3b09fa8f1b6acb7006462dc5ca8d9405d1a14afd4a07d340"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_0/test_predictions.csv",
+      "bytes": 3000,
+      "sha256": "604ac3e5937c8a4d37e4930a681c82f43406c605a516b02fb2585b97193dec24"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_1/best_val_predictions.csv",
+      "bytes": 3004,
+      "sha256": "8406cfbd6378f255b606a684742d4f2c8f7afefbbab733b598a2bcdcf54f40af"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_1/config.yaml",
+      "bytes": 1321,
+      "sha256": "eb3ea67dd1517a05db9647e5696a6594ca80579e377ca0f3c1eb85f8ba1ae088"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_1/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_1/history.csv",
+      "bytes": 6434,
+      "sha256": "3488c8e8fcb49db028b83a6dbc2109faf19abe342f811787276a1c97e0d7b6e7"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_1/run_info.json",
+      "bytes": 693,
+      "sha256": "a2159174320e24e19091336c71d4d83727846e06e8122aa87fde6b3d1ce40cad"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_1/test_metrics.json",
+      "bytes": 343,
+      "sha256": "f1db630446938d42982165afb15ae8aba5ae5a30f23fd482fc01baf63415b429"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_1/test_predictions.csv",
+      "bytes": 2986,
+      "sha256": "bf6c5b2b243199fcddab820307a7b5ccc2fa52f27960a2661546118f8d007f07"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_2/best_val_predictions.csv",
+      "bytes": 2988,
+      "sha256": "b0216fc56dec3ce76ef0cae3e2a3af057c056077200699f582cf3bbfb8fa290e"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_2/config.yaml",
+      "bytes": 1321,
+      "sha256": "6fa8c88e541b3c02506d566e7b1e1eb12323be95ee62b5ca991ae95681205c00"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_2/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_2/history.csv",
+      "bytes": 4561,
+      "sha256": "4ad63fc88469973716d3e1adc8f9112b3c665a07b9326b6d94d5f8edbf6f2572"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_2/run_info.json",
+      "bytes": 693,
+      "sha256": "68c6c1ae4f7c5fa60cf13d9e3144543e5996c6f13f6c923f0582171e2b4d059a"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_2/test_metrics.json",
+      "bytes": 333,
+      "sha256": "63ec53af18ee7d9ba712c28465a78e02a60d79fdc7d347120c53d157336ba012"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_2/test_predictions.csv",
+      "bytes": 3022,
+      "sha256": "8095f49081b99cb34fb6b817da7372faee9f4fa4c30355f5fb1cd45ae00a75f5"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_3/best_val_predictions.csv",
+      "bytes": 2951,
+      "sha256": "2f22eaab582262d8d230ea16fdcb8cfa0dab6d2fac30000e488d3785344a2691"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_3/config.yaml",
+      "bytes": 1320,
+      "sha256": "65228f158cc42d41fabaac10a29e93620027a054ec1a3c51431218e9a16a042e"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_3/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_3/history.csv",
+      "bytes": 5179,
+      "sha256": "6a2a81f46a338d6235065039078e1ebf6ca2e194ee96ecb1a0902623043a85b6"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_3/run_info.json",
+      "bytes": 693,
+      "sha256": "775201cb47c986f3b2e818329136ec9765f1387a3df516fe1dac963910fb3d45"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_3/test_metrics.json",
+      "bytes": 336,
+      "sha256": "1c64b39f6faa7aa9084bd994196965240528e80deb1ec5393c55859f4338684f"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_3/test_predictions.csv",
+      "bytes": 2980,
+      "sha256": "a915167eb0587647617a3ef637372ba4dfb1acc0d0572b274dbfbec351f4ab1a"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_4/best_val_predictions.csv",
+      "bytes": 2979,
+      "sha256": "302d70ffd1f8fb09d5fb397a55de68076577561e44d5a510bca2970b5744b268"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_4/config.yaml",
+      "bytes": 1321,
+      "sha256": "6fa8c88e541b3c02506d566e7b1e1eb12323be95ee62b5ca991ae95681205c00"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_4/data_provenance.json",
+      "bytes": 3514,
+      "sha256": "b93a416f4a4abe1eaf12a1a5d5bf2ffecfdf4828c31a8fdbadc498b4392f7bd1"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_4/history.csv",
+      "bytes": 13006,
+      "sha256": "4a6784c8b419ba98019bf532e8ca4b2a5ed4868280f0998e6490c4523f5b500d"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_4/run_info.json",
+      "bytes": 693,
+      "sha256": "427aedd766d536332b62238bcd4b275ae1c3d75ad3d30345fab92f334d18b0cd"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_4/test_metrics.json",
+      "bytes": 332,
+      "sha256": "881b468b3d02571a99e4bdc49ab437ee2994d8ed8368331f8d0ae860ed8aba24"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/fold_4/test_predictions.csv",
+      "bytes": 2930,
+      "sha256": "80f7870c1c2f5a9753b863503051972f3690ac7c63b4cd3122e9ecfc4ca852af"
+    },
+    {
+      "path": "camil_mean_adamw_5fold_20261111/summary.json",
+      "bytes": 2091,
+      "sha256": "d063aa5a5e3e42efea6a253631b9c33e77f1fae968b74c4a11d47b33b4f7ebda"
+    },
+    {
+      "path": "comparison.md",
+      "bytes": 11244,
+      "sha256": "5c95b030fbfd683e2314b56538aedc81213a195d1fd96bb750c32c33389b3089"
+    },
+    {
+      "path": "fold_metrics.csv",
+      "bytes": 16678,
+      "sha256": "64ce65837463ea9ead656380c832580b0589625b319b39293c5a4cf82829a5f5"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4040,
+      "sha256": "a3422c770ab0ccfcbfc45055c43994b472de0e63f10d30cf3eb82ebacf420d17"
+    },
+    {
+      "path": "summary.csv",
+      "bytes": 4136,
+      "sha256": "c3da2ed9c743c019b98604f65deebde78e827f7a448b4c1b58417be1222f47da"
+    }
+  ]
+}
