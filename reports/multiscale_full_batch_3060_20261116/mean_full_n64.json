@@ -1,0 +1,472 @@
+{
+  "synthetic": true,
+  "config": {
+    "data_mode": "native512",
+    "data_manifest": "Manifests/patch_manifest.csv",
+    "split_scheme": "5fold",
+    "shared_encoder": {
+      "backbone": "resnet18",
+      "pretrained": false,
+      "trainable": "layer4",
+      "freeze_bn": true,
+      "encoder_lr": 1e-05
+    },
+    "classification": {
+      "pooling": [
+        "mean"
+      ],
+      "embedding_dim": 256,
+      "attention_hidden_dim": 128,
+      "topk": 5,
+      "region_dropout": 0.0,
+      "attention_dropout": 0.0,
+      "projection_dropout": 0.0,
+      "classifier_dropout": 0.0,
+      "head_lr": 0.0002,
+      "encoder_lr": 1e-05,
+      "vib": {
+        "enabled": false,
+        "beta": 0.0001
+      },
+      "aem": {
+        "enabled": false,
+        "weight": 0.01,
+        "anneal_epochs": 50
+      }
+    },
+    "metasr": {
+      "scale": 16,
+      "rgb_range": 1,
+      "channels": 64,
+      "residual_scale": 0.1,
+      "dropout": 0.0,
+      "hr_tile": 256
+    },
+    "lambda_sr": 0.0,
+    "sr_train_crop": 128,
+    "sr_lr": 0.0001,
+    "training": {
+      "use_region_microbatch": false,
+      "region_microbatch_size": 1,
+      "max_train_regions": null,
+      "class_weight": "balanced",
+      "sr_stop_after_epochs": null
+    },
+    "optimizer": "adamw",
+    "precision": "bf16",
+    "lr": 0.0002,
+    "weight_decay": 0.01,
+    "label_smoothing": 0.1,
+    "gradient_clip_norm": 1.0,
+    "epochs": 300,
+    "min_epochs": 5,
+    "early_stopping_patience": 12,
+    "early_stopping_min_delta": 0.001,
+    "checkpoint_metric": "val_auc",
+    "scheduler": "plateau",
+    "scheduler_patience": 4,
+    "scheduler_factor": 0.5,
+    "min_lr": 1e-06,
+    "ema_decay": 0.999,
+    "seed": 1,
+    "augmentation": {
+      "enabled": true,
+      "horizontal_flip": 0.5,
+      "vertical_flip": 0.5,
+      "rotation90": true,
+      "brightness": 0.15,
+      "contrast": 0.15,
+      "saturation": 0.1,
+      "hue": 0.01
+    },
+    "class_weight_values": [
+      0.8170212765957447,
+      1.1829787234042555
+    ],
+    "multiscale": {
+      "hr_patch_size": 256,
+      "patches_per_region": 2,
+      "sr_regions_per_wsi": 2
+    }
+  },
+  "config_path": "D:\\Backup\\Downloads\\metasr-e2e-main\\metasr-e2e-main\\E2E_MetaSR\\E2E_MultiScale_OptIn\\configs\\camil_s123_lrhr_mean_sr0.yaml",
+  "pooling": "mean",
+  "n": 64,
+  "mode": "full",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "total_vram_bytes": 6441926656,
+  "source_sha256": {
+    "E2E_MultiScale_OptIn\\multiscale_train_mean.py": "5dcf6d716ac4791c0cb07c69cc335fae2ffe68c8a97b593874bbc681a4553b9a",
+    "engine.py": "6c70eff160dc3c1cb6e859ec65e5b36c298d42a655d6e9970c0441092a99e544",
+    "E2E_MultiScale_OptIn\\multiscale_model_mean.py": "217c0ee18c4a0e8a652fe842494045abba6bbd6d054291b083220615e1ce90ef",
+    "E2E_MultiScale_OptIn\\multiscale_model.py": "b27587cfe6cf6d7ee4f9816dced5e61476e7b6bc3afecf59fac452033ecf9d66"
+  },
+  "steps": [
+    {
+      "index": 1,
+      "region_batches": [
+        {
+          "lr": [
+            64,
+            3,
+            512,
+            512
+          ],
+          "hr": [
+            64,
+            2,
+            3,
+            256,
+            256
+          ]
+        }
+      ],
+      "encoder_inputs": [
+        [
+          64,
+          3,
+          512,
+          512
+        ],
+        [
+          128,
+          3,
+          256,
+          256
+        ]
+      ],
+      "stage4": [
+        {
+          "shape": [
+            64,
+            512,
+            16,
+            16
+          ],
+          "dtype": "torch.bfloat16",
+          "requires_grad": true
+        },
+        {
+          "shape": [
+            128,
+            512,
+            8,
+            8
+          ],
+          "dtype": "torch.bfloat16",
+          "requires_grad": true
+        }
+      ],
+      "stage4_gradients": [
+        [
+          128,
+          512,
+          8,
+          8
+        ],
+        [
+          64,
+          512,
+          16,
+          16
+        ]
+      ],
+      "fused_gradients": [
+        [
+          64,
+          256
+        ]
+      ],
+      "mil_inputs": [
+        [
+          64,
+          256
+        ]
+      ],
+      "backward_calls": 1,
+      "optimizer_steps": 1,
+      "after_forward": {
+        "allocated_bytes": 458982912,
+        "reserved_bytes": 1906311168,
+        "peak_allocated_bytes": 1813885952,
+        "peak_reserved_bytes": 1906311168
+      },
+      "after_backward": {
+        "allocated_bytes": 155079680,
+        "reserved_bytes": 1908408320,
+        "peak_allocated_bytes": 1813885952,
+        "peak_reserved_bytes": 1908408320
+      },
+      "after_optimizer": {
+        "allocated_bytes": 225935872,
+        "reserved_bytes": 1912602624,
+        "peak_allocated_bytes": 1813885952,
+        "peak_reserved_bytes": 1912602624
+      },
+      "outcome": {
+        "train_loss_cls": 0.6237970590591431,
+        "train_loss_sr": 0.0,
+        "train_loss_total": 0.6237970590591431,
+        "train_attention_entropy": -0.0,
+        "grad_norm": 12.398500442504883,
+        "aem_weight": 0.0
+      },
+      "after_ema": {
+        "allocated_bytes": 225932800,
+        "reserved_bytes": 1912602624,
+        "peak_allocated_bytes": 1813885952,
+        "peak_reserved_bytes": 1912602624
+      },
+      "seconds": 1.5935184999980265
+    },
+    {
+      "index": 2,
+      "region_batches": [
+        {
+          "lr": [
+            64,
+            3,
+            512,
+            512
+          ],
+          "hr": [
+            64,
+            2,
+            3,
+            256,
+            256
+          ]
+        }
+      ],
+      "encoder_inputs": [
+        [
+          64,
+          3,
+          512,
+          512
+        ],
+        [
+          128,
+          3,
+          256,
+          256
+        ]
+      ],
+      "stage4": [
+        {
+          "shape": [
+            64,
+            512,
+            16,
+            16
+          ],
+          "dtype": "torch.bfloat16",
+          "requires_grad": true
+        },
+        {
+          "shape": [
+            128,
+            512,
+            8,
+            8
+          ],
+          "dtype": "torch.bfloat16",
+          "requires_grad": true
+        }
+      ],
+      "stage4_gradients": [
+        [
+          128,
+          512,
+          8,
+          8
+        ],
+        [
+          64,
+          512,
+          16,
+          16
+        ]
+      ],
+      "fused_gradients": [
+        [
+          64,
+          256
+        ]
+      ],
+      "mil_inputs": [
+        [
+          64,
+          256
+        ]
+      ],
+      "backward_calls": 1,
+      "optimizer_steps": 1,
+      "after_forward": {
+        "allocated_bytes": 540062208,
+        "reserved_bytes": 2449473536,
+        "peak_allocated_bytes": 1901780992,
+        "peak_reserved_bytes": 2449473536
+      },
+      "after_backward": {
+        "allocated_bytes": 226459648,
+        "reserved_bytes": 2449473536,
+        "peak_allocated_bytes": 1901780992,
+        "peak_reserved_bytes": 2449473536
+      },
+      "after_optimizer": {
+        "allocated_bytes": 226460160,
+        "reserved_bytes": 2449473536,
+        "peak_allocated_bytes": 1901780992,
+        "peak_reserved_bytes": 2449473536
+      },
+      "outcome": {
+        "train_loss_cls": 0.2781754434108734,
+        "train_loss_sr": 0.0,
+        "train_loss_total": 0.2781754434108734,
+        "train_attention_entropy": -0.0,
+        "grad_norm": 5.23935079574585,
+        "aem_weight": 0.0
+      },
+      "after_ema": {
+        "allocated_bytes": 226457088,
+        "reserved_bytes": 2449473536,
+        "peak_allocated_bytes": 1901780992,
+        "peak_reserved_bytes": 2449473536
+      },
+      "seconds": 1.0339072000024316
+    },
+    {
+      "index": 3,
+      "region_batches": [
+        {
+          "lr": [
+            64,
+            3,
+            512,
+            512
+          ],
+          "hr": [
+            64,
+            2,
+            3,
+            256,
+            256
+          ]
+        }
+      ],
+      "encoder_inputs": [
+        [
+          64,
+          3,
+          512,
+          512
+        ],
+        [
+          128,
+          3,
+          256,
+          256
+        ]
+      ],
+      "stage4": [
+        {
+          "shape": [
+            64,
+            512,
+            16,
+            16
+          ],
+          "dtype": "torch.bfloat16",
+          "requires_grad": true
+        },
+        {
+          "shape": [
+            128,
+            512,
+            8,
+            8
+          ],
+          "dtype": "torch.bfloat16",
+          "requires_grad": true
+        }
+      ],
+      "stage4_gradients": [
+        [
+          128,
+          512,
+          8,
+          8
+        ],
+        [
+          64,
+          512,
+          16,
+          16
+        ]
+      ],
+      "fused_gradients": [
+        [
+          64,
+          256
+        ]
+      ],
+      "mil_inputs": [
+        [
+          64,
+          256
+        ]
+      ],
+      "backward_calls": 1,
+      "optimizer_steps": 1,
+      "after_forward": {
+        "allocated_bytes": 540062208,
+        "reserved_bytes": 2449473536,
+        "peak_allocated_bytes": 1901780992,
+        "peak_reserved_bytes": 2449473536
+      },
+      "after_backward": {
+        "allocated_bytes": 226459648,
+        "reserved_bytes": 2449473536,
+        "peak_allocated_bytes": 1901780992,
+        "peak_reserved_bytes": 2449473536
+      },
+      "after_optimizer": {
+        "allocated_bytes": 226460160,
+        "reserved_bytes": 2449473536,
+        "peak_allocated_bytes": 1901780992,
+        "peak_reserved_bytes": 2449473536
+      },
+      "outcome": {
+        "train_loss_cls": 0.1642901599407196,
+        "train_loss_sr": 0.0,
+        "train_loss_total": 0.1642901599407196,
+        "train_attention_entropy": -0.0,
+        "grad_norm": 1.2278163433074951,
+        "aem_weight": 0.0
+      },
+      "after_ema": {
+        "allocated_bytes": 226457088,
+        "reserved_bytes": 2449473536,
+        "peak_allocated_bytes": 1901780992,
+        "peak_reserved_bytes": 2449473536
+      },
+      "seconds": 1.0217484999993758
+    }
+  ],
+  "model_and_ema": {
+    "allocated_bytes": 102609920,
+    "reserved_bytes": 123731968,
+    "peak_allocated_bytes": 102609920,
+    "peak_reserved_bytes": 123731968
+  },
+  "status": "passed",
+  "ema_updates": 3,
+  "nvidia_smi_100ms": {
+    "samples": 35,
+    "used_before_mib": 1815.0,
+    "peak_device_used_mib": 4296.0
+  }
+}

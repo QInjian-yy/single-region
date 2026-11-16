@@ -110,7 +110,7 @@ def wsi_forward(model, sample, cache, device, config, *, epoch=None):
     n = sample["n_regions"]
     if n < 1:
         raise ValueError("Empty WSI bag")
-    bsz = config["training"]["region_microbatch_size"]
+    bsz = engine.region_batch_size(config, n)
     sr_coeff = float(config["lambda_sr"]) if epoch is not None else 0.0
     sr_count = min(n, config["multiscale"]["sr_regions_per_wsi"]) if sr_coeff else 0
     sr_indices = set(torch.randperm(n)[:sr_count].tolist()) if sr_count else set()

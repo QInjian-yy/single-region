@@ -257,6 +257,12 @@ Region 内部的空间 Top-K 统计，默认值 0，启用示例见
 共享编码器在线更新；这两条入口在推理时仍使用真实 HR 小块。
 它们使用独立 checkpoint 格式和模块内的加载路径。
 
+两条多尺度入口均支持 `training.use_region_microbatch: false`：一次编码当前
+WSI 的全部 N 个 region，LR 输入为 `[N,3,512,512]`，HR 输入为
+`[N,K,3,P,P]`。设为 `true` 时按 `region_microbatch_size`（1～4）分块编码；
+两种模式均在全部 region 特征拼接后做一次 WSI 池化、反传和参数更新。
+`configs/camil_s123_lrhr_mean_sr0.yaml` 默认使用整批模式。
+
 数据目录、图像、权重、实验输出和本次服务器的划分文件另行维护。
 各入口通过 `--protocol-dir`、`--train-root`、`--test-root`、
 `--data-root` 或 `--labels-csv` 等参数指定适用的数据位置。

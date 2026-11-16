@@ -37,7 +37,7 @@ lambda_sr: 0.0
 sr_train_crop: 128
 sr_lr: 0.0001
 training:
-  use_region_microbatch: true
+  use_region_microbatch: false
   region_microbatch_size: 1
   max_train_regions: null
   class_weight: balanced
