@@ -240,3 +240,25 @@ SR=0 时不计算 SR 梯度，其范数、比例、余弦记录为 `None`，
 `None`，状态为 `not_applicable_no_trainable_layer4`。零范数时比例或余弦也为
 `None`。诊断使用 `autograd.grad(retain_graph=True)`，不写入 `.grad`，不增加
 前向传播；记录步骤会增加梯度计算耗时，不改变原有 backward、裁剪和更新。
+
+## 服务器新增训练逻辑
+
+`train_e2e_camil_aem.py` 提供 AttentionMIL 的 AEM 正则训练，可组合 ASRD，
+配置和公式见 [AEM 说明](AEM.md)。`classification.spatial_topk_k` 控制
+Region 内部的空间 Top-K 统计，默认值 0，启用示例见
+`configs/camil_attn_adamw_spatial_topk4_5fold.yaml`。
+
+`train_e2e_gcsam_sr.py` 与 `engine_gcsam_sr.py` 提供独立的 GCSAM + SR
+入口，沿用同一 WSI 的两次前向及 RNG 重放；SR 权重由 `lambda_sr` 和
+`training.sr_stop_after_epochs` 控制。原 GCSAM 入口继续用于 SR0。
+
+`E2E_MultiScale_OptIn/multiscale_train.py` 和 `multiscale_train_mean.py`
+分别提供真实 LR+HR 输入的 AttentionMIL 与 MeanMIL 训练。HR 缓存保存像素，
+共享编码器在线更新；这两条入口在推理时仍使用真实 HR 小块。
+它们使用独立 checkpoint 格式和模块内的加载路径。
+
+数据目录、图像、权重、实验输出和本次服务器的划分文件另行维护。
+各入口通过 `--protocol-dir`、`--train-root`、`--test-root`、
+`--data-root` 或 `--labels-csv` 等参数指定适用的数据位置。
+已有数据协议的生成代码位于 `scripts/create_camil_fivefold_splits.py`，
+运行方式可通过该脚本的 `--help` 查看。

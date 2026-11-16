@@ -50,6 +50,10 @@ def load_config(path):
     classification.setdefault("embedding_dim", 256)
     classification.setdefault("attention_hidden_dim", 128)
     classification.setdefault("topk", 5)
+    # Optional feature: absent and zero preserve the original classifier.
+    spatial_topk_k = classification.get("spatial_topk_k", 0)
+    if type(spatial_topk_k) is not int or spatial_topk_k < 0:
+        raise ValueError("classification.spatial_topk_k must be a nonnegative integer")
     classification.setdefault("region_dropout", 0.2)
     classification.setdefault("attention_dropout", 0.2)
     classification.setdefault("projection_dropout", 0.2)

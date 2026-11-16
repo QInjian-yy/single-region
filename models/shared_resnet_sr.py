@@ -114,14 +114,26 @@ class SharedClassifierHead(nn.Module):
         classifier_dropout: float = 0.4,
         pooling=RobustMILPooling.POOLING_BRANCHES,
         vib_enabled: bool = False,
+        spatial_topk_k: int = 0,
     ):
         super().__init__()
+        # Optional Region-INTERNAL spatial pooling. Keep K=0 bit-for-bit legacy.
+        if type(spatial_topk_k) is not int or spatial_topk_k < 0:
+            raise ValueError("classification.spatial_topk_k must be a nonnegative integer")
+        self.spatial_topk_k = spatial_topk_k
         self.projection = nn.Sequential(
             nn.LayerNorm(input_dim * 2),
             nn.Linear(input_dim * 2, embedding_dim, bias=False),
             nn.GELU(),
             nn.Dropout(projection_dropout),
         )
+        if self.spatial_topk_k:
+            # First construct the legacy projection above so enabling Top-K does
+            # not alter the initialization RNG stream for MIL, SR or the encoder.
+            # Only the opt-in projection shape changes.
+            with torch.random.fork_rng(devices=[]):
+                self.projection[0] = nn.LayerNorm(input_dim * 3)
+                self.projection[1] = nn.Linear(input_dim * 3, embedding_dim, bias=False)
         self.mil = RobustMILPooling(
             input_dim=embedding_dim,
             hidden_dim=hidden_dim,
@@ -151,7 +163,13 @@ class SharedClassifierHead(nn.Module):
         mean = F.adaptive_avg_pool2d(stage4, 1).flatten(1)
         variance = F.adaptive_avg_pool2d(stage4.square(), 1).flatten(1) - mean.square()
         std = variance.clamp_min(1e-6).sqrt()
-        return self.projection(torch.cat((mean, std), dim=1))
+        if not self.spatial_topk_k:
+            # Do not touch the original default path or checkpoint tensor shapes.
+            return self.projection(torch.cat((mean, std), dim=1))
+        n_positions = stage4.shape[-2] * stage4.shape[-1]
+        k = min(self.spatial_topk_k, n_positions)
+        spatial_topk = stage4.flatten(2).topk(k, dim=2).values.mean(dim=2)
+        return self.projection(torch.cat((mean, std, spatial_topk), dim=1))
 
     def forward_embeddings(self, embeddings: torch.Tensor, *, return_kl=False):
         if self.vib is not None:
@@ -302,6 +320,7 @@ class SharedResNetSRMIL(nn.Module):
             classifier_dropout=classifier.get("classifier_dropout", 0.4),
             pooling=classifier.get("pooling", RobustMILPooling.POOLING_BRANCHES),
             vib_enabled=self.vib_enabled,
+            spatial_topk_k=classifier.get("spatial_topk_k", 0),
         )
         self.sr = SharedFeatureSRDecoder(
             stage_channels=self.encoder.stage_channels,
@@ -325,6 +344,8 @@ class SharedResNetSRMIL(nn.Module):
         }
         if self.classifier_head.mil.pooling != RobustMILPooling.POOLING_BRANCHES:
             self._arch["mil_pooling"] = list(self.classifier_head.mil.pooling)
+        if self.classifier_head.spatial_topk_k:
+            self._arch["spatial_topk_k"] = self.classifier_head.spatial_topk_k
         if self.vib_enabled:
             self._arch["vib"] = vib
 
@@ -420,6 +441,9 @@ def model_from_checkpoint(saved, device="cpu"):
     )
     if model.classifier_head.mil.pooling != saved_pooling:
         raise ValueError("Checkpoint MIL pooling disagrees with classification.pooling")
+    saved_spatial_topk_k = saved.get("architecture", {}).get("spatial_topk_k", 0)
+    if model.classifier_head.spatial_topk_k != saved_spatial_topk_k:
+        raise ValueError("Checkpoint spatial_topk_k disagrees with classification.spatial_topk_k")
     saved_vib = normalize_vib_config(saved.get("architecture", {}).get("vib"))
     if (model.vib_enabled != saved_vib["enabled"]
             or (model.vib_enabled and model.vib_beta != saved_vib["beta"])):
