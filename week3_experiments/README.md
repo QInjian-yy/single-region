@@ -1,8 +1,8 @@
-# 第三周实验：Attention、AEM 与多尺度输入
+# 第三周实验：Attention、AEM、多尺度与 Region Interaction
 
-本目录归档第三周的 **10 组完整五折实验、50 折**，与[第二周实验](../week2_experiments/README.md)对应。更新日期：2026-11-17。
+本目录归档第三周的 **11 组完整五折实验、55 折**，与[第二周实验](../week2_experiments/README.md)对应。更新日期：2026-11-17。
 
-每组保存 36 份原始记录，共 360 份：五折汇总 `summary.json`，以及 Fold 0–4 的配置、训练历史、运行信息、数据来源、最佳验证预测、测试指标和测试预测。原始记录保持原样。**模型权重仅保留在本地，不上传 best.pth、last.pth、*.pt、*.ckpt 或 *.safetensors。**
+每组保存 36 份原始记录，共 396 份：五折汇总 `summary.json`，以及 Fold 0–4 的配置、训练历史、运行信息、数据来源、最佳验证预测、测试指标和测试预测。原始记录保持原样。**模型权重仅保留在本地，不上传 best.pth、last.pth、*.pt、*.ckpt 或 *.safetensors。**
 
 ## 测试集指标
 
@@ -16,12 +16,21 @@ AUC 为五折等权平均 ± 样本标准差；ACC、BACC、肿瘤召回率、�
 | [多尺度分块 + AEM 0.01](s123_multiscale_only_sr0_20261115_120923) | 0.7345 ± 0.0659 | 68.95 | 66.05 | 50.63 | 81.47 |
 | [多尺度分块 + AEM 0.02](s123_multiscale_aem02_sr0_20261116_111731) | 0.7445 ± 0.0652 | 70.47 | 67.85 | 53.75 | 81.95 |
 | [多尺度整批 + AEM 0.02（SSD）](s123_aem02_wholebag_ssd_5fold_20261116_200914) | **0.7547 ± 0.0771** | 67.94 | 65.70 | 53.75 | 77.66 |
+| [多尺度整批 + AEM 0.02 + Semantic Top-K](s123_relation_topk_5fold_20261117_110419) | 0.7275 ± 0.0669 | 65.92 | 65.40 | 62.50 | 68.31 |
 | [多尺度整批 + AEM 0.03（SSD）](s123_aem03_wholebag_ssd_5fold_20261117_004924) | 0.7344 ± 0.0726 | 69.22 | 67.62 | 58.75 | 76.49 |
 | [多尺度分块 + AEM 0.01，关闭 EMA](s123_multiscale_aem_noema_sr0_20261115_194946) | 0.7052 ± 0.0538 | 65.92 | 64.60 | 57.50 | 71.69 |
 | [多尺度分块 + AEM 0.01，EMA=0.99](s123_multiscale_ema099_sr0_20261116_004012) | 0.7238 ± 0.0521 | 69.73 | 65.86 | 45.00 | 86.73 |
 | [多尺度分块 + AEM 0.01，全程 SR=0.05](s123_multiscale_aem_sr005_20261115_181153) | 0.7157 ± 0.1055 | 66.95 | 65.39 | 56.88 | 73.90 |
 
-## 本次补充的三组实验
+## 本次新增：Semantic Top-K Region Interaction
+
+新增 [s123_relation_topk_5fold_20261117_110419](s123_relation_topk_5fold_20261117_110419)，五折均已完成；保存 36 份原始记录，5 个 best.pth 保留在本地。
+
+相对 AEM=0.02 Whole Bag 基线，配置仅新增 semantic_topk（K=3、temperature=1、初始有效 Gate=0.01）。Test AUC 从 0.754735 降至 0.727472，4/5 折下降；肿瘤召回率提高，但特异度下降，BACC 未改善。没有观察到当前 Top-K 配置的总体收益。
+
+详见[逐折对比、训练轨迹、早停和 Gate 分析](analysis/semantic_topk_vs_wholebag_20261117.md)及[核验数据与原始文件 SHA-256](analysis/semantic_topk_vs_wholebag_20261117.json)。此组为 Semantic Top-K；尚未归档 Global MHSA 的正式五折结果。
+
+## 此前补充的三组实验
 
 - `s123_multiscale_aem02_sr0_20261116_111731`：AEM=0.02，Region microbatch=1。
 - `s123_aem02_wholebag_ssd_5fold_20261116_200914`：AEM=0.02，整张 WSI 的全部 Region 一起编码。
@@ -31,7 +40,7 @@ AUC 为五折等权平均 ± 样本标准差；ACC、BACC、肿瘤召回率、�
 
 ## 配置与对照
 
-- 十组均配置 AttentionMIL + AdamW、ResNet18 ImageNet 预训练、仅微调 layer4、冻结 BN、BF16，训练 seed=1，并启用 AEM。没有启用 ASRD 或 GCSAM。
+- 十一组均配置 AttentionMIL + AdamW、ResNet18 ImageNet 预训练、仅微调 layer4、冻结 BN、BF16，训练 seed=1，并启用 AEM。没有启用 ASRD 或 GCSAM。
 - 除明确列出的变化外，AEM 初始权重为 0.01、50 轮余弦退火，EMA=0.999，SR 权重为 0。
 - 同折配置逐字段比较：分块 0.01 与分块 0.02 仅改变 AEM 权重；分块 0.02 与整批 0.02 仅改变 use_region_microbatch；整批 0.02 与整批 0.03 仅改变 AEM 权重。三组数据来源和划分记录哈希一致。
 - `multiscale_only_sr0` 实际启用了 AEM 0.01。多尺度配置为 LR/HR 共享 ResNet18，每个 Region 使用 2 个 256×256 HR 小块，推理时也使用真实 HR；缓存的是像素，编码器在线训练。
@@ -40,14 +49,16 @@ AUC 为五折等权平均 ± 样本标准差；ACC、BACC、肿瘤召回率、�
 
 ## 结果核验
 
-- 100 份 Val/Test 逐张预测经 sklearn 重算，AUC、ACC、BACC、敏感性、特异度与保存记录完全一致；50 折的阈值和五折汇总也匹配。
-- 50 折按各自配置重放最佳 epoch 选择和早停，均匹配记录。三组新增实验的 15 份 best.pth 元数据也与配置、最佳 epoch 和 EMA 更新次数一致；权重未纳入归档。
-- 每组五折 Test 合计覆盖 393 张不同 WSI，每张恰好测试一次；同折 Val/Test 无重叠，十组对应折的 WSI、标签及 Region 数一致。
-- 十组数据来源、标签和五份划分的记录哈希一致；本周划分与第二周不同，跨周分数差额不能全部归因于模型。原始 camil_5fold_seed123_sourcestrat 划分文件需另行准备，本次未核实实际 Train 名单或患者级独立性。
+- 110 份 Val/Test 逐张预测经 sklearn 重算，AUC、ACC、BACC、敏感性、特异度与保存记录完全一致；55 折的阈值和五折汇总也匹配。
+- 55 折按各自配置重放最佳 epoch 选择和早停，均匹配记录。此前三组实验的 15 份 best.pth 及本次 Top-K 的 5 份 best.pth 元数据均与配置、最佳 epoch 和 EMA 更新次数一致；权重未纳入归档。
+- 每组五折 Test 合计覆盖 393 张不同 WSI，每张恰好测试一次；同折 Val/Test 无重叠，十一组对应折的 WSI、标签及 Region 数一致。
+- 十一组共有的数据来源、标签和五份划分的记录哈希一致；Top-K 额外保存 SSD LR 映射记录，不改变划分；本周划分与第二周不同，跨周分数差额不能全部归因于模型。原始 camil_5fold_seed123_sourcestrat 划分文件需另行准备，本次未核实实际 Train 名单或患者级独立性。
 - 训练 seed 均为 1，五折结果不是五个随机种子的重复实验。整批 0.02 的 AUC 最高；分块 0.02 在当前阈值下有更高的 ACC、BACC。
 
 ## 代码与复现范围
 
 当前仓库已包含[多尺度 Attention 训练入口](../E2E_MultiScale_OptIn/multiscale_train.py)、模型和 HR 像素缓存实现，并支持整批与分块编码。单尺度入口为 `train_e2e_camil_aem.py`；多尺度 checkpoint 格式为 `c16-e2e-lrhr-shared-resnet-sr-aem-v1`。
+
+Top-K 的 checkpoint 格式为 c16-e2e-lrhr-region-relation-v1。本次仅归档实验结果及分析，关系模块及训练入口的本地未提交源码未混入本次记录提交。
 
 本目录保存原始实验记录。运行信息中的 git_commit 不包含服务器当时未提交的改动，不能据此认定历史执行源码与当前仓库逐字一致。图像、原始划分和完整训练复现需独立准备。
