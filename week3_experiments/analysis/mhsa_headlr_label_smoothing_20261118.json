@@ -1,0 +1,625 @@
+{
+  "verified_on": "2026-11-18",
+  "protocol": "camil_5fold_seed123_sourcestrat",
+  "training_seed": 1,
+  "metric_scope": "Five equal-weight folds. Test AUC standard deviation is the sample standard deviation. Test classification metrics use the respective validation threshold.",
+  "checks": {
+    "recomputed_prediction_files": 50,
+    "audited_folds": 25,
+    "newly_archived_folds": 15,
+    "absolute_metric_tolerance": 1e-12,
+    "original_protocol_files_present": false,
+    "patient_level_independence_verified": false,
+    "metrics_and_summary_match": true,
+    "validation_thresholds_and_predictions_match": true,
+    "best_epochs_and_early_stops_match": true,
+    "paired_validation_and_test_membership_labels_region_counts_match": true,
+    "common_data_provenance_matches": true,
+    "original_baseline_records_ssd_lr_mapping": false,
+    "four_other_runs_share_recorded_ssd_lr_mapping": true,
+    "newly_checked_local_best_checkpoints": 15
+  },
+  "runs": {
+    "baseline": {
+      "source_directory": "s123_aem02_wholebag_ssd_5fold_20261116_200914",
+      "means": {
+        "val": {
+          "auc": 0.7470701318223867,
+          "acc": 0.732781564427134,
+          "bacc": 0.7169200971322849,
+          "sensitivity": 0.63125,
+          "specificity": 0.8025901942645698
+        },
+        "test": {
+          "auc": 0.7547351988899168,
+          "acc": 0.6793573515092503,
+          "bacc": 0.6570478723404255,
+          "sensitivity": 0.5375,
+          "specificity": 0.776595744680851
+        }
+      },
+      "test_auc_std": 0.07709773960572507,
+      "val_auc_std": 0.047803622046438246,
+      "test_confusion_total": {
+        "tn": 181,
+        "fp": 52,
+        "fn": 74,
+        "tp": 86
+      },
+      "comparison_to_baseline": {
+        "mean_auc_delta": 0,
+        "by_fold": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "higher": 0,
+        "lower": 0
+      },
+      "changed_config_fields": {},
+      "folds": [
+        {
+          "fold": 0,
+          "best_epoch": 14,
+          "last_epoch": 26,
+          "val_auc": 0.6735372340425533,
+          "test_auc": 0.8257472826086957,
+          "threshold": 0.7574312090873718
+        },
+        {
+          "fold": 1,
+          "best_epoch": 7,
+          "last_epoch": 19,
+          "val_auc": 0.7918882978723405,
+          "test_auc": 0.6858377659574469,
+          "threshold": 0.33836711943149567
+        },
+        {
+          "fold": 2,
+          "best_epoch": 22,
+          "last_epoch": 34,
+          "val_auc": 0.7865691489361702,
+          "test_auc": 0.8494015957446808,
+          "threshold": 0.09802061691880226
+        },
+        {
+          "fold": 3,
+          "best_epoch": 52,
+          "last_epoch": 64,
+          "val_auc": 0.7489809782608695,
+          "test_auc": 0.7194148936170213,
+          "threshold": 0.934369295835495
+        },
+        {
+          "fold": 4,
+          "best_epoch": 6,
+          "last_epoch": 18,
+          "val_auc": 0.734375,
+          "test_auc": 0.6932744565217391,
+          "threshold": 0.10687702894210815
+        }
+      ]
+    },
+    "topk": {
+      "source_directory": "s123_relation_topk_5fold_20261117_110419",
+      "means": {
+        "val": {
+          "auc": 0.7414199814986124,
+          "acc": 0.7172346640701072,
+          "bacc": 0.7129712072155412,
+          "sensitivity": 0.69375,
+          "specificity": 0.7321924144310823
+        },
+        "test": {
+          "auc": 0.7274716697502313,
+          "acc": 0.6592015579357351,
+          "bacc": 0.6540356151711378,
+          "sensitivity": 0.625,
+          "specificity": 0.6830712303422757
+        }
+      },
+      "test_auc_std": 0.0669247218323534,
+      "val_auc_std": 0.061089735747260204,
+      "test_confusion_total": {
+        "tn": 159,
+        "fp": 74,
+        "fn": 60,
+        "tp": 100
+      },
+      "comparison_to_baseline": {
+        "mean_auc_delta": -0.027263529139685504,
+        "by_fold": [
+          -0.020720108695652217,
+          -0.016622340425532012,
+          -0.05518617021276595,
+          -0.048204787234042534,
+          0.004415760869565188
+        ],
+        "higher": 1,
+        "lower": 4
+      },
+      "changed_config_fields": {
+        "region_relation": [
+          null,
+          {
+            "enabled": true,
+            "name": "semantic_topk",
+            "k": 3,
+            "temperature": 1,
+            "gate_init": 0.01
+          }
+        ]
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "best_epoch": 16,
+          "last_epoch": 28,
+          "val_auc": 0.6545877659574468,
+          "test_auc": 0.8050271739130435,
+          "threshold": 0.5
+        },
+        {
+          "fold": 1,
+          "best_epoch": 7,
+          "last_epoch": 19,
+          "val_auc": 0.7955452127659575,
+          "test_auc": 0.6692154255319149,
+          "threshold": 0.6300587952136993
+        },
+        {
+          "fold": 2,
+          "best_epoch": 29,
+          "last_epoch": 41,
+          "val_auc": 0.8045212765957447,
+          "test_auc": 0.7942154255319148,
+          "threshold": 0.1664809286594391
+        },
+        {
+          "fold": 3,
+          "best_epoch": 17,
+          "last_epoch": 29,
+          "val_auc": 0.7235054347826088,
+          "test_auc": 0.6712101063829787,
+          "threshold": 0.08359115943312645
+        },
+        {
+          "fold": 4,
+          "best_epoch": 6,
+          "last_epoch": 18,
+          "val_auc": 0.7289402173913043,
+          "test_auc": 0.6976902173913043,
+          "threshold": 0.10725046694278717
+        }
+      ]
+    },
+    "mhsa": {
+      "source_directory": "s123_global_mhsa_5fold_20261117_163157",
+      "means": {
+        "val": {
+          "auc": 0.7248207678075855,
+          "acc": 0.7122687439143135,
+          "bacc": 0.7116616558741906,
+          "sensitivity": 0.7125,
+          "specificity": 0.7108233117483811
+        },
+        "test": {
+          "auc": 0.7149846785383903,
+          "acc": 0.6590068159688413,
+          "bacc": 0.6528532608695652,
+          "sensitivity": 0.61875,
+          "specificity": 0.6869565217391305
+        }
+      },
+      "test_auc_std": 0.06435700227684595,
+      "val_auc_std": 0.06007233628754247,
+      "test_confusion_total": {
+        "tn": 160,
+        "fp": 73,
+        "fn": 61,
+        "tp": 99
+      },
+      "comparison_to_baseline": {
+        "mean_auc_delta": -0.039750520351526396,
+        "by_fold": [
+          -0.022418478260869623,
+          -0.021276595744680993,
+          -0.08743351063829774,
+          -0.061170212765957466,
+          -0.006453804347826164
+        ],
+        "higher": 0,
+        "lower": 5
+      },
+      "changed_config_fields": {
+        "region_relation": [
+          null,
+          {
+            "enabled": true,
+            "name": "global_mhsa",
+            "num_heads": 4,
+            "attention_dropout": 0.1,
+            "gate_init": 0.1
+          }
+        ]
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "best_epoch": 16,
+          "last_epoch": 28,
+          "val_auc": 0.6446143617021277,
+          "test_auc": 0.803328804347826,
+          "threshold": 0.8856069445610046
+        },
+        {
+          "fold": 1,
+          "best_epoch": 12,
+          "last_epoch": 24,
+          "val_auc": 0.8125,
+          "test_auc": 0.664561170212766,
+          "threshold": 0.9199519753456116
+        },
+        {
+          "fold": 2,
+          "best_epoch": 13,
+          "last_epoch": 25,
+          "val_auc": 0.7091090425531915,
+          "test_auc": 0.761968085106383,
+          "threshold": 0.09186991676688194
+        },
+        {
+          "fold": 3,
+          "best_epoch": 16,
+          "last_epoch": 28,
+          "val_auc": 0.7248641304347826,
+          "test_auc": 0.6582446808510638,
+          "threshold": 0.09342959150671959
+        },
+        {
+          "fold": 4,
+          "best_epoch": 6,
+          "last_epoch": 18,
+          "val_auc": 0.733016304347826,
+          "test_auc": 0.686820652173913,
+          "threshold": 0.1039305217564106
+        }
+      ]
+    },
+    "headlr": {
+      "source_directory": "s123_baseline_headlr_half_20261117_201754",
+      "means": {
+        "val": {
+          "auc": 0.7405368293246993,
+          "acc": 0.7276533592989289,
+          "bacc": 0.7034574468085106,
+          "sensitivity": 0.575,
+          "specificity": 0.8319148936170213
+        },
+        "test": {
+          "auc": 0.7317269888991674,
+          "acc": 0.7123985718922428,
+          "bacc": 0.6808568455134135,
+          "sensitivity": 0.5125,
+          "specificity": 0.849213691026827
+        }
+      },
+      "test_auc_std": 0.06776624555891612,
+      "val_auc_std": 0.03501048724659328,
+      "test_confusion_total": {
+        "tn": 198,
+        "fp": 35,
+        "fn": 78,
+        "tp": 82
+      },
+      "comparison_to_baseline": {
+        "mean_auc_delta": -0.023008209990749307,
+        "by_fold": [
+          -0.03260869565217395,
+          -0.01562500000000011,
+          -0.035571808510638125,
+          -0.04753989361702127,
+          0.016304347826086918
+        ],
+        "higher": 1,
+        "lower": 4
+      },
+      "changed_config_fields": {
+        "classification.head_lr": [
+          0.0002,
+          0.0001
+        ]
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "best_epoch": 14,
+          "last_epoch": 26,
+          "val_auc": 0.6841755319148937,
+          "test_auc": 0.7931385869565217,
+          "threshold": 0.8145628571510315
+        },
+        {
+          "fold": 1,
+          "best_epoch": 9,
+          "last_epoch": 21,
+          "val_auc": 0.7732712765957446,
+          "test_auc": 0.6702127659574468,
+          "threshold": 0.5309326350688934
+        },
+        {
+          "fold": 2,
+          "best_epoch": 8,
+          "last_epoch": 20,
+          "val_auc": 0.7659574468085106,
+          "test_auc": 0.8138297872340426,
+          "threshold": 0.1781269609928131
+        },
+        {
+          "fold": 3,
+          "best_epoch": 15,
+          "last_epoch": 27,
+          "val_auc": 0.7377717391304348,
+          "test_auc": 0.671875,
+          "threshold": 0.8223583996295929
+        },
+        {
+          "fold": 4,
+          "best_epoch": 6,
+          "last_epoch": 18,
+          "val_auc": 0.7415081521739131,
+          "test_auc": 0.709578804347826,
+          "threshold": 0.10411297157406807
+        }
+      ]
+    },
+    "ls0": {
+      "source_directory": "s123_baseline_ls0_20261118_005509",
+      "means": {
+        "val": {
+          "auc": 0.7391044172062905,
+          "acc": 0.7378123985718923,
+          "bacc": 0.716049953746531,
+          "sensitivity": 0.6,
+          "specificity": 0.832099907493062
+        },
+        "test": {
+          "auc": 0.744047756706753,
+          "acc": 0.6971437844855566,
+          "bacc": 0.6740749306197965,
+          "sensitivity": 0.55,
+          "specificity": 0.798149861239593
+        }
+      },
+      "test_auc_std": 0.08116415288322198,
+      "val_auc_std": 0.05897576831164081,
+      "test_confusion_total": {
+        "tn": 186,
+        "fp": 47,
+        "fn": 72,
+        "tp": 88
+      },
+      "comparison_to_baseline": {
+        "mean_auc_delta": -0.010687442183163753,
+        "by_fold": [
+          -0.02038043478260876,
+          -0.043550531914893775,
+          -0.010970744680850797,
+          0.028257978723404187,
+          -0.006793478260869623
+        ],
+        "higher": 1,
+        "lower": 4
+      },
+      "changed_config_fields": {
+        "label_smoothing": [
+          0.1,
+          0
+        ]
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "best_epoch": 6,
+          "last_epoch": 18,
+          "val_auc": 0.6559175531914894,
+          "test_auc": 0.8053668478260869,
+          "threshold": 0.10927940905094147
+        },
+        {
+          "fold": 1,
+          "best_epoch": 13,
+          "last_epoch": 25,
+          "val_auc": 0.808843085106383,
+          "test_auc": 0.6422872340425532,
+          "threshold": 0.9482490718364716
+        },
+        {
+          "fold": 2,
+          "best_epoch": 15,
+          "last_epoch": 27,
+          "val_auc": 0.7755984042553193,
+          "test_auc": 0.83843085106383,
+          "threshold": 0.0029587082099169493
+        },
+        {
+          "fold": 3,
+          "best_epoch": 22,
+          "last_epoch": 34,
+          "val_auc": 0.7438858695652173,
+          "test_auc": 0.7476728723404255,
+          "threshold": 0.9837171733379364
+        },
+        {
+          "fold": 4,
+          "best_epoch": 6,
+          "last_epoch": 18,
+          "val_auc": 0.7112771739130435,
+          "test_auc": 0.6864809782608695,
+          "threshold": 0.026861391961574554
+        }
+      ]
+    }
+  },
+  "mhsa_checkpoints": [
+    {
+      "fold": 0,
+      "effective_gate": 0.09917577356100082,
+      "relation_parameter_count": 263681,
+      "ema_updates": 3776
+    },
+    {
+      "fold": 1,
+      "effective_gate": 0.09547103196382523,
+      "relation_parameter_count": 263681,
+      "ema_updates": 2820
+    },
+    {
+      "fold": 2,
+      "effective_gate": 0.09587370604276657,
+      "relation_parameter_count": 263681,
+      "ema_updates": 3055
+    },
+    {
+      "fold": 3,
+      "effective_gate": 0.09820356965065002,
+      "relation_parameter_count": 263681,
+      "ema_updates": 3776
+    },
+    {
+      "fold": 4,
+      "effective_gate": 0.0978640466928482,
+      "relation_parameter_count": 263681,
+      "ema_updates": 1422
+    }
+  ],
+  "source_record_sha256": {
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_0/best_val_predictions.csv": "a0df631be3871a13c47d67bb30b9220b5862d9187c4d939277d866c2a2577457",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_0/config.yaml": "eb5cebedca4ab2f3d6cd764b0c2d7ab0444ea4ee5fbb731eb69d648a91928941",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_0/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_0/history.csv": "f28114207aed394885fe8c8ff79390c9596b1bf3da8d9eff3d942483027e9f30",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_0/run_info.json": "fd621e27949883b5df5af5cafbd2847c2d0715a9c0056b6b930965a319525a79",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_0/test_metrics.json": "dfb80ab37ab18993737b16ba383738e3657bb7a0e4fd9d0bd822b2c91ec195a7",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_0/test_predictions.csv": "1071d8caa65743dd9fc060bacffb34d5bcc540ea1266de954c22554c80adcd1e",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_1/best_val_predictions.csv": "5ce5b25a458f1073945c444cc5c78bd98a1853a4e6bd088d2a2fed3c34d61964",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_1/config.yaml": "2c40545f2115dd59184eb77ad6629d1d43a3afc36b6aff383bfb1f0526b79ce6",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_1/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_1/history.csv": "f7cedd6608fff0af939c3f167d123eb59a232d53f846e7048b721fc566bc89a3",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_1/run_info.json": "1034f9586eff141df9278ad5fa20de78a010cb1e3aa58e1795c23837e7219dcb",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_1/test_metrics.json": "59dd4d2e738b9446825c752f291c7da5c412df9f1b6c75f6b56dbe5f43b159f5",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_1/test_predictions.csv": "9e1250619d096e22b49e07b48da690afe24d754a845c9e64832be8e91ffc6e40",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_2/best_val_predictions.csv": "85380b562a0b7e734cb15818993e57c15a5e46866e88acd77c07a314d668d991",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_2/config.yaml": "2c40545f2115dd59184eb77ad6629d1d43a3afc36b6aff383bfb1f0526b79ce6",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_2/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_2/history.csv": "2b28ab76a7dbc7c2b16801421cfb12202b019ad69452cc653610406bfddf47aa",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_2/run_info.json": "311cdb60aff44663892fe9f4c303b3530bdebb4cfbbf2b63c52f69635a276943",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_2/test_metrics.json": "80d4271075df7875b6d3d379681fe1722785d09f8212652f47c723f82f952c86",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_2/test_predictions.csv": "ccb900c746678eadc95332343024e45f5a13d87218191ea2f07283fb8ff9b10a",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_3/best_val_predictions.csv": "6013726717e89ae141a8121776508015ac6eba14c0c2855c5034b450e1b2354d",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_3/config.yaml": "eb5cebedca4ab2f3d6cd764b0c2d7ab0444ea4ee5fbb731eb69d648a91928941",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_3/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_3/history.csv": "d50bee8ae9c2d3a09387f3c019e7b5559d8c69a521b65a31f49cc2ece8258665",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_3/run_info.json": "27a472516e136c5f3ec6dde7c09d2f9506abce1a71caaa02fb506b38b6f8f3bc",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_3/test_metrics.json": "e4473508ada818aac11c15accd32b32bc8b91a482002bfd483b6273068ebe885",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_3/test_predictions.csv": "bc6978114f2ad7376c764364835fcf8e49b19e71d7c1d1cc81df213c899472e3",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_4/best_val_predictions.csv": "f63c133a70f3d9c8269afa4e59f1668108d77bfc13d429a67e8e9b6bca709920",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_4/config.yaml": "be8f9de2026b6a5c9477e4ec6e13d4e153a12cf2e330cd331ab0a0cf1bf7c3e4",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_4/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_4/history.csv": "a95a413ffd7537d88f269471e9ac419e4e5b14b8ebca87053f855cf2b2775a69",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_4/run_info.json": "b0b5a6de24414b46cfd80f1656c104b0294ae5f72f60a77694293d27c54c5627",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_4/test_metrics.json": "353fff140eb7545e208851dd3fefb459433c5fbe7a9adb50d91185bef146832a",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_4/test_predictions.csv": "119ed1bba1186e0f7ae4296908a9381254c924caac4575ba7bfac30870d9dbf0",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/summary.json": "0ba9dbd60d9033eaec8d012c6fcaafea6d8ac2e907b7183d3aa456dd3277b048",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_0/best_val_predictions.csv": "134cf6ff96c3580287d962cc6da2f0e82ef6b7aeff53d273956395c3c5346e3f",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_0/config.yaml": "8a13eeda495593e57a0d42b20ac0784fc45debe649876eeaf84beea08f5ec44f",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_0/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_0/history.csv": "892e807d77a72cd61a5c6ab197ee6340b79f6333d46ea4c29e65a89fa316724e",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_0/run_info.json": "78a4f83915c3520872893d7ddefebc5f9bb892863df0cd385c843e46a09e5df3",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_0/test_metrics.json": "fdf94a05ef9c20bcb4e024caa1b061abf6df4941a8abcfd3b819785d54abc876",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_0/test_predictions.csv": "78c012caaca63f1ec1d0c4cbcfb0c5e7d8d322958edff96064bec41c569386c8",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_1/best_val_predictions.csv": "de7a65277056aba9d7e0e35a54f36480da2b8bb8b84d3b7cab7e4af03b1df2df",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_1/config.yaml": "39df874c0b5ad543bb86001df92ef17adb8d39edcb123cee4b9651170ff81abb",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_1/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_1/history.csv": "c90f6fdc3a720492bb53f39c9b0113a79d0ebe881d0ef6a9ca2c296db51507bc",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_1/run_info.json": "69397bcf23983fcc6ae09727055b6609b6c06ae765371f6dd0746669910fd0fd",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_1/test_metrics.json": "d2bcdd9877020353afaf859754ddaa3ecf41e83381c60b351d6b0e7935dca53f",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_1/test_predictions.csv": "40d328594ab782a8085b8d937047f896f0bd74c4b29d049b267d3037728128fd",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_2/best_val_predictions.csv": "c4f0268736a96a76709a875eb9684dfaa528f4f1e92986ea7724ba4729e67408",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_2/config.yaml": "39df874c0b5ad543bb86001df92ef17adb8d39edcb123cee4b9651170ff81abb",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_2/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_2/history.csv": "55ecd990e6286fffbb123dc336bb723127743c3569af052440eecab889d6c8f8",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_2/run_info.json": "40cb1c0cade351eadbac28839817299bcbd7bd2afe035df4ba0fddaae6c5c98a",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_2/test_metrics.json": "0a90e405581037055efba6f1c1d24163c86fd3f980f704054c5f527fdfe4a0a2",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_2/test_predictions.csv": "cab20cb0dfa081c28967f37535fc0eaa064824835f0e48bec791882ac16a83a1",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_3/best_val_predictions.csv": "9b8ee786108e3cd591ee27fbcc046fcf41df2d2facc73dae60123b989e5b897e",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_3/config.yaml": "8a13eeda495593e57a0d42b20ac0784fc45debe649876eeaf84beea08f5ec44f",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_3/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_3/history.csv": "7f45ebd3d48a7dd96e6e9aee817f17e17b564fe909dfbd90a423fe81000bb3c2",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_3/run_info.json": "a67bf11317c3522bbcdb5942b5fcbb785714c9c11365a1f976e6313e79016c12",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_3/test_metrics.json": "85f234be503d03095f36202978348888569d24576df72b783d8a152f09f7f3e8",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_3/test_predictions.csv": "0e67419fc04532581a326e7a3d0267f6df4a4f9ff0574ce5b020db6b306777ed",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_4/best_val_predictions.csv": "1e66f47c9071f59a3ed6bcbaabadf013a0c28cc7c06fc5012696e39abb8fc7f9",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_4/config.yaml": "f754b0ecc2c8492c8f7d8b01056c120e5c38bc162a253ba6a8a6daed4c080cc1",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_4/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_4/history.csv": "3b821c82085748785a82f23658a9365836c1129ba5c4d888a44e28f88f91b317",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_4/run_info.json": "8cd3643dbd68992c6a07f0e476f0851918e4d7733d05d7ad558109ee8fb6d860",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_4/test_metrics.json": "08c2c78cbf0c6ad01d15144dd1b82205990765097626f4172965d55b954797fa",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_4/test_predictions.csv": "31db2349d8857e08f4a69a5b17d35e40e4fd069ac3f10ffae30367251cdee02a",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/summary.json": "6bbf23a29248532d6d1c38232cd149576b8a7076fc7aa1850c10cd3f03c2b7a9",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_0/best_val_predictions.csv": "5fdce8d9624c79b98f5d8eeeb423b5cbcd076735cb0c6aae21a260864b3ab5de",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_0/config.yaml": "69120ca46e56c4740e9e323ec8dc03cd3ac33402be6ae942b4a0fe7fa96e12c3",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_0/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_0/history.csv": "fac397d73e7692ec258da578d83d57ccbce129988ca07da5c190f025e463f8d9",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_0/run_info.json": "9fa1468f3686085a53a8de556547100e0a305f355c8f9cbf122d64bd20683117",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_0/test_metrics.json": "906001eaa8a142634cd280f1acbd9c948b3340ed45cccf7142dc1ba1e069accb",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_0/test_predictions.csv": "69b034593f117a4b99c24a08be8479118c16540020dec686b3f26a2e2b269656",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_1/best_val_predictions.csv": "15e3210c4f38b466b36c593b4482634f4dac2051a4bfcb26010493784daa6e40",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_1/config.yaml": "f833e0a2a377d34900c97bb01e4a22f305abe99d547c6d383fb84bf699d4047c",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_1/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_1/history.csv": "80a6233539ae8783e45c51754b65d35266df8dd0132f52e01114346fde511518",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_1/run_info.json": "9444516b7d4e105d7e22d50e89440407862a9954e6796f2dc1950c61ffb913b8",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_1/test_metrics.json": "381c4da4b353e8aad9eba526919a6dfa65628dcc99e220560c6d0b08e6c0bf90",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_1/test_predictions.csv": "73ae14b1afc39f83b188f626c8a5aae6c944f53795e76dac56b20f52a3cc4cca",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_2/best_val_predictions.csv": "594a68e492d4f22c0e21feabd6fcda4f8037b46588525994d74f430a6e4a2e9e",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_2/config.yaml": "f833e0a2a377d34900c97bb01e4a22f305abe99d547c6d383fb84bf699d4047c",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_2/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_2/history.csv": "42523b553d7ed02b62f1f82b4e7ea1ac5a11df830a56de489d922d251dda6b2c",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_2/run_info.json": "9a73423d9a7bf05e37ed0eb284b9b7152c1626833a2eea6f5afb9b82d21ccac2",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_2/test_metrics.json": "16cbd952ed1a655f76b33d58ade913f7a1c5041085ed2a8838df1cbe95d46969",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_2/test_predictions.csv": "6e8835e08d5ad48e23b876b4793c1b141fb3415699a933b2fe390ddb0d8a6330",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_3/best_val_predictions.csv": "f8bb3c544eca6bb7ce5c98a286dcba3d9042c85364b734ff06706d768e618177",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_3/config.yaml": "69120ca46e56c4740e9e323ec8dc03cd3ac33402be6ae942b4a0fe7fa96e12c3",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_3/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_3/history.csv": "a9c8da4f783cfd2187207ab30f3ca48e02d4edea1819c292f6b486ac1cc6e82b",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_3/run_info.json": "30f6e45b2c2669ba2e545b127f11d40774ff5d162f3bccce505250a6bafc523f",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_3/test_metrics.json": "593bea72f796b68d73ca4ce97f3628f26450d0a9b4fe2f27cd1e29f60ae6d680",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_3/test_predictions.csv": "56844168105e999a025e6531de9e161e2ca4f12a1b4ecbeef0fcf3d270cb9abf",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_4/best_val_predictions.csv": "fd8baa6830994553f65f6a5fb3c5fa694016798b888e071ebb5219254cc3db34",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_4/config.yaml": "bbba980c86888a8e925ab56d03882134401d01c468216b7243b842db30bab48b",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_4/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_4/history.csv": "c5ea24ba9e6f843cec3942d3bc2881730fff865fa93107056ac7928c72522d78",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_4/run_info.json": "a54700b27a31a8ad3c02759faa1c2703349d67b1c0449fe5a8ad74f2e6958ac8",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_4/test_metrics.json": "fbbc51da19d4c15c18921a7df97a4e134b3042aef049973d95926db2825adb7b",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_4/test_predictions.csv": "67508ebe155485f6ef7a27abf51b6f8c697fa667823b574b24289a7a1c8d8195",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/summary.json": "9fd70a848b3c7b76c1aec96c8e265e2bfc85dbdfd4488d7be94a5b41c0d0a657"
+  },
+  "retained_local_weights": [
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_0/best.pth",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_1/best.pth",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_2/best.pth",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_3/best.pth",
+    "week3_experiments/s123_global_mhsa_5fold_20261117_163157/fold_4/best.pth",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_0/best.pth",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_1/best.pth",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_2/best.pth",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_3/best.pth",
+    "week3_experiments/s123_baseline_headlr_half_20261117_201754/fold_4/best.pth",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_0/best.pth",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_1/best.pth",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_2/best.pth",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_3/best.pth",
+    "week3_experiments/s123_baseline_ls0_20261118_005509/fold_4/best.pth"
+  ]
+}
