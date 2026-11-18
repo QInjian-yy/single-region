@@ -1,0 +1,432 @@
+{
+  "verified_on": "2026-11-18",
+  "protocol": "camil_5fold_seed123_sourcestrat",
+  "runs": {
+    "k2_002": {
+      "name": "s123_aem02_wholebag_ssd_5fold_20261116_200914",
+      "means": {
+        "val": {
+          "auc": 0.7470701318223867,
+          "acc": 0.732781564427134,
+          "bacc": 0.7169200971322849,
+          "sensitivity": 0.63125,
+          "specificity": 0.8025901942645698
+        },
+        "test": {
+          "auc": 0.7547351988899168,
+          "acc": 0.6793573515092503,
+          "bacc": 0.6570478723404255,
+          "sensitivity": 0.5375,
+          "specificity": 0.776595744680851
+        }
+      },
+      "val_auc_std": 0.047803622046438246,
+      "test_auc_std": 0.07709773960572507,
+      "test_confusion": {
+        "tn": 181,
+        "fp": 52,
+        "fn": 74,
+        "tp": 86
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "val_auc": 0.6735372340425533,
+          "test_auc": 0.8257472826086957,
+          "best_epoch": 14,
+          "last_epoch": 26,
+          "threshold": 0.7574312090873718
+        },
+        {
+          "fold": 1,
+          "val_auc": 0.7918882978723405,
+          "test_auc": 0.6858377659574469,
+          "best_epoch": 7,
+          "last_epoch": 19,
+          "threshold": 0.33836711943149567
+        },
+        {
+          "fold": 2,
+          "val_auc": 0.7865691489361702,
+          "test_auc": 0.8494015957446808,
+          "best_epoch": 22,
+          "last_epoch": 34,
+          "threshold": 0.09802061691880226
+        },
+        {
+          "fold": 3,
+          "val_auc": 0.7489809782608695,
+          "test_auc": 0.7194148936170213,
+          "best_epoch": 52,
+          "last_epoch": 64,
+          "threshold": 0.934369295835495
+        },
+        {
+          "fold": 4,
+          "val_auc": 0.734375,
+          "test_auc": 0.6932744565217391,
+          "best_epoch": 6,
+          "last_epoch": 18,
+          "threshold": 0.10687702894210815
+        }
+      ]
+    },
+    "k4_002": {
+      "name": "s123_wholebag_hrk4_5fold_20261118_105724",
+      "means": {
+        "val": {
+          "auc": 0.7720744680851064,
+          "acc": 0.7581953911067836,
+          "bacc": 0.7277809898242368,
+          "sensitivity": 0.5625,
+          "specificity": 0.8930619796484737
+        },
+        "test": {
+          "auc": 0.7714746184088808,
+          "acc": 0.7200584225900681,
+          "bacc": 0.6827619102682702,
+          "sensitivity": 0.48125,
+          "specificity": 0.8842738205365402
+        }
+      },
+      "val_auc_std": 0.062446534665888086,
+      "test_auc_std": 0.0834439191532387,
+      "test_confusion": {
+        "tn": 206,
+        "fp": 27,
+        "fn": 83,
+        "tp": 77
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "val_auc": 0.7257313829787235,
+          "test_auc": 0.8474864130434783,
+          "best_epoch": 8,
+          "last_epoch": 20,
+          "threshold": 0.6062588095664978
+        },
+        {
+          "fold": 1,
+          "val_auc": 0.8726728723404256,
+          "test_auc": 0.7287234042553192,
+          "best_epoch": 9,
+          "last_epoch": 21,
+          "threshold": 0.20313402265310287
+        },
+        {
+          "fold": 2,
+          "val_auc": 0.746343085106383,
+          "test_auc": 0.8730053191489362,
+          "best_epoch": 12,
+          "last_epoch": 24,
+          "threshold": 0.3490094989538193
+        },
+        {
+          "fold": 3,
+          "val_auc": 0.7914402173913043,
+          "test_auc": 0.7247340425531916,
+          "best_epoch": 28,
+          "last_epoch": 40,
+          "threshold": 0.9319177865982056
+        },
+        {
+          "fold": 4,
+          "val_auc": 0.7241847826086957,
+          "test_auc": 0.6834239130434783,
+          "best_epoch": 5,
+          "last_epoch": 17,
+          "threshold": 0.10837768390774727
+        }
+      ]
+    },
+    "k4_001": {
+      "name": "s123_hrk4_aem001_5fold_20261118_110301",
+      "means": {
+        "val": {
+          "auc": 0.7626243061979648,
+          "acc": 0.717332035053554,
+          "bacc": 0.7203688714153561,
+          "sensitivity": 0.7375,
+          "specificity": 0.7032377428307123
+        },
+        "test": {
+          "auc": 0.7525555041628121,
+          "acc": 0.6667315806556313,
+          "bacc": 0.6643154486586494,
+          "sensitivity": 0.65,
+          "specificity": 0.6786308973172988
+        }
+      },
+      "val_auc_std": 0.0717538656722902,
+      "test_auc_std": 0.08297395855632274,
+      "test_confusion": {
+        "tn": 158,
+        "fp": 75,
+        "fn": 56,
+        "tp": 104
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "val_auc": 0.7127659574468085,
+          "test_auc": 0.8556385869565217,
+          "best_epoch": 11,
+          "last_epoch": 23,
+          "threshold": 0.8550661504268646
+        },
+        {
+          "fold": 1,
+          "val_auc": 0.8886303191489361,
+          "test_auc": 0.7024601063829786,
+          "best_epoch": 9,
+          "last_epoch": 21,
+          "threshold": 0.09451161697506905
+        },
+        {
+          "fold": 2,
+          "val_auc": 0.7450132978723404,
+          "test_auc": 0.8294547872340425,
+          "best_epoch": 10,
+          "last_epoch": 22,
+          "threshold": 0.08788450062274933
+        },
+        {
+          "fold": 3,
+          "val_auc": 0.7435461956521738,
+          "test_auc": 0.6928191489361702,
+          "best_epoch": 30,
+          "last_epoch": 42,
+          "threshold": 0.6493667662143707
+        },
+        {
+          "fold": 4,
+          "val_auc": 0.7231657608695653,
+          "test_auc": 0.6824048913043478,
+          "best_epoch": 6,
+          "last_epoch": 18,
+          "threshold": 0.10557940602302551
+        }
+      ]
+    }
+  },
+  "paired_comparisons": {
+    "k2_002 -> k4_002": {
+      "changed_config_fields": {
+        "multiscale.patches_per_region": [
+          2,
+          4
+        ]
+      },
+      "provenance_diff": [
+        "ssd_lr"
+      ],
+      "test_auc_delta_by_fold": [
+        0.021739130434782594,
+        0.042885638297872286,
+        0.023603723404255428,
+        0.005319148936170359,
+        -0.009850543478260865
+      ],
+      "test_auc_delta_mean": 0.01673941951896396
+    },
+    "k4_002 -> k4_001": {
+      "changed_config_fields": {
+        "classification.aem.weight": [
+          0.02,
+          0.01
+        ]
+      },
+      "provenance_diff": [],
+      "test_auc_delta_by_fold": [
+        0.008152173913043459,
+        -0.026263297872340607,
+        -0.043550531914893664,
+        -0.03191489361702138,
+        -0.0010190217391304879
+      ],
+      "test_auc_delta_mean": -0.018919114246068534
+    },
+    "k2_002 -> k4_001": {
+      "changed_config_fields": {
+        "classification.aem.weight": [
+          0.02,
+          0.01
+        ],
+        "multiscale.patches_per_region": [
+          2,
+          4
+        ]
+      },
+      "provenance_diff": [
+        "ssd_lr"
+      ],
+      "test_auc_delta_by_fold": [
+        0.029891304347826053,
+        0.01662234042553168,
+        -0.019946808510638236,
+        -0.02659574468085102,
+        -0.010869565217391353
+      ],
+      "test_auc_delta_mean": -0.002179694727104575
+    }
+  },
+  "verified_prediction_files": 30,
+  "verified_new_checkpoint_metadata": 10,
+  "source_record_sha256": {
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/config.yaml": "decc0400adf9bbd429d3cc2d5480f4710015722d990e7340aa0252e3f1f3a1ff",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/run_info.json": "d72610c6f84bcbf7d82bbfabcb790808a906af60b9183e028241ec985b11d507",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/history.csv": "c7f43bce826ff3b02fea682cded7a9548847b137f698b738374ea0425154794f",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/best_val_predictions.csv": "99d22ff8eac10b9d85c7c2853efe18211d9737b875b48678ab38007ee6b0b9cc",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/test_metrics.json": "4518a924210eb1bf918b7c4c6430fcd47b69192561b0dc216c47170a9caa457f",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/test_predictions.csv": "a1f17d39f364368b15ee0100ab25c7cd935a8c5b4ef7d0acf903da5477802d9d",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/config.yaml": "7efa74dd6542a550ab5c7d75e769a97dd497b9ce1aea86e05223629cb9a173e4",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/run_info.json": "f514f6963ed40ca56e262646f37d50c685cd1ca7ea40a3027e8c836c31389a7d",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/history.csv": "0b4d1fade3cb9f6224054146948a74e9de9d00138f73ad5a62ef7fbcff85ed14",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/best_val_predictions.csv": "63062468fdff8756d7ba5d376e0968e592b640fdf060c91f0e0a346cadbcc249",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/test_metrics.json": "e8d9cf0c8aebdf4c1208015093c71df3c46feae5e5d3e4a535dadc72f948f599",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/test_predictions.csv": "7f913d3d0a97f029ab3f24827e36ee857683484adb443994db96cd2fa5f82d40",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/config.yaml": "7efa74dd6542a550ab5c7d75e769a97dd497b9ce1aea86e05223629cb9a173e4",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/run_info.json": "e34655e7cab04936e8f9617a4989190f03931f317e0e953d776cc8dc8f3f9f02",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/history.csv": "60502b7ae12ce607881c509fe8624d46d5bd4143bcfacfacc20c0ff34bcc3ba8",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/best_val_predictions.csv": "99566017d48d2083daa8ab0fa12bd356db183c9c370e01f40f7b365e0f1e5a32",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/test_metrics.json": "b22a9a8428fbb5c453f2d1e8d60d507ea2e6129a558fa7138656dbda9f4a951d",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/test_predictions.csv": "42749031dbab323ddd638075a237cfbcd51b282cd869d7f2bad2915facbb58b6",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/config.yaml": "decc0400adf9bbd429d3cc2d5480f4710015722d990e7340aa0252e3f1f3a1ff",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/run_info.json": "af889f5b118329ac3a5935630cc57a720e1a4d1b27dbc352391f7a5a91e53710",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/history.csv": "6e070121925ed28770c57561e3fbcd6bcb52d5f90f1616fda7a782f152dbfacb",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/best_val_predictions.csv": "14a42ad0d7e39b5ed7f3f9d573437c865eaf19c75d36f5df9a7c0c2e17975dca",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/test_metrics.json": "f6535026e69b6303ee317b9213d3ba72125044e7daf95a47cff29ea8f667795b",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/test_predictions.csv": "7e0cdbecf4c55249cea2b666d63295e0e83d36aa88098d4736ad9b239762b370",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/config.yaml": "60761addeabfdcd4af0644bafa5921a0c92967e81b3f1832bd9ae10486280d46",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/run_info.json": "215df4f66757a76698a6586fe1339e78db1eb18338e4754006b5018b22e253d8",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/history.csv": "5bff14898a24fefb936f8099d04ec772d0a73f5669f4b1f606f32a8ddb4440b1",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/best_val_predictions.csv": "ead95ed94a5941c0d078b9e6be868a5e4a1bc029acb6aa1bb5bb165aeeb117fe",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/test_metrics.json": "c9739fd8b2eb1de98a7df334853ee6c3d5f0cda6b7e85939f8f269296a905f4f",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/test_predictions.csv": "c3c7e0ce852759eeee1608f5b3a9e48198d18a75ca66cfc7733faa23320d04d6",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/config.yaml": "cf54dca6ea121cb373eb31197bd7b795170652f493c4a859d05080b46dad4a02",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/run_info.json": "a37a20bafef589fcd0dc1b5ffd300dd4ae3ed9c3c6534bac182b26032658c3b0",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/history.csv": "2c177eb3f194dbab22d484873c0e124bbe6c34e1f42418ed876423cb0a4bfb91",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/best_val_predictions.csv": "f5bac6d796aa9aedbbdd29d800cc0ea31b374f94127e1ae30e9445479e5ad94d",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/test_metrics.json": "d83c94e76617273440b7319f79d2e9797bb7aba18c5a2920b282d48250490db4",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/test_predictions.csv": "0fd7edbe68acd2010943d818a790aad5bc4cf639277e2dfa67528c368ae4f90a",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/config.yaml": "684a081b2f301429dc86b56efac7568ac5dfeea91f035b038272857eb34589e3",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/run_info.json": "1281a3fe2aad72ddd1dd218102470b65bed2ef3b5bf8045476e19e53ac22f98c",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/history.csv": "73ef78e66a66c9404e19b1302b48a8b29ff37b870c3e4adca640cb63f55a1a0b",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/best_val_predictions.csv": "6f56f91a480ecb5ee9c42e27279f3be9fe76808823919e43591703d448ea9d50",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/test_metrics.json": "d4b4e459aaad21cd31406554686562d88ff55977042a64fc58055eee7a4cad91",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/test_predictions.csv": "c9bdd757d573000b00eca6b200ef558b3e55973931227956233b130ce9ed5eba",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/config.yaml": "684a081b2f301429dc86b56efac7568ac5dfeea91f035b038272857eb34589e3",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/run_info.json": "4daa1f1bcfb49603bf11b5621eb455d350df733cb31af6ee63dbfbe5e9682186",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/history.csv": "225f38854c058ab54583c949b531100dc222c7d5b00c6261c089c133a95bb9c8",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/best_val_predictions.csv": "e3d021877e628527a8149a412dfdc0b341cbbf30537b8fd082837352f731a8f0",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/test_metrics.json": "e120636e184a5281eafc253b13142a55263457ef0c837225a4a4b69272e1e4e0",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/test_predictions.csv": "0d67b664fe47153a2c0aa88bb615d6cd88b5969d047238cddbfe613d608b118b",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/config.yaml": "cf54dca6ea121cb373eb31197bd7b795170652f493c4a859d05080b46dad4a02",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/run_info.json": "8f05a855cb0c7844471d3e600224bcb13ed2cf48bbb1bd8837657c3c29a58fcb",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/history.csv": "006bbecf98992bcef510323bfc6678d06fd37b535d41e87d897cadba0350ed9c",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/best_val_predictions.csv": "e3c63d3dbbf08d8ae49dae270744efcd483f0b53232430b83a02fe6b99eb13d0",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/test_metrics.json": "5fad753161345d7b9b29c64fc620c1142cac20fc4534d7a143fb157d89dc19ed",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/test_predictions.csv": "45851dc45d7a3505a920a2443ef83e824f6d2054a089b243bdc8180497603784",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/config.yaml": "49844b57396e175bec183fd4c6ef67a4259be8b076d77c982e6cd31b6ea95836",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/data_provenance.json": "cfd91985a70781159559d14a1960e166534adc6be93cf66e630a589d6397c9b8",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/run_info.json": "476d6822f9b4f6b5872099f5eb71f59230d3263301086cf3c63c55a581afe19b",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/history.csv": "816c9bd5fff9814aee7bc7563dc772ca3daf99dda93c358aabbed6ed5a8b77b0",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/best_val_predictions.csv": "d2b9044ad7e99ca13006d32d428f676ce50c5acaa23dac1792e1bacbb4a14e6a",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/test_metrics.json": "546c8ecdb413a1c7d82bcd1a9fc58d204a2f3d078eade8789c2a14134f82e8db",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/test_predictions.csv": "53fa745edf053e7f5435786fee2e9ecc5802c4d4b54d1c225a63311f81809070"
+  },
+  "original_download_paths": {
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/config.yaml": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/fold_0/config.yaml",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/data_provenance.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/fold_0/data_provenance.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/run_info.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/fold_0/run_info.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/history.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/fold_0/history.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/best_val_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/fold_0/best_val_predictions.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/test_metrics.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/fold_0/test_metrics.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/test_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/fold_0/test_predictions.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/config.yaml": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/fold_1/config.yaml",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/data_provenance.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/fold_1/data_provenance.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/run_info.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/fold_1/run_info.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/history.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/fold_1/history.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/best_val_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/fold_1/best_val_predictions.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/test_metrics.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/fold_1/test_metrics.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/test_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/fold_1/test_predictions.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/config.yaml": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/fold_2/config.yaml",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/data_provenance.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/fold_2/data_provenance.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/run_info.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/fold_2/run_info.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/history.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/fold_2/history.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/best_val_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/fold_2/best_val_predictions.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/test_metrics.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/fold_2/test_metrics.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/test_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/fold_2/test_predictions.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/config.yaml": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/fold_3/config.yaml",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/data_provenance.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/fold_3/data_provenance.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/run_info.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/fold_3/run_info.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/history.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/fold_3/history.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/best_val_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/fold_3/best_val_predictions.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/test_metrics.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/fold_3/test_metrics.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/test_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/fold_3/test_predictions.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/config.yaml": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/fold_4/config.yaml",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/data_provenance.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/fold_4/data_provenance.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/run_info.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/fold_4/run_info.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/history.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/fold_4/history.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/best_val_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/fold_4/best_val_predictions.csv",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/test_metrics.json": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/fold_4/test_metrics.json",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/test_predictions.csv": "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/fold_4/test_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/config.yaml": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/fold_0/config.yaml",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/data_provenance.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/fold_0/data_provenance.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/run_info.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/fold_0/run_info.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/history.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/fold_0/history.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/best_val_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/fold_0/best_val_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/test_metrics.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/fold_0/test_metrics.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/test_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/fold_0/test_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/config.yaml": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/fold_1/config.yaml",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/data_provenance.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/fold_1/data_provenance.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/run_info.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/fold_1/run_info.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/history.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/fold_1/history.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/best_val_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/fold_1/best_val_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/test_metrics.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/fold_1/test_metrics.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/test_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/fold_1/test_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/config.yaml": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/fold_2/config.yaml",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/data_provenance.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/fold_2/data_provenance.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/run_info.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/fold_2/run_info.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/history.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/fold_2/history.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/best_val_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/fold_2/best_val_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/test_metrics.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/fold_2/test_metrics.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/test_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/fold_2/test_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/config.yaml": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/fold_3/config.yaml",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/data_provenance.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/fold_3/data_provenance.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/run_info.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/fold_3/run_info.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/history.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/fold_3/history.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/best_val_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/fold_3/best_val_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/test_metrics.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/fold_3/test_metrics.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/test_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/fold_3/test_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/config.yaml": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/fold_4/config.yaml",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/data_provenance.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/fold_4/data_provenance.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/run_info.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/fold_4/run_info.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/history.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/fold_4/history.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/best_val_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/fold_4/best_val_predictions.csv",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/test_metrics.json": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/fold_4/test_metrics.json",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/test_predictions.csv": "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/fold_4/test_predictions.csv"
+  },
+  "retained_local_weights": [
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_0/fold_0/best.pth",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_1/fold_1/best.pth",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_2/fold_2/best.pth",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_3/fold_3/best.pth",
+    "week3_experiments/s123_wholebag_hrk4_5fold_20261118_105724/fold_4/fold_4/best.pth",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_0/fold_0/best.pth",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_1/fold_1/best.pth",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_2/fold_2/best.pth",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_3/fold_3/best.pth",
+    "week3_experiments/s123_hrk4_aem001_5fold_20261118_110301/fold_4/fold_4/best.pth"
+  ]
+}
