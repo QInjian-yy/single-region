@@ -135,7 +135,11 @@ def wsi_forward(model, sample, cache, device, config, *, epoch=None):
                     target = hr[local:local+1, 0, :, offset:offset+crop, offset:offset+crop]
                     sr_terms.append(F.l1_loss(pred.float(), target.float()))
     with engine.autocast(device, config["precision"]):
-        logits, attention = model.classify(torch.cat(embedding_parts, 0))
+        embeddings = torch.cat(embedding_parts, 0)
+        if hasattr(model, "classify_bag"):
+            logits, attention = model.classify_bag(embeddings, sample)
+        else:
+            logits, attention = model.classify(embeddings)
         label = torch.tensor([sample["label"]], dtype=torch.long, device=device)
         cls = engine.classification_loss(logits, label, config)
     sr_loss = torch.stack(sr_terms).mean() if sr_terms else cls.new_zeros(())
@@ -196,7 +200,9 @@ def evaluate(model, loader, cache, device, config):
             "predictions": predictions}
 
 
-def train_fold(config, protocol, samples, provenance, cache, fold, out, device):
+def train_fold(config, protocol, samples, provenance, cache, fold, out, device, *,
+               model_factory=None, optimizer_factory=None,
+               training_entry="multiscale_train.py"):
     out.mkdir(parents=True, exist_ok=False)
     config = copy.deepcopy(config)
     train, val, test = camil.make_camil_datasets(
@@ -210,8 +216,8 @@ def train_fold(config, protocol, samples, provenance, cache, fold, out, device):
         torch.cuda.manual_seed_all(config["seed"])
     torch.backends.cudnn.benchmark = False
 
-    model = MultiScaleSRMIL(config).to(device)
-    optimizer = build_optimizer(model, config)
+    model = (model_factory or MultiScaleSRMIL)(config).to(device)
+    optimizer = (optimizer_factory or build_optimizer)(model, config)
     scheduler = camil.shared.build_scheduler(optimizer, config)
     ema = camil.shared.ModelEMA(model, config["ema_decay"]) if config["ema_decay"] > 0 else None
     eval_model = ema.module if ema else model
@@ -219,7 +225,8 @@ def train_fold(config, protocol, samples, provenance, cache, fold, out, device):
     val_loader = camil._loader(val)
     # No need to compute train AUC each epoch; can get train losses from steps.
     info = camil.run_metadata(fold, device)
-    info.update(model=FORMAT, split_protocol="camil_5fold", training_entry="multiscale_train.py",
+    checkpoint_format = FORMAT if model_factory is None else model.architecture()["type"]
+    info.update(model=checkpoint_format, split_protocol="camil_5fold", training_entry=training_entry,
                 optimizer=config["optimizer"], patient_grouping=protocol.patient_grouping,
                 split_counts={"train": len(train), "val": len(val), "test": len(test)},
                 hr_used_at_inference=True, feature_cache=False,
@@ -268,7 +275,7 @@ def train_fold(config, protocol, samples, provenance, cache, fold, out, device):
             if auc > best_auc + config["early_stopping_min_delta"]:
                 best_auc, stale = auc, 0
                 torch.save({
-                    "format": FORMAT, "architecture": model.architecture(),
+                    "format": checkpoint_format, "architecture": model.architecture(),
                     "data_spec": data_spec(config).metadata(), "fold": fold,
                     "epoch": epoch, "config": dict(config, decision_threshold=threshold),
                     "data_provenance": provenance,
