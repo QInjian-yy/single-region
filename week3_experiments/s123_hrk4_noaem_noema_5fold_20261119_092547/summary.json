@@ -1,0 +1,77 @@
+{
+  "fold_count": 5,
+  "test_auc_mean": 0.7234447271045329,
+  "test_auc_std": 0.061971776741738094,
+  "folds": [
+    {
+      "loss": 0.7103866185897436,
+      "auc": 0.8291440217391304,
+      "acc": 0.7564102564102564,
+      "bacc": 0.7554347826086957,
+      "sensitivity": 0.75,
+      "specificity": 0.7608695652173914,
+      "fold": 0,
+      "split": "test",
+      "checkpoint_epoch": 10,
+      "slide_count": 78,
+      "best_val_auc": 0.7164228723404256,
+      "decision_threshold": 0.12623614072799683
+    },
+    {
+      "loss": 0.8602650316455697,
+      "auc": 0.6901595744680852,
+      "acc": 0.6835443037974683,
+      "bacc": 0.644281914893617,
+      "sensitivity": 0.4375,
+      "specificity": 0.851063829787234,
+      "fold": 1,
+      "split": "test",
+      "checkpoint_epoch": 17,
+      "slide_count": 79,
+      "best_val_auc": 0.9278590425531915,
+      "decision_threshold": 0.5
+    },
+    {
+      "loss": 0.8590412381329114,
+      "auc": 0.7287234042553192,
+      "acc": 0.7341772151898734,
+      "bacc": 0.7317154255319149,
+      "sensitivity": 0.71875,
+      "specificity": 0.7446808510638298,
+      "fold": 2,
+      "split": "test",
+      "checkpoint_epoch": 25,
+      "slide_count": 79,
+      "best_val_auc": 0.7616356382978723,
+      "decision_threshold": 0.12319452315568924
+    },
+    {
+      "loss": 0.8984869462025317,
+      "auc": 0.6888297872340425,
+      "acc": 0.6835443037974683,
+      "bacc": 0.644281914893617,
+      "sensitivity": 0.4375,
+      "specificity": 0.851063829787234,
+      "fold": 3,
+      "split": "test",
+      "checkpoint_epoch": 81,
+      "slide_count": 79,
+      "best_val_auc": 0.7489809782608696,
+      "decision_threshold": 0.8921781778335571
+    },
+    {
+      "loss": 0.9457006209935898,
+      "auc": 0.680366847826087,
+      "acc": 0.6538461538461539,
+      "bacc": 0.6161684782608696,
+      "sensitivity": 0.40625,
+      "specificity": 0.8260869565217391,
+      "fold": 4,
+      "split": "test",
+      "checkpoint_epoch": 7,
+      "slide_count": 78,
+      "best_val_auc": 0.6511548913043478,
+      "decision_threshold": 0.11839057132601738
+    }
+  ]
+}

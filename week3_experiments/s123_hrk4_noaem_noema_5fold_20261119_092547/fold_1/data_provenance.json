@@ -1,0 +1,61 @@
+{
+  "protocol": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/E2E_MetaSR_GCSAM/data_protocols/camil_5fold_seed123_sourcestrat/protocol.json",
+    "sha256": "37c2e2482f2fa507aa4b0f0270582f21af29f4d8d010635e16b4b8040debc70b"
+  },
+  "source_index": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/E2E_MetaSR_GCSAM/data_protocols/camil_5fold_seed123_sourcestrat/dataset_sources.json",
+    "sha256": "1375e26dcab1074ad8896bb2ad8a971b08768d12f9e8f53a42f960369ee3d9ca"
+  },
+  "labels": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/E2E_MetaSR_GCSAM/data_protocols/camil_5fold_seed123_sourcestrat/labels_all.csv",
+    "sha256": "133fa8c99da06120dc9e3e53d4ba78c8fc4db8979b5372f7efc63b2d87f92bb4"
+  },
+  "split_0": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/E2E_MetaSR_GCSAM/data_protocols/camil_5fold_seed123_sourcestrat/splits_5fold_0.csv",
+    "sha256": "0a3ee9dd7f76e94817ff6cb928778c719659930b71665558f6a2d073e654ff65"
+  },
+  "split_1": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/E2E_MetaSR_GCSAM/data_protocols/camil_5fold_seed123_sourcestrat/splits_5fold_1.csv",
+    "sha256": "c1daf3740ee327bb149cd2a2bc1738b2eaf810c19630741f1ecb31427b05a79d"
+  },
+  "split_2": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/E2E_MetaSR_GCSAM/data_protocols/camil_5fold_seed123_sourcestrat/splits_5fold_2.csv",
+    "sha256": "92ece09be0ecb79ffbaeb7d6242eabebd7e820e453886b91eef7ab6a160cea94"
+  },
+  "split_3": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/E2E_MetaSR_GCSAM/data_protocols/camil_5fold_seed123_sourcestrat/splits_5fold_3.csv",
+    "sha256": "57a416854927e672dcf9defac1408315e99795b1afb0ca63365bc04c7b8a246f"
+  },
+  "split_4": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/E2E_MetaSR_GCSAM/data_protocols/camil_5fold_seed123_sourcestrat/splits_5fold_4.csv",
+    "sha256": "5a73dc8f8d77824310e3f4111141ef626320de6cc3e8a01f5e83ba21b7dcbff9"
+  },
+  "official_train_manifest": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_train/Manifests/patch_manifest.csv",
+    "sha256": "b93c01f83d2c5b8271181d202748ab6facd9312765e39e00b8204b6cf8b5e3e0",
+    "data_root": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_train"
+  },
+  "official_train_verification": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_train/verification/report.json",
+    "sha256": "2d837488b58a835dc5f37ec2d3c1857014b7513351218450b1481c8d8528f516"
+  },
+  "official_test_manifest": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_test/manifests/patch_manifest.csv",
+    "sha256": "9b2f7296309fb2486233d8e495a1e9de04cfcd9d46315b4a0cb7d762d9d23e95",
+    "data_root": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_test"
+  },
+  "official_test_verification": {
+    "path": "/media/ub/shidang_plu/MT/py_project/yujian/double_wsi/CAMELYON16_WSI_DATA/c16_native_l1_8192_l5_512_tissue20_jpg90_nonoverlap_v2_test/verification/report.json",
+    "sha256": "418be9248489ce454536e48d572ef2be0584cf052f9a57b2e6036c0f975c5bbf"
+  },
+  "ssd_lr": {
+    "root": "/home/ub/wsi_fastcache",
+    "layout": {
+      "official_train": "images_512_train",
+      "official_test": "images_512_test"
+    },
+    "regions": 6531,
+    "mapping_sha256": "e16859edc34cc4b6d1340d0404f560dd49e3a5abc8829389e7dda210cc2ac2f6"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "experiment_id": "EXP-20261119-231616-268e06de5b91",
+  "started_at": "2026-11-19T23:16:16.858852+08:00",
+  "fold": 4,
+  "git_commit": "079a232d101b83f6aa30695143d6b251ed108636",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "status": "completed",
+  "model": "lr_only_mil",
+  "split_protocol": "camil_5fold",
+  "training_entry": "lr_only_train.py",
+  "optimizer": "adamw",
+  "patient_grouping": "slide_id_proxy_NO_PATIENT_LEVEL_GUARANTEE",
+  "split_counts": {
+    "train": 237,
+    "val": 78,
+    "test": 78
+  },
+  "hr_used_at_inference": false,
+  "feature_cache": false,
+  "hr_pixel_cache": false,
+  "hr_patch_selection": null,
+  "best_epoch": 6,
+  "finished_at": "2026-11-19T23:42:14.726552+08:00",
+  "ablation": "lr_only"
+}
