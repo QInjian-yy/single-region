@@ -1,0 +1,14 @@
+{
+  "loss": 0.6535799050632911,
+  "auc": 0.7440159574468086,
+  "acc": 0.6835443037974683,
+  "bacc": 0.6742021276595744,
+  "sensitivity": 0.625,
+  "specificity": 0.723404255319149,
+  "fold": 3,
+  "split": "test",
+  "checkpoint_epoch": 24,
+  "slide_count": 79,
+  "best_val_auc": 0.8043478260869565,
+  "decision_threshold": 0.13753312826156616
+}

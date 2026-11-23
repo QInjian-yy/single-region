@@ -1,0 +1,24 @@
+{
+  "experiment_id": "EXP-20261121-122139-b961ce06bd84",
+  "started_at": "2026-11-21T12:21:39.689389+08:00",
+  "fold": 0,
+  "git_commit": "079a232d101b83f6aa30695143d6b251ed108636",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "status": "completed",
+  "model": "c16-e2e-lrhr-layer3-aligned-v1",
+  "split_protocol": "camil_5fold",
+  "training_entry": "multiscale_aligned_lrhr_train.py",
+  "optimizer": "adamw",
+  "patient_grouping": "slide_id_proxy_NO_PATIENT_LEVEL_GUARANTEE",
+  "split_counts": {
+    "train": 236,
+    "val": 79,
+    "test": 78
+  },
+  "hr_used_at_inference": true,
+  "feature_cache": false,
+  "hr_pixel_cache": true,
+  "hr_patch_selection": "unsupervised_lr_tissue_diverse_v1",
+  "best_epoch": 11,
+  "finished_at": "2026-11-21T13:36:54.208666+08:00"
+}
