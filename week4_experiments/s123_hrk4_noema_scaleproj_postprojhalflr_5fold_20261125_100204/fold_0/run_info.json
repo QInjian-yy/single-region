@@ -1,0 +1,24 @@
+{
+  "experiment_id": "EXP-20261125-100211-a27de0202047",
+  "started_at": "2026-11-25T10:02:11.298862+08:00",
+  "fold": 0,
+  "git_commit": "079a232d101b83f6aa30695143d6b251ed108636",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "status": "completed",
+  "model": "c16-e2e-lrhr-scale-projection-v1",
+  "split_protocol": "camil_5fold",
+  "training_entry": "multiscale_post_projection_half_lr_train.py",
+  "optimizer": "adamw",
+  "patient_grouping": "slide_id_proxy_NO_PATIENT_LEVEL_GUARANTEE",
+  "split_counts": {
+    "train": 236,
+    "val": 79,
+    "test": 78
+  },
+  "hr_used_at_inference": true,
+  "feature_cache": false,
+  "hr_pixel_cache": true,
+  "hr_patch_selection": "unsupervised_lr_tissue_diverse_v1",
+  "best_epoch": 8,
+  "finished_at": "2026-11-25T11:12:23.867140+08:00"
+}
