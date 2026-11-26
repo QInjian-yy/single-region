@@ -1,8 +1,10 @@
 # 第四周实验
 
-本周完成 11 组 CAMELYON16 Seed123 五折消融，共 55 折。分尺度 BN、HR Layer3 残差、投影后学习率减半和融合前分路 LayerNorm 分别在 LR/HR 独立投影上改动一处，其余组以原始 K=4 NoEMA 为对照。此前的结果见[第三周实验](../week3_experiments/README.md)。
+本周常规对比包含 11 组 CAMELYON16 Seed123 五折消融，共 55 折。分尺度 BN、HR Layer3 残差、投影后学习率减半和融合前分路 LayerNorm 分别在 LR/HR 独立投影上改动一处，其余组以原始 K=4 NoEMA 为对照。此前的结果见[第三周实验](../week3_experiments/README.md)。
 
-## 测试集指标
+> **已知病灶位置的 K=4 HR 选块诊断（Oracle）单独归档。** 这组实验用于检验 HR 小块取在哪里是否影响 WSI 分类。Train、Val、Test 的 HR 取块均使用病灶真值标注，**不计入本周常规 Test 对比、最佳成绩或性能提升**。见[实验目的与评估口径](s123_hrk4_noema_scaleproj_lesionoracle_5fold_20261125_162324/README.md)。
+
+## 常规测试集指标
 
 Test AUC 为五折等权平均 ± 样本标准差。表中的 Δ AUC 为相对原始 K=4 NoEMA 基线的百分点变化。ACC、BACC、肿瘤召回率和特异度为五折等权平均（%），各折沿用验证集选出的判定阈值。
 
@@ -40,4 +42,4 @@ Spatial Top-4 的 AUC 下降主要来自 Fold 3（0.7620 → 0.6307）和 Fold 1
 - `test_metrics.json`、`test_predictions.csv`
 - HR Attention + Max 的 `hr_attn_max_diagnostics.json`
 
-以上共 401 份原始记录。模型权重与 checkpoint 保留在本地。
+以上常规消融共 401 份原始记录，另有 Oracle 诊断的 36 份记录。模型权重与 checkpoint 保留在本地。

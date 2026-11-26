@@ -1,0 +1,1 @@
+{"acc":0.9493670886075949,"auc":0.9906914893617021,"bacc":0.9375,"best_val_auc":0.9775815217391304,"checkpoint_epoch":10,"decision_threshold":0.9093596041202545,"evaluation_policy":"oracle_lesion_annotations_all_splits","fold":3,"loss":0.28194224683544306,"sensitivity":0.875,"slide_count":79,"specificity":1.0,"split":"test"}
