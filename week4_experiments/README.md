@@ -33,13 +33,17 @@ Spatial Top-4 的 AUC 下降主要来自 Fold 3（0.7620 → 0.6307）和 Fold 1
 
 融合前分路 LayerNorm 组在融合前分别对 LR 特征和聚合后的 HR 特征做 LayerNorm。与 LR/HR 独立投影的配置、逐折划分和 HR 像素缓存记录一致。五折平均 Test AUC 为 0.7730，较直接对照低 1.77 个百分点，主要降幅出现在 Fold 0、1 和 4。按各折验证集选定的阈值，BACC 由 69.44% 升至 70.97%，特异度由 82.01% 升至 90.06%，肿瘤召回率由 56.88% 降至 51.88%。
 
+## 单折实验
+
+[LR 选择器 + HR 排名注意力（Fold 0）](s123_hrk4_noema_scaleproj_lrselect_rankattn_fold0_20261126_161732/README.md)使用 LR 选择器选出的 4 张 HR 小块，并将选块排名加入 region 内的 HR 注意力。**仅运行 Fold 0，作为独立实验归档，不计入上方五折指标表。**
+
 ## 实验记录
 
-各组沿用原始运行名，组级汇总保存为 `summary.json`，逐折记录保存于 `fold_0` 至 `fold_4`。
+各组沿用原始运行名。五折汇总保存为 `summary.json`，逐折记录保存于 `fold_0` 至 `fold_4`。单折实验按实际运行的折归档。
 
 - `config.yaml`、`data_provenance.json`、`run_info.json`
 - `history.csv`、`best_val_predictions.csv`
 - `test_metrics.json`、`test_predictions.csv`
 - HR Attention + Max 的 `hr_attn_max_diagnostics.json`
 
-以上常规消融共 401 份原始记录，另有 Oracle 诊断的 36 份记录。模型权重与 checkpoint 保留在本地。
+以上常规消融共 401 份原始记录，另有 Oracle 诊断的 36 份记录和 HR 排名注意力单折实验的 7 份记录。模型权重与 checkpoint 保留在本地。
