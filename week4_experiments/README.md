@@ -1,6 +1,6 @@
 # 第四周实验
 
-本周常规对比包含 12 组 CAMELYON16 Seed123 五折消融，共 60 折。分尺度 BN、HR Layer3 残差、投影后学习率减半、融合前分路 LayerNorm 和 LR 自动选块分别在 LR/HR 独立投影上改动一处，其余组以原始 K=4 NoEMA 为对照。此前的结果见[第三周实验](../week3_experiments/README.md)。
+本周常规对比包含 13 组 CAMELYON16 Seed123 五折消融，共 65 折。分尺度 BN、HR Layer3 残差、投影后学习率减半、融合前分路 LayerNorm 和 LR 自动选块分别在 LR/HR 独立投影上改动一处。HR 排名注意力以 LR 自动选块 + LR/HR 独立投影为直接对照。其余组以原始 K=4 NoEMA 为对照。此前的结果见[第三周实验](../week3_experiments/README.md)。
 
 > **已知病灶位置的 K=4 HR 选块诊断（Oracle）单独归档。** 这组实验用于检验 HR 小块取在哪里是否影响 WSI 分类。Train、Val、Test 的 HR 取块均使用病灶真值标注，**不计入本周常规 Test 对比、最佳成绩或性能提升**。见[实验目的与评估口径](s123_hrk4_noema_scaleproj_lesionoracle_5fold_20261125_162324/README.md)。
 
@@ -22,9 +22,12 @@ Test AUC 为五折等权平均 ± 样本标准差。表中的 Δ AUC 为相对�
 | [独立投影 + HR Layer3 残差](s123_hrk4_noema_scaleproj_hrlayer3_5fold_20261124_213308/summary.json) | 0.7460 ± 0.1118 | −2.58 | 65.18 | 65.26 | 65.62 | 64.89 |
 | [独立投影 + 投影后学习率减半](s123_hrk4_noema_scaleproj_postprojhalflr_5fold_20261125_100204/summary.json) | 0.7750 ± 0.0680 | +0.32 | 70.02 | 70.03 | 70.00 | 70.06 |
 | [独立投影 + 融合前分路 LayerNorm](s123_hrk4_noema_scaleproj_splitfusionln_5fold_20261125_100204/summary.json) | 0.7730 ± 0.0645 | +0.11 | 74.55 | 70.97 | 51.88 | 90.06 |
-| [LR 自动选块 + LR/HR 独立投影](s123_hrk4_noema_scaleproj_lrselect_5fold_20261126/summary.json) | **0.8297 ± 0.0323** | +5.79 | 78.12 | 76.55 | 68.13 | 84.97 |
+| [LR 自动选块 + LR/HR 独立投影](s123_hrk4_noema_scaleproj_lrselect_5fold_20261126/summary.json) | 0.8297 ± 0.0323 | +5.79 | 78.12 | 76.55 | 68.13 | 84.97 |
+| [LR 自动选块 + HR 排名注意力](s123_hrk4_noema_scaleproj_lrselect_rankattn_5fold_20261127_101829/summary.json) | **0.8415 ± 0.0656** | +6.96 | 74.83 | 75.33 | 78.13 | 72.54 |
 
-LR 自动选块 + LR/HR 独立投影的五折平均 Test AUC 和 BACC 最高。相对直接对照的 LR/HR 独立投影，Test AUC 提高 3.90 个百分点，五折中 4 折提高，Fold 3 的增幅最大（0.7045 → 0.8039）。原 LR/HR 独立投影相较 K=4 NoEMA 基线的提升主要来自 Fold 4（0.6861 → 0.8400）。此前四组模型消融的逐折结果、训练轨迹和复核范围见[第四周消融分析](analysis/k4_noema_ablation.md)。
+LR 自动选块 + HR 排名注意力的五折平均 Test AUC 最高（0.8415），较直接对照提高 1.17 个百分点，4 折提高，Fold 1 下降。按各组在验证集选定的阈值，RankAttn 的肿瘤召回率从 68.13% 升至 78.13%，特异度从 84.97% 降至 72.54%。LR 自动选块 + LR/HR 独立投影的 BACC 仍最高（76.55%）。[RankAttn 逐折对照](s123_hrk4_noema_scaleproj_lrselect_rankattn_5fold_20261127_101829/README.md)
+
+LR 自动选块 + LR/HR 独立投影相对直接对照的 LR/HR 独立投影，Test AUC 提高 3.90 个百分点，五折中 4 折提高，Fold 3 的增幅最大（0.7045 → 0.8039）。原 LR/HR 独立投影相较 K=4 NoEMA 基线的提升主要来自 Fold 4（0.6861 → 0.8400）。此前四组模型消融的逐折结果、训练轨迹和复核范围见[第四周消融分析](analysis/k4_noema_ablation.md)。
 
 Spatial Top-4 的 AUC 下降主要来自 Fold 3（0.7620 → 0.6307）和 Fold 1（0.7357 → 0.6795）。按各自验证集选定的阈值，五折平均 BACC 从 66.55% 升至 69.07%。
 
@@ -40,11 +43,11 @@ Spatial Top-4 的 AUC 下降主要来自 Fold 3（0.7620 → 0.6307）和 Fold 1
 
 ## 实验记录
 
-五折汇总保存为 `summary.json`，逐折记录保存于 `fold_0` 至 `fold_4`。LR 自动选块的汇总还记录了各折的原始目录。单折实验按实际运行的折归档。
+五折汇总保存为 `summary.json`，逐折记录保存于 `fold_0` 至 `fold_4`。RankAttn 完整五折保留原始 `mil_fold_<i>/fold_<i>` 目录结构。LR 自动选块的汇总还记录了各折的原始目录。单折实验按实际运行的折归档。
 
 - `config.yaml`、`data_provenance.json`、`run_info.json`
 - `history.csv`、`best_val_predictions.csv`
 - `test_metrics.json`、`test_predictions.csv`
 - HR Attention + Max 的 `hr_attn_max_diagnostics.json`
 
-以上常规消融共 437 份原始记录，另有 Oracle 诊断的 36 份记录和 HR 排名注意力单折实验的 7 份记录。模型权重与 checkpoint 保留在本地。
+以上常规消融共 473 份原始记录，另有 Oracle 诊断的 36 份记录和 HR 排名注意力单折实验的 7 份记录。模型权重与 checkpoint 保留在本地。
