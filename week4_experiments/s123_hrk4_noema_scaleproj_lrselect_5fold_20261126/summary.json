@@ -1,0 +1,85 @@
+{
+  "fold_count": 5,
+  "test_auc_mean": 0.8297395351526364,
+  "test_auc_std": 0.03231232277989377,
+  "hr_patch_selection": "lr-lesion-top4-v1",
+  "fold_sources": {
+    "fold_0": "s123_hrk4_noema_scaleproj_lrselect_fold0_20261126_002511/fold_0",
+    "fold_1": "s123_scaleproj_lrselect_folds1to4_20261126_150313/mil_fold_1/fold_1",
+    "fold_2": "s123_scaleproj_lrselect_folds1to4_20261126_150313/mil_fold_2/fold_2",
+    "fold_3": "s123_scaleproj_lrselect_folds1to4_20261126_150313/mil_fold_3/fold_3",
+    "fold_4": "s123_scaleproj_lrselect_folds1to4_20261126_150313/mil_fold_4/fold_4"
+  },
+  "folds": [
+    {
+      "loss": 0.6233348357371795,
+      "auc": 0.8675271739130435,
+      "acc": 0.7564102564102564,
+      "bacc": 0.7554347826086957,
+      "sensitivity": 0.75,
+      "specificity": 0.7608695652173914,
+      "fold": 0,
+      "split": "test",
+      "checkpoint_epoch": 13,
+      "slide_count": 78,
+      "best_val_auc": 0.8480718085106383,
+      "decision_threshold": 0.09057563915848732
+    },
+    {
+      "loss": 0.6834701344936709,
+      "auc": 0.792220744680851,
+      "acc": 0.7721518987341772,
+      "bacc": 0.7436835106382979,
+      "sensitivity": 0.59375,
+      "specificity": 0.8936170212765957,
+      "fold": 1,
+      "split": "test",
+      "checkpoint_epoch": 7,
+      "slide_count": 79,
+      "best_val_auc": 0.8869680851063829,
+      "decision_threshold": 0.3257073760032654
+    },
+    {
+      "loss": 0.45853935917721517,
+      "auc": 0.8294547872340425,
+      "acc": 0.7848101265822784,
+      "bacc": 0.7842420212765957,
+      "sensitivity": 0.78125,
+      "specificity": 0.7872340425531915,
+      "fold": 2,
+      "split": "test",
+      "checkpoint_epoch": 15,
+      "slide_count": 79,
+      "best_val_auc": 0.8583776595744682,
+      "decision_threshold": 0.104661475867033
+    },
+    {
+      "loss": 0.6124777492088608,
+      "auc": 0.8038563829787234,
+      "acc": 0.7721518987341772,
+      "bacc": 0.7436835106382979,
+      "sensitivity": 0.59375,
+      "specificity": 0.8936170212765957,
+      "fold": 3,
+      "split": "test",
+      "checkpoint_epoch": 8,
+      "slide_count": 79,
+      "best_val_auc": 0.9052309782608695,
+      "decision_threshold": 0.4780450165271759
+    },
+    {
+      "loss": 0.5521459334935898,
+      "auc": 0.8556385869565217,
+      "acc": 0.8205128205128205,
+      "bacc": 0.8002717391304348,
+      "sensitivity": 0.6875,
+      "specificity": 0.9130434782608695,
+      "fold": 4,
+      "split": "test",
+      "checkpoint_epoch": 5,
+      "slide_count": 78,
+      "best_val_auc": 0.8750000000000001,
+      "decision_threshold": 0.1085669957101345
+    }
+  ]
+}
